@@ -15,7 +15,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@my-apps/shared-ui": ["libs/shared-ui/src/index.ts"]
+      "@my-apps/shared-ui": ["libs/shared-ui/src/index.ts"],
+      "@my-apps/storybook-host": ["libs/storybook-host/src/index.ts"],
+      "@my-apps": ["apps/*"],
+      "@my-libs": ["libs/*"],
     }
   },
   "exclude": ["node_modules", "tmp"]
