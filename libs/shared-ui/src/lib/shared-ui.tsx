@@ -1,4 +1,3 @@
-// import styles from './shared-ui.module.css'
 import {Button} from '@heroui/react'
 
 export function SharedUi() {

@@ -9,8 +9,8 @@ module.exports = withNx(
     tsConfig: './tsconfig.lib.json',
     compiler: 'babel',
     external: ['react', 'react-dom', 'react/jsx-runtime'],
-    format: ['esm'],
-    assets: [{ input: '.', output: '.', glob: 'README.md' }],
+    format: ['esm', 'cjs'],
+    assets: [{ input: 'libs/shared-ui', output: '.', glob: 'README.md' }]
   },
   {
     // Provide additional rollup configuration here. See: https://rollupjs.org/configuration-options
@@ -26,3 +26,8 @@ module.exports = withNx(
     ],
   }
 );
+
+
+
+    // assets: [{ input: '.', output: '.', glob: 'README.md' }],
+
