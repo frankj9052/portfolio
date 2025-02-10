@@ -22,6 +22,7 @@ export default function FrankTimeInput({width, height, value, setValue}:Props) {
         width: width ? `${width}px` : '100%',
         height: height ? `${height}px` : '100%'
       }}
+      value={}
     />
   )
 }
