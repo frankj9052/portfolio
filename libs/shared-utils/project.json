@@ -1,0 +1,16 @@
+{
+  "name": "shared-utils",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/shared-utils/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project shared-utils --web",
+  "targets": {
+    "deploy": {
+      "dependsOn": [
+        "build"
+      ],
+      "command": "npm publish dist/libs/shared-utils --access public"
+    }
+  }
+}
