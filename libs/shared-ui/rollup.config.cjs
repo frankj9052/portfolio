@@ -8,7 +8,14 @@ module.exports = withNx(
     outputPath: '../../dist/libs/shared-ui',
     tsConfig: './tsconfig.lib.json',
     compiler: 'babel',
-    external: ['react', 'react-dom', 'react/jsx-runtime'],
+    external: [
+      'react', 
+      'react-dom', 
+      'react/jsx-runtime',
+      '@heroui/react',
+      '@frankjia9052/shared-utils',
+      '@internationalized/date'
+    ],
     format: ['esm', 'cjs'],
     assets: [{ input: 'libs/shared-ui', output: '.', glob: 'README.md' }]
   },
@@ -26,8 +33,3 @@ module.exports = withNx(
     ],
   }
 );
-
-
-
-    // assets: [{ input: '.', output: '.', glob: 'README.md' }],
-

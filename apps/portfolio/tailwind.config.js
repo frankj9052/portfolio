@@ -13,7 +13,11 @@ module.exports = {
     ...createGlobPatternsForDependencies(__dirname),
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'color-input-border': '#B5B5B5'
+      }
+    },
   },
   plugins: [heroui()],
 };

@@ -11,17 +11,30 @@ const meta = {
 
     args: {
         width: 60,
-        height: 32
+        height: 32,
+        value: null,
+        setValue: (value) => { console.log("value check in args ===> ", value) },
+        ariaLabel: 'test time input'
+    },
+    argTypes: {
+        value: {
+            control: {disable: true}
+        }
     },
     decorators: [
         (Story, context) => {
-            const [value, setValue] = useState<string | undefined>(undefined);
+            const [value, setValue] = useState<string | null>(null);
             return (
                 <Story
                     args={{
                         ...context.args,
                         value,
-                        setValue
+                        setValue: (value) => {
+                            if (value) {
+                                setValue(value?.toString());
+                            }
+                            setValue(null);
+                        }
                     }}
                 />
             )
@@ -34,5 +47,6 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
     args: {
+
     },
 }

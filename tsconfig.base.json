@@ -15,9 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@my-apps/shared-ui": ["libs/shared-ui/src/index.ts"],
-      "@my-apps/shared-utils": ["libs/shared-utils/src/index.ts"],
-      "@my-apps/storybook-host": ["libs/storybook-host/src/index.ts"]
+      "@frankjia9052/shared-ui": ["libs/shared-ui/src/index.ts"],
+      "@frankjia9052/shared-utils": ["libs/shared-utils/src/index.ts"],
+      "@frankjia9052/storybook-host": ["libs/storybook-host/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
