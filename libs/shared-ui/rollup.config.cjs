@@ -4,7 +4,7 @@ const svg = require('@svgr/rollup');
 
 module.exports = withNx(
   {
-    main: './src/index.ts',
+    main: './src/index.ts',    
     outputPath: '../../dist/libs/shared-ui',
     tsConfig: './tsconfig.lib.json',
     compiler: 'babel',
@@ -14,7 +14,8 @@ module.exports = withNx(
       'react/jsx-runtime',
       '@heroui/react',
       '@frankjia9052/shared-utils',
-      '@internationalized/date'
+      '@internationalized/date',
+      '@frankjia9052/shared-ui'
     ],
     format: ['esm', 'cjs'],
     assets: [{ input: 'libs/shared-ui', output: '.', glob: 'README.md' }]

@@ -9,7 +9,7 @@ type Props = {
   ariaLabel: string,
   fontSize?: number
 }
-export default function FrankTimeInput({ width, height, value, setValue, ariaLabel, fontSize = 13 }: Props) {
+export function FrankTimeInput({ width, height, value, setValue, ariaLabel, fontSize = 13 }: Props) {
   return (
     <div
       style={{
@@ -39,3 +39,5 @@ export default function FrankTimeInput({ width, height, value, setValue, ariaLab
     </div>
   )
 }
+
+export default FrankTimeInput;

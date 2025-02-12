@@ -15,7 +15,7 @@ type Props = {
 }
 
 
-export default function FrankCheckboxGroup({ data, selectedValue, setSelectedValue }: Props) {
+export function FrankCheckboxGroup({ data, selectedValue, setSelectedValue }: Props) {
     return (
         <CheckboxGroup
             value={selectedValue}
@@ -37,3 +37,5 @@ export default function FrankCheckboxGroup({ data, selectedValue, setSelectedVal
         </CheckboxGroup>
     )
 }
+
+export default FrankCheckboxGroup;

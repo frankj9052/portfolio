@@ -1,8 +1,9 @@
 {
   "name": "@frankjia9052/shared-utils",
   "version": "0.0.1",
-  "private": true,
   "main": "./index.cjs",
   "module": "./index.js",
-  "dependencies": {}
+  "dependencies": {
+    "@internationalized/date": "^3.5.6"
+  }
 }

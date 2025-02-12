@@ -10,7 +10,7 @@ type Props = {
     color?: string
 }
 
-export default function FrankCheckbox({ children, value, isDisabled, defaultSelected, color = "#003f3c" }: Props) {
+export function FrankCheckbox({ children, value, isDisabled, defaultSelected, color = "#003f3c" }: Props) {
     return (
         <Checkbox
             value={value}
@@ -34,3 +34,5 @@ export default function FrankCheckbox({ children, value, isDisabled, defaultSele
         </Checkbox>
     )
 }
+
+export default FrankCheckbox;

@@ -11,7 +11,7 @@ type Props = {
     radius?: "none" | "sm" | "md" | "lg" | "full"
 }
 
-export default function FrankButtonBase({ width, height, handleClick, icon, text, variant, radius }: Props) {
+export function FrankButtonBase({ width, height, handleClick, icon, text, variant, radius }: Props) {
     return (
         <Button
             variant={variant}
@@ -40,3 +40,5 @@ export default function FrankButtonBase({ width, height, handleClick, icon, text
         </Button>
     )
 }
+
+export default FrankButtonBase;
