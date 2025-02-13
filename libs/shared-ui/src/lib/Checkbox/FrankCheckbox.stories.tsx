@@ -28,7 +28,17 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
     args: {
-        children: 'Check box',
+        insideContent: 'text check',
         value: 'test value 1'
+    },
+}
+
+export const outSideContent: Story = {
+    args: {
+        outsideContent: <div className='bg-blue-200 w-[100px] h-[200px]'> big component</div>,
+        value: 'test value 1',
+        checkboxHeight: 24,
+        insideContent: <p className='font-bold'>Mon</p>,
+        gap: 2
     },
 }
