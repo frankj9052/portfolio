@@ -1,7 +1,7 @@
 import { CheckboxGroup } from "@heroui/react"
 import FrankCheckbox, { FrankCheckboxProps } from "../Checkbox/FrankCheckbox"
 
-type Props = {
+export type FrankCheckboxGroupProps = {
     data: FrankCheckboxProps[],
     selectedValue?: string[],
     setSelectedValue: (selected: string[]) => void
@@ -27,7 +27,7 @@ type Props = {
  * This component maps through the provided `data` array and renders individual `FrankCheckbox` components.
  * The `CheckboxGroup` manages the state of selected values and passes them to the parent via `setSelectedValue`.
  */
-export function FrankCheckboxGroup({ data, selectedValue, setSelectedValue }: Props) {
+export function FrankCheckboxGroup({ data, selectedValue, setSelectedValue }: FrankCheckboxGroupProps) {
     return (
         <CheckboxGroup
             value={selectedValue}
