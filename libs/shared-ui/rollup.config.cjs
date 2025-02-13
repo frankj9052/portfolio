@@ -15,7 +15,8 @@ module.exports = withNx(
       '@heroui/react',
       '@frankjia9052/shared-utils',
       '@internationalized/date',
-      '@frankjia9052/shared-ui'
+      '@frankjia9052/shared-ui',
+      'clsx'
     ],
     format: ['esm', 'cjs'],
     assets: [{ input: 'libs/shared-ui', output: '.', glob: 'README.md' }]

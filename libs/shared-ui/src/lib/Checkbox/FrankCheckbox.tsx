@@ -3,7 +3,7 @@ import { Checkbox } from "@heroui/react"
 import { CSSProperties, ReactNode } from "react"
 
 type Props = {
-    children: ReactNode
+    children?: ReactNode
     value: string
     isDisabled?: boolean
     defaultSelected?: boolean

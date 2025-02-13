@@ -31,7 +31,7 @@ export function FrankCheckboxGroup({ data, selectedValue, setSelectedValue }: Pr
                         key={item.value}
                     >
                         {item.children}
-                    </FrankCheckbox>
+                    </FrankCheckbox>                    
                 ))
             }
         </CheckboxGroup>

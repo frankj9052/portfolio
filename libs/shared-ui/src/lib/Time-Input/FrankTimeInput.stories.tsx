@@ -8,7 +8,6 @@ const meta = {
     parameters: {
         layout: "centered"
     },
-
     args: {
         width: 60,
         height: 32,
@@ -16,10 +15,14 @@ const meta = {
         setValue: (value) => { console.log("value check in args ===> ", value) },
         ariaLabel: 'test time input'
     },
-    argTypes: {
-        value: {
-            control: {disable: true}
-        }
+} satisfies Meta<typeof FrankTimeInput>
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+    args: {
+
     },
     decorators: [
         (Story, context) => {
@@ -40,13 +43,13 @@ const meta = {
             )
         }
     ]
-} satisfies Meta<typeof FrankTimeInput>
+}
 
-export default meta;
-type Story = StoryObj<typeof meta>;
-
-export const Default: Story = {
+export const WithError: Story = {
     args: {
-
+        value: "12:20",
+        minValue: "11:30",
+        errorMessage: "Invalid time!",
+        isInvalid: true
     },
 }

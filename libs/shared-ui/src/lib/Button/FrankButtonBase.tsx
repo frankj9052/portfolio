@@ -1,5 +1,6 @@
 import { ImageType } from '@frankjia9052/shared-utils'
 import { Button } from '@heroui/react'
+import { clsx } from 'clsx'
 
 type Props = {
     width?: number,
@@ -15,7 +16,9 @@ export function FrankButtonBase({ width, height, handleClick, icon, text, varian
     return (
         <Button
             variant={variant}
-            className='px-0 min-w-0 border-1 border-color-input-border'            
+            className={clsx('px-0 min-w-0', {
+                'border-1 border-color-input-border': variant === 'bordered' || variant === 'ghost' || variant === 'faded'
+            })}
             radius={radius}
             onPress={handleClick}
             style={{
