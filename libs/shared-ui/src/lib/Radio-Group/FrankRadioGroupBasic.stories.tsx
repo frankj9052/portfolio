@@ -9,7 +9,7 @@ const meta = {
     },
 
     args: {
-        onValueChange: (value) => {console.log("value changed ===> ", value)}
+        onValueChange: (value) => { console.log("value changed ===> ", value) }
     },
 } satisfies Meta<typeof FrankRadioGroupBasic>
 
@@ -42,4 +42,19 @@ export const Default: Story = {
             },
         ]
     },
+    decorators: [
+        (Story, context) => {
+            return (
+                <div
+                    className=''
+                >
+                    <Story
+                        args={{
+                            ...context.args,
+                        }}
+                    />
+                </div>
+            )
+        }
+    ]
 }

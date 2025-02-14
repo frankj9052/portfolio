@@ -9,6 +9,9 @@ export * from './lib/Checkbox/FrankCheckbox';
 // Checkbox Group
 export * from './lib/Checkbox-Group/FrankCheckboxGroup';
 
+// Modal
+export * from './lib/Modal/FrankModal';
+
 // Popover
 export * from './lib/Popover/FrankPopover';
 

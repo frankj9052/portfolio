@@ -10,10 +10,11 @@ type Props = {
     icon?: ImageType,
     text?: string,
     variant?: "bordered" | "solid" | "light" | "flat" | "faded" | "shadow" | "ghost",
-    radius?: "none" | "sm" | "md" | "lg" | "full"
+    radius?: "none" | "sm" | "md" | "lg" | "full",
+    backgroundColor?: string
 } & ButtonProps
 
-export const FrankButtonBase = forwardRef<HTMLButtonElement, Props>(({ width, height, handleClick, icon, text, variant, radius, ...props }, ref) => {
+export const FrankButtonBase = forwardRef<HTMLButtonElement, Props>(({ width, height, handleClick, icon, text, variant, radius, backgroundColor, ...props }, ref) => {
     return (
         <Button
             ref={ref}
@@ -31,6 +32,7 @@ export const FrankButtonBase = forwardRef<HTMLButtonElement, Props>(({ width, he
                 color: 'inherit',
                 width: width ? `${width}px` : '100%',
                 height: height ? `${height}px` : '100%',
+                ...(backgroundColor && { backgroundColor: backgroundColor })
             }}
         >
             <div

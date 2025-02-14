@@ -26,11 +26,11 @@ export function FrankRadioGroupBasic({ radioData, defaultValue, orientation = 'v
       {...onValueChange && { onValueChange: onValueChange }}
       style={{
         width: width ? `${width}px` : '100%'
-      }}
+      }}      
     >
       {
         radioData && radioData.length > 0 && radioData.map((radio) => (
-          <Radio
+          <Radio            
             key={radio.value}
             value={radio.value}
             style={{
@@ -45,8 +45,8 @@ export function FrankRadioGroupBasic({ radioData, defaultValue, orientation = 'v
                   'group-data-[selected=true]:border-[var(--after-bg-color)]': !!radioColor,
                   'w-4 h-4': radioSize === 'sm'
                 }
-              )
-            }}
+              ),
+            }}            
           >
             {radio.label}
           </Radio>
