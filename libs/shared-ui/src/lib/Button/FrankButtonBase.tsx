@@ -6,7 +6,7 @@ import { forwardRef } from 'react'
 type Props = {
     width?: number,
     height?: number,
-    handleClick: () => void,
+    handleClick?: () => void,
     icon?: ImageType,
     text?: string,
     variant?: "bordered" | "solid" | "light" | "flat" | "faded" | "shadow" | "ghost",
@@ -23,7 +23,7 @@ export const FrankButtonBase = forwardRef<HTMLButtonElement, Props>(({ width, he
                 'border-1 border-color-input-border': variant === 'bordered' || variant === 'ghost' || variant === 'faded'
             })}
             radius={radius}
-            onPress={handleClick}
+            {...handleClick && { onPress: handleClick }}
             style={{
                 fontWeight: 'inherit',
                 fontSize: 'inherit',
@@ -47,6 +47,6 @@ export const FrankButtonBase = forwardRef<HTMLButtonElement, Props>(({ width, he
     )
 })
 
-FrankButtonBase.displayName="FrankButtonBase"
+FrankButtonBase.displayName = "FrankButtonBase"
 
 export default FrankButtonBase;
