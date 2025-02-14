@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import FrankCheckboxGroup from './FrankCheckboxGroup';
 import { useState } from 'react';
+import FrankCheckbox from '../Checkbox/FrankCheckbox';
 
 const meta = {
   component: FrankCheckboxGroup,
@@ -9,7 +10,7 @@ const meta = {
     layout: "centered"
   },
   args: {
-    setSelectedValue: (selected) => { console.log("selected ===> ", selected.toString()) }
+    onValueChange: (selected) => { console.log("selected ===> ", selected.toString()) }
   },
   decorators: [
     (Story, context) => {
@@ -18,8 +19,8 @@ const meta = {
         <Story
           args={{
             ...context.args,
-            selectedValue: value,
-            setSelectedValue: (selected) => {
+            value: value,
+            onValueChange: (selected) => {
               setValue(selected)
             }
           }}
@@ -34,26 +35,35 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    data: [
+    children: [
       {
-        children: "Robert Fox",
+        insideContent: "Robert Fox",
         value: "provider-user-id-1",
         color: "#C530C5"
       },
       {
-        children: "Nolan Torff",
+        insideContent: "Nolan Torff",
         value: "provider-user-id-2",
         color: "#0071E9"
       },
       {
-        children: "Albert Flores",
+        insideContent: "Albert Flores",
         value: "provider-user-id-3",
         color: "#E5A500"
       },
       {
-        children: "Theresa Webb",
+        insideContent: "Theresa Webb",
         value: "provider-user-id-4",
       },
-    ],
+      {
+        outsideContent: <p>123</p>,
+        value: "Component Check 01"
+      }
+    ].map(item => (<FrankCheckbox
+      insideContent={item.insideContent}
+      value={item.value}
+      color={item.color}
+      outsideContent={item.outsideContent}
+    />)),
   }
 };

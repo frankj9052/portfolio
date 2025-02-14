@@ -1,6 +1,7 @@
 import { ImageType } from '@frankjia9052/shared-utils'
-import { Button } from '@heroui/react'
+import { Button, ButtonProps } from '@heroui/react'
 import { clsx } from 'clsx'
+import { forwardRef } from 'react'
 
 type Props = {
     width?: number,
@@ -10,11 +11,13 @@ type Props = {
     text?: string,
     variant?: "bordered" | "solid" | "light" | "flat" | "faded" | "shadow" | "ghost",
     radius?: "none" | "sm" | "md" | "lg" | "full"
-}
+} & ButtonProps
 
-export function FrankButtonBase({ width, height, handleClick, icon, text, variant, radius }: Props) {
+export const FrankButtonBase = forwardRef<HTMLButtonElement, Props>(({ width, height, handleClick, icon, text, variant, radius, ...props }, ref) => {
     return (
         <Button
+            ref={ref}
+            {...props}
             variant={variant}
             className={clsx('px-0 min-w-0', {
                 'border-1 border-color-input-border': variant === 'bordered' || variant === 'ghost' || variant === 'faded'
@@ -42,6 +45,8 @@ export function FrankButtonBase({ width, height, handleClick, icon, text, varian
             </div>
         </Button>
     )
-}
+})
+
+FrankButtonBase.displayName="FrankButtonBase"
 
 export default FrankButtonBase;
