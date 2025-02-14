@@ -9,6 +9,7 @@ const meta = {
     },
 
     args: {
+        onValueChange: (value) => {console.log("value changed ===> ", value)}
     },
 } satisfies Meta<typeof FrankRadioGroupBasic>
 
