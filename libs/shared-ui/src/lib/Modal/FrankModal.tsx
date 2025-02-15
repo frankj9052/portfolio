@@ -1,5 +1,5 @@
-import { Button, ButtonProps, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from "@heroui/react"
-import React, { ReactNode } from 'react'
+import { Button, ButtonProps, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, useDraggable } from "@heroui/react"
+import React, { ReactNode, RefObject, useRef } from 'react'
 
 type AppModalProps = {
     isOpen: boolean;
@@ -10,18 +10,22 @@ type AppModalProps = {
     imageModal?: boolean;
     size?: "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl" | "full",
     placement?: "center" | "top-center" | "auto" | "top" | "bottom" | "bottom-center",
-    backdrop?: "transparent" | "opaque" | "blur"
+    backdrop?: "transparent" | "opaque" | "blur",
+    draggable?: boolean;
 }
 
 // image modal is just show the original photo
-export function FrankModal({ isOpen, onClose, header, body, footerButtons, imageModal, size, placement = 'top-center', backdrop = 'transparent' }: AppModalProps) {
+export function FrankModal({ isOpen, onClose, header, body, footerButtons, imageModal, size, placement = 'top-center', backdrop = 'transparent', draggable = false }: AppModalProps) {
     // original close event has been covered by something else, we manually add one
     const handleClose = () => {
         setTimeout(() => onClose(), 10);
     }
+    const targetRef = useRef<HTMLElement>(null) as RefObject<HTMLElement>;
+    const { moveProps } = useDraggable({ targetRef, isDisabled: !isOpen });
 
     return (
         <Modal
+            {...draggable && { ref: targetRef }}
             isOpen={isOpen}
             onClose={handleClose}
             placement={placement}
@@ -42,7 +46,7 @@ export function FrankModal({ isOpen, onClose, header, body, footerButtons, image
             <ModalContent>
                 {
                     // show header if not image modal
-                    !imageModal && <ModalHeader className='flex flex-col gap-1'>{header}</ModalHeader>
+                    !imageModal && <ModalHeader className='flex flex-col gap-1' {...moveProps}>{header}</ModalHeader>
                 }
                 <ModalBody>{body}</ModalBody>
                 {
