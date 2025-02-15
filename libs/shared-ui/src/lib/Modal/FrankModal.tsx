@@ -1,10 +1,10 @@
 import { Button, ButtonProps, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, useDraggable } from "@heroui/react"
-import React, { ReactNode, RefObject, useRef } from 'react'
+import { ReactNode, RefObject, useRef } from 'react'
 
 type AppModalProps = {
     isOpen: boolean;
     onClose: () => void;
-    header?: string;
+    header?: ReactNode;
     body: ReactNode;
     footerButtons?: ButtonProps[];
     imageModal?: boolean;
