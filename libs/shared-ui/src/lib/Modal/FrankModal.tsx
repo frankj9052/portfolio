@@ -1,12 +1,13 @@
-import { Button, ButtonProps, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, useDraggable } from "@heroui/react"
+import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, useDraggable } from "@heroui/react"
 import { ReactNode, RefObject, useRef } from 'react'
+import FrankButtonBase, { FrankButtonBaseProps } from "../Button/FrankButtonBase";
 
 type AppModalProps = {
     isOpen: boolean;
     onClose: () => void;
     header?: ReactNode;
     body: ReactNode;
-    footerButtons?: ButtonProps[];
+    footerButtons?: FrankButtonBaseProps[];
     imageModal?: boolean;
     size?: "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl" | "full",
     placement?: "center" | "top-center" | "auto" | "top" | "bottom" | "bottom-center",
@@ -53,10 +54,10 @@ export function FrankModal({ isOpen, onClose, header, body, footerButtons, image
                     // show footer if not image modal
                     !imageModal &&
                     <ModalFooter>
-                        {footerButtons && footerButtons.map((props: ButtonProps, index) => (
-                            <Button {...props} key={index}>
+                        {footerButtons && footerButtons.map((props: FrankButtonBaseProps, index) => (
+                            <FrankButtonBase {...props} key={index}>
                                 {props.children}
-                            </Button>
+                            </FrankButtonBase>
                         ))}
                     </ModalFooter>
                 }

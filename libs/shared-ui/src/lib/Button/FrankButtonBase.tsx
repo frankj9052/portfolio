@@ -3,7 +3,7 @@ import { Button, ButtonProps } from '@heroui/react'
 import { clsx } from 'clsx'
 import { forwardRef } from 'react'
 
-type Props = {
+export type FrankButtonBaseProps = {
     width?: number,
     height?: number,
     handleClick?: () => void,
@@ -14,7 +14,7 @@ type Props = {
     backgroundColor?: string
 } & ButtonProps
 
-export const FrankButtonBase = forwardRef<HTMLButtonElement, Props>(({ width, height, handleClick, icon, text, variant, radius, backgroundColor, ...props }, ref) => {
+export const FrankButtonBase = forwardRef<HTMLButtonElement, FrankButtonBaseProps>(({ width, height, handleClick, icon, text, variant, radius, backgroundColor, ...props }, ref) => {
     return (
         <Button
             ref={ref}
