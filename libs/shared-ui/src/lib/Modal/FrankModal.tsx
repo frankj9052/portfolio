@@ -13,10 +13,11 @@ type AppModalProps = {
     placement?: "center" | "top-center" | "auto" | "top" | "bottom" | "bottom-center",
     backdrop?: "transparent" | "opaque" | "blur",
     draggable?: boolean;
+    hideCloseButton?: boolean;
 }
 
 // image modal is just show the original photo
-export function FrankModal({ isOpen, onClose, header, body, footerButtons, imageModal, size, placement = 'top-center', backdrop = 'transparent', draggable = false }: AppModalProps) {
+export function FrankModal({ isOpen, onClose, header, body, footerButtons, imageModal, size, placement = 'top-center', backdrop = 'transparent', draggable = false, hideCloseButton = false }: AppModalProps) {
     // original close event has been covered by something else, we manually add one
     const handleClose = () => {
         setTimeout(() => onClose(), 10);
@@ -43,6 +44,7 @@ export function FrankModal({ isOpen, onClose, header, body, footerButtons, image
             }}
             size={size}
             backdrop={backdrop}
+            hideCloseButton={hideCloseButton}
         >
             <ModalContent>
                 {
