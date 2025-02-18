@@ -9,8 +9,7 @@ export type FrankButtonBaseProps = {
     height?: number,
     handleClick?: () => void,
     icon?: ImageType,
-    // text?: string,
-    text: TextType,
+    text?: TextType,
     variant?: "bordered" | "solid" | "light" | "flat" | "faded" | "shadow" | "ghost",
     radius?: "none" | "sm" | "md" | "lg" | "full",
     backgroundColor?: string,
@@ -22,10 +21,10 @@ export type FrankButtonBaseProps = {
 } & ButtonProps
 
 const StyledButton = styled(Button) <FrankButtonBaseProps>`
-    font-family:${(props) => props.text.fontFamily ? `${props.text.fontFamily}` : 'inherit'};
-    font-weight:${(props) => props.text.fontWeight ? `${props.text.fontWeight}` : 'inherit'};
-    font-size:${(props) => props.text.fontSize ? `${props.text.fontSize}px` : 'inherit'};
-    color:${(props) => props.text.fontColor ? `${props.text.fontColor}` : 'inherit'};
+    font-family:${(props) => props?.text?.fontFamily ? `${props.text.fontFamily}` : 'inherit'};
+    font-weight:${(props) => props?.text?.fontWeight ? `${props.text.fontWeight}` : 'inherit'};
+    font-size:${(props) => props?.text?.fontSize ? `${props.text.fontSize}px` : 'inherit'};
+    color:${(props) => props?.text?.fontColor ? `${props.text.fontColor}` : 'inherit'};
     width: ${(props) => props.width ? `${props.width}px` : '100%'};
     height: ${(props) => props.height ? `${props.height}px` : '100%'};
     ${(props) => props.backgroundColor && `background-color:${props.backgroundColor}`};
@@ -42,7 +41,7 @@ export const FrankButtonBase = forwardRef<HTMLButtonElement, FrankButtonBaseProp
         <StyledButton
             ref={ref}
             color={color}
-            // {...props}
+            {...props}
             {...handleClick && { onPress: handleClick }}
             activeColor={activeColor}
             hoverColor={hoverColor}
@@ -65,7 +64,7 @@ export const FrankButtonBase = forwardRef<HTMLButtonElement, FrankButtonBaseProp
                     icon && <img {...icon} alt={icon.alt} />
                 }
                 {
-                    text.content && text.content
+                    text && text.content && text.content
                 }
             </div>
         </StyledButton>

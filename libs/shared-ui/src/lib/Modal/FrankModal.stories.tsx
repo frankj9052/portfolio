@@ -21,7 +21,9 @@ const meta = {
                 <div>
                     <FrankButtonBase
                         handleClick={onOpen}
-                        text='Open Modal'
+                        text={{
+                            content: 'Open Modal'
+                        }}
                         width={120}
                         height={30}
                         variant='solid'
@@ -44,6 +46,13 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
     args: {
-        body:<div>This is modal body</div>
+        body:<div>This is modal body</div>,
+        footerButtons: [
+            {
+                text:{
+                    content: 'test btn 1'
+                }
+            }
+        ]
     },
 }

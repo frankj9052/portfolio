@@ -57,9 +57,7 @@ export function FrankModal({ isOpen, onClose, header, body, footerButtons, image
                     !imageModal &&
                     <ModalFooter>
                         {footerButtons && footerButtons.map((props: FrankButtonBaseProps, index) => (
-                            <FrankButtonBase {...props} key={index}>
-                                {props.children}
-                            </FrankButtonBase>
+                            <FrankButtonBase {...props} key={index} />
                         ))}
                     </ModalFooter>
                 }
