@@ -17,34 +17,37 @@ export type FrankButtonBaseProps = {
     disableAnimation?: boolean,
     activeColor?: string,
     hoverColor?: string,
+    color?: "default" | "primary" | "secondary" | "success" | "warning" | "danger"
 } & ButtonProps
 
-const StyledButton = styled(Button) <{ activeColor?: string; hoverColor?: string }>`
+const StyledButton = styled(Button) <FrankButtonBaseProps>`
+    font-weight: inherit;
+    font-size: inherit;
+    font-family: inherit;
+    color: inherit;
+    width: ${(props) => props.width ? `${props.width}px;` : '100%;'}
+    height: ${(props) => props.width ? `${props.height}px;` : '100%;'}
+    ${(props) => props.backgroundColor && `background-color:${props.backgroundColor};`}
     &:hover {
-        background-color: ${(props) => props.hoverColor || 'inherit'};
+        ${(props) => props.hoverColor && `background-color: ${props.hoverColor};`}
     }
     &:active {
-        background-color: ${(props) => props.activeColor || 'inherit'};
+        ${(props) => props.activeColor && `background-color: ${props.activeColor}`}
     }
 `
 
-export const FrankButtonBase = forwardRef<HTMLButtonElement, FrankButtonBaseProps>(({ width, height, handleClick, icon, text, variant, radius, backgroundColor, disableRipple, disableAnimation, activeColor, hoverColor, ...props }, ref) => {
+export const FrankButtonBase = forwardRef<HTMLButtonElement, FrankButtonBaseProps>(({ width, height, handleClick, icon, text, variant, radius, backgroundColor, disableRipple, disableAnimation, activeColor, hoverColor, color = 'default', ...props }, ref) => {
     return (
         <StyledButton
             ref={ref}
+            color={color}
             {...props}
             {...handleClick && { onPress: handleClick }}
             activeColor={activeColor}
             hoverColor={hoverColor}
-            style={{
-                fontWeight: 'inherit',
-                fontSize: 'inherit',
-                fontFamily: 'inherit',
-                color: 'inherit',
-                width: width ? `${width}px` : '100%',
-                height: height ? `${height}px` : '100%',
-                ...(backgroundColor && { backgroundColor: backgroundColor }),
-            }}
+            backgroundColor={backgroundColor}
+            width={width}
+            height={height}
             variant={variant}
             className={clsx(`px-0 min-w-0`, {
                 'border-1 border-color-input-border': variant === 'bordered' || variant === 'ghost' || variant === 'faded',

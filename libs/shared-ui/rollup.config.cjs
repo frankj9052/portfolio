@@ -18,7 +18,6 @@ module.exports = withNx(
       '@frankjia9052/shared-ui',
       'clsx',
       'styled-components',
-      '@types/styled-components'
     ],
     format: ['esm', 'cjs'],
     assets: [{ input: 'libs/shared-ui', output: '.', glob: 'README.md' }]
