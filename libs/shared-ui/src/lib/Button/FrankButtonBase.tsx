@@ -1,4 +1,4 @@
-import { ImageType } from '@frankjia9052/shared-utils'
+import { ImageType, TextType } from '@frankjia9052/shared-utils'
 import { Button, ButtonProps } from '@heroui/react'
 import { clsx } from 'clsx'
 import { forwardRef } from 'react'
@@ -9,7 +9,8 @@ export type FrankButtonBaseProps = {
     height?: number,
     handleClick?: () => void,
     icon?: ImageType,
-    text?: string,
+    // text?: string,
+    text: TextType,
     variant?: "bordered" | "solid" | "light" | "flat" | "faded" | "shadow" | "ghost",
     radius?: "none" | "sm" | "md" | "lg" | "full",
     backgroundColor?: string,
@@ -21,18 +22,18 @@ export type FrankButtonBaseProps = {
 } & ButtonProps
 
 const StyledButton = styled(Button) <FrankButtonBaseProps>`
-    font-weight: inherit;
-    font-size: inherit;
-    font-family: inherit;
-    color: inherit;
-    width: ${(props) => props.width ? `${props.width}px;` : '100%;'}
-    height: ${(props) => props.height ? `${props.height}px;` : '100%;'}
-    ${(props) => props.backgroundColor && `background-color:${props.backgroundColor};`}
+    font-family:${(props) => props.text.fontFamily ? `${props.text.fontFamily}` : 'inherit'};
+    font-weight:${(props) => props.text.fontWeight ? `${props.text.fontWeight}` : 'inherit'};
+    font-size:${(props) => props.text.fontSize ? `${props.text.fontSize}px` : 'inherit'};
+    color:${(props) => props.text.fontColor ? `${props.text.fontColor}` : 'inherit'};
+    width: ${(props) => props.width ? `${props.width}px` : '100%'};
+    height: ${(props) => props.height ? `${props.height}px` : '100%'};
+    ${(props) => props.backgroundColor && `background-color:${props.backgroundColor}`};
     &:hover {
-        ${(props) => props.hoverColor && `background-color: ${props.hoverColor};`}
+        ${(props) => props.hoverColor && `background-color: ${props.hoverColor}`};
     }
     &:active {
-        ${(props) => props.activeColor && `background-color: ${props.activeColor}`}
+        ${(props) => props.activeColor && `background-color: ${props.activeColor}`};
     }
 `
 
@@ -41,7 +42,7 @@ export const FrankButtonBase = forwardRef<HTMLButtonElement, FrankButtonBaseProp
         <StyledButton
             ref={ref}
             color={color}
-            {...props}
+            // {...props}
             {...handleClick && { onPress: handleClick }}
             activeColor={activeColor}
             hoverColor={hoverColor}
@@ -55,6 +56,7 @@ export const FrankButtonBase = forwardRef<HTMLButtonElement, FrankButtonBaseProp
             radius={radius}
             disableRipple={disableRipple}
             disableAnimation={disableAnimation}
+            text={text}
         >
             <div
                 className='w-full h-full flex items-center justify-center gap-0.5'
@@ -63,7 +65,7 @@ export const FrankButtonBase = forwardRef<HTMLButtonElement, FrankButtonBaseProp
                     icon && <img {...icon} alt={icon.alt} />
                 }
                 {
-                    text && text
+                    text.content && text.content
                 }
             </div>
         </StyledButton>

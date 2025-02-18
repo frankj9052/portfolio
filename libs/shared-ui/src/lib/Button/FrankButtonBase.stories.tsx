@@ -30,7 +30,10 @@ export const Default: Story = {
     args: {
         width: 117,
         height: 32,
-        text: 'test button',
+        text: {
+            content: 'test button',
+            fontWeight: 500
+        },
         variant: 'bordered',
         radius: 'full'
     },
