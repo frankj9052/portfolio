@@ -15,7 +15,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'color-input-border': '#B5B5B5'
+        'color-input-border': '#B5B5B5',
       }
     },
   },
