@@ -26,7 +26,7 @@ const StyledButton = styled(Button) <FrankButtonBaseProps>`
     font-family: inherit;
     color: inherit;
     width: ${(props) => props.width ? `${props.width}px;` : '100%;'}
-    height: ${(props) => props.width ? `${props.height}px;` : '100%;'}
+    height: ${(props) => props.height ? `${props.height}px;` : '100%;'}
     ${(props) => props.backgroundColor && `background-color:${props.backgroundColor};`}
     &:hover {
         ${(props) => props.hoverColor && `background-color: ${props.hoverColor};`}
