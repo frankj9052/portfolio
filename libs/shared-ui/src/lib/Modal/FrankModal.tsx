@@ -2,7 +2,7 @@ import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, useDraggable 
 import { ReactNode, RefObject, useRef } from 'react'
 import FrankButtonBase, { FrankButtonBaseProps } from "../Button/FrankButtonBase";
 
-type AppModalProps = {
+export type FrankModalProps = {
     isOpen: boolean;
     onClose: () => void;
     header?: ReactNode;
@@ -17,7 +17,7 @@ type AppModalProps = {
 }
 
 // image modal is just show the original photo
-export function FrankModal({ isOpen, onClose, header, body, footerButtons, imageModal, size, placement = 'top-center', backdrop = 'transparent', draggable = false, hideCloseButton = false }: AppModalProps) {
+export function FrankModal({ isOpen, onClose, header, body, footerButtons, imageModal, size, placement = 'top-center', backdrop = 'transparent', draggable = false, hideCloseButton = false }: FrankModalProps) {
     // original close event has been covered by something else, we manually add one
     const handleClose = () => {
         setTimeout(() => onClose(), 10);
