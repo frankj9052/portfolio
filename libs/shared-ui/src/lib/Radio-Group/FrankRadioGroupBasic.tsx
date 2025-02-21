@@ -15,9 +15,10 @@ export type FrankRadioGroupBasicProps = {
   radioColor?: string;
   radioSize?: 'sm' | 'md';
   onValueChange?: (value: string) => void;
-  width?: number
+  width?: number,
+  gap?: number,
 }
-export function FrankRadioGroupBasic({ radioData, defaultValue, orientation = 'vertical', isDisabled = false, radioColor, radioSize, onValueChange, width }: FrankRadioGroupBasicProps) {
+export function FrankRadioGroupBasic({ radioData, defaultValue, orientation = 'vertical', isDisabled = false, radioColor, radioSize='sm', onValueChange, width, gap=0 }: FrankRadioGroupBasicProps) {
   return (
     <RadioGroup
       defaultValue={defaultValue}
@@ -26,11 +27,14 @@ export function FrankRadioGroupBasic({ radioData, defaultValue, orientation = 'v
       {...onValueChange && { onValueChange: onValueChange }}
       style={{
         width: width ? `${width}px` : '100%'
-      }}      
+      }}
+      classNames={{
+        wrapper: `gap-${gap}`,
+      }}
     >
       {
         radioData && radioData.length > 0 && radioData.map((radio) => (
-          <Radio            
+          <Radio
             key={radio.value}
             value={radio.value}
             style={{
@@ -46,7 +50,7 @@ export function FrankRadioGroupBasic({ radioData, defaultValue, orientation = 'v
                   'w-4 h-4': radioSize === 'sm'
                 }
               ),
-            }}            
+            }}
           >
             {radio.label}
           </Radio>
