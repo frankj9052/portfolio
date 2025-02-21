@@ -1,7 +1,7 @@
 import { Popover, PopoverContent, PopoverTrigger } from "@heroui/react";
 import { ReactNode } from "react";
 
-type Props = {
+export type FrankPopoverProps = {
     placement: "top" | "bottom" | "left" | "right" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "left-start" | "left-end" | "right-start" | "right-end",
     popoverTrigger: ReactNode,
     popoverContent: ReactNode,
@@ -9,7 +9,7 @@ type Props = {
     shadow?: "sm" | "md" | "lg" | "none",
     radius?: "sm" | "md" | "lg" | "none" | "full",
 }
-export function FrankPopover({ placement, popoverTrigger, popoverContent, showArrow, shadow = 'md', radius = 'md' }: Props) {
+export function FrankPopover({ placement, popoverTrigger, popoverContent, showArrow, shadow = 'md', radius = 'md' }: FrankPopoverProps) {
     return (
         <Popover
             placement={placement}

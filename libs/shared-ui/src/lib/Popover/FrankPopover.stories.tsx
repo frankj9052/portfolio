@@ -19,7 +19,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
     args: {
         placement: 'bottom',
-        popoverTrigger: <FrankButtonBase text='Test Button'/>,
+        popoverTrigger: <FrankButtonBase text={{content: 'Test Trigger'}}/>,
         popoverContent: <div>test</div>
     },
 }
