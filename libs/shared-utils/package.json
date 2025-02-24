@@ -1,6 +1,6 @@
 {
   "name": "@frankjia9052/shared-utils",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "./index.cjs",
   "module": "./index.js",
   "dependencies": {
