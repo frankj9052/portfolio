@@ -1,3 +1,4 @@
+import { TopNav } from '../components/navbar/TopNav';
 import './global.css';
 
 export const metadata = {
@@ -11,8 +12,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body>{children}</body>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className='purple-dark'
+    >
+      <body className='font-popins'>
+        <TopNav />
+        {children}
+      </body>
     </html>
   );
 }
