@@ -49,3 +49,6 @@ storybook-static
 # Next.js
 .next
 out
+
+# env
+.env

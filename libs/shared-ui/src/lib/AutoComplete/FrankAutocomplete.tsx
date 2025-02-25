@@ -1,0 +1,75 @@
+import { Autocomplete, AutocompleteItem } from "@heroui/react";
+import { Key, ReactNode } from "react";
+import { IoSearchOutline } from "react-icons/io5";
+
+type DefaultItemsType = {
+  label: string | ReactNode,
+  key: string,
+  description?: string,
+}
+
+type Props = {
+  className?: string;
+  label?: ReactNode;
+  labelPlacement?: "outside" | "outside-left" | "inside";
+  placeholder?: string;
+  defaultItems?: DefaultItemsType[];
+  variant?: "flat" | "faded" | "bordered" | "underlined";
+  radius?: "sm" | "md" | "lg" | "none" | "full";
+  selectedKey?: string | null;
+  onSelectionChange?: (key: Key | null) => void;
+  inputValue?: string;
+  onInputChange?: (value: string) => void;
+}
+
+export function FrankAutocomplete({
+  label,
+  labelPlacement,
+  placeholder,
+  defaultItems,
+  variant,
+  radius,
+  selectedKey,
+  onSelectionChange,
+  inputValue='',
+  onInputChange
+}: Props) {
+  return (
+    <Autocomplete
+      label={label}
+      labelPlacement={labelPlacement}
+      placeholder={placeholder}
+      defaultItems={defaultItems ?? []}
+      variant={variant}
+      inputProps={{
+        classNames: {
+          inputWrapper: 'border-1 h-[32px] min-h-0',
+          input: 'text-[13px]'
+        }
+      }}
+      radius={radius}
+      popoverProps={{
+        radius: 'sm'
+      }}
+      classNames={{
+        popoverContent: 'text-[13px]',
+        selectorButton: 'hidden',
+        endContentWrapper: 'aspect-square flex items-center justify-center',
+      }}
+      endContent={<IoSearchOutline />}
+      fullWidth
+      selectedKey={selectedKey}
+      onSelectionChange={onSelectionChange}
+      inputValue={inputValue}
+      onInputChange={onInputChange}
+    >
+      {(item) => <AutocompleteItem
+        key={item.key}
+      >
+        {item.label}
+      </AutocompleteItem>}
+    </Autocomplete>
+  )
+}
+
+export default FrankAutocomplete;

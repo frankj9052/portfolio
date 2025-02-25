@@ -1,5 +1,8 @@
 export * from './lib/shared-ui';
 
+// AutoComplete
+export * from './lib/AutoComplete/FrankAutocomplete';
+
 // Button
 export * from './lib/Button/FrankButtonBase';
 
@@ -8,6 +11,9 @@ export * from './lib/Checkbox/FrankCheckbox';
 
 // Checkbox Group
 export * from './lib/Checkbox-Group/FrankCheckboxGroup';
+
+// Input
+export * from './lib/Input/FrankInputUncontrolledBase';
 
 // Modal
 export * from './lib/Modal/FrankModal';

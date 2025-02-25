@@ -7,9 +7,7 @@ const preview: Preview = {
   decorators: [
     (Story) => (
       <HeroUIProvider>
-        <main className="purple-dark">
-          <Story />
-        </main>
+        <Story />
       </HeroUIProvider>
     )
   ],
