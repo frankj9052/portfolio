@@ -14,13 +14,27 @@ export type FrankRadioGroupBasicProps = {
   radioData: FrankRadioBasicDataType[];
   radioColor?: string;
   radioSize?: 'sm' | 'md';
+  value?: string | null;
   onValueChange?: (value: string) => void;
   width?: number,
   gap?: number,
 }
-export function FrankRadioGroupBasic({ radioData, defaultValue, orientation = 'vertical', isDisabled = false, radioColor, radioSize='sm', onValueChange, width, gap=0 }: FrankRadioGroupBasicProps) {
+export function FrankRadioGroupBasic(
+  {
+    radioData,
+    defaultValue,
+    orientation = 'vertical',
+    isDisabled = false,
+    radioColor,
+    radioSize = 'sm',
+    value,
+    onValueChange,
+    width,
+    gap = 0
+  }: FrankRadioGroupBasicProps) {
   return (
     <RadioGroup
+      value={value}
       defaultValue={defaultValue}
       orientation={orientation}
       isDisabled={isDisabled}

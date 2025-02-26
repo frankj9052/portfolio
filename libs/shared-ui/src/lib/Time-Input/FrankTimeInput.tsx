@@ -4,7 +4,7 @@ import { parseTime } from '@internationalized/date';
 type Props = {
   width?: number,
   height?: number,
-  value: string | null,
+  value?: string | null,
   minValue?: string,
   setValue: (value: TimeInputValue | null) => void,
   ariaLabel: string,
@@ -34,7 +34,7 @@ export function FrankTimeInput({ width, height, value, setValue, ariaLabel, font
           input: `flex items-center justify-center text-[${fontSize}px] !text-inherit`,
           segment: 'flex items-center justify-center !text-inherit',
         }}
-        value={value !== null ? parseTime(value) : value}
+        value={value ? parseTime(value) : undefined}
         onChange={setValue}
         aria-label={ariaLabel}
         variant='bordered'
