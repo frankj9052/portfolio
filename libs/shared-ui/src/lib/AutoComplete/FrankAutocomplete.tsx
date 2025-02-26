@@ -31,7 +31,7 @@ export function FrankAutocomplete({
   radius,
   selectedKey,
   onSelectionChange,
-  inputValue = '',
+  inputValue,
   onInputChange,
   endContent,
 }: FrankAutocompleteProps) {
