@@ -3,7 +3,7 @@ import clsx from "clsx"
 import { ReactNode } from "react"
 import styled from "styled-components"
 
-export type FrankInputUncontrolledBaseProps = {
+export type FrankInputBaseProps = {
   isRequired?: boolean,
   label?: ReactNode,
   labelPlacement?: "outside" | "outside-left" | "inside",
@@ -17,7 +17,8 @@ export type FrankInputUncontrolledBaseProps = {
   endContent?: React.ReactNode,
   width?: number,
   height?: number,
-  onValueChange?: (value: string) => void
+  value?: string,
+  onValueChange?: (value: string) => void,
 }
 
 const StyledInput = styled(Input) <{ width?: number, height?: number }>`
@@ -26,7 +27,24 @@ const StyledInput = styled(Input) <{ width?: number, height?: number }>`
     ${(props) => props.height && `height:${props.height}px`};
   }
 `
-export function FrankInputUncontrolledBase({ isRequired, label, labelPlacement, name, placeholder, type, variant, radius = 'sm', isInvalid, errorMessage, endContent, width, height, onValueChange }: FrankInputUncontrolledBaseProps) {
+export function FrankInputBase(
+  {
+    isRequired,
+    label,
+    labelPlacement,
+    name,
+    placeholder,
+    type,
+    variant,
+    radius = 'sm',
+    isInvalid,
+    errorMessage,
+    endContent,
+    width,
+    height,
+    value,
+    onValueChange
+  }: FrankInputBaseProps) {
   return (
     <StyledInput
       isRequired={isRequired}
@@ -38,7 +56,7 @@ export function FrankInputUncontrolledBase({ isRequired, label, labelPlacement, 
       variant={variant}
       classNames={{
         inputWrapper: clsx('min-h-[0px]', {
-          'border-1 border-#B5B5B5': variant === 'bordered' || variant === 'faded',
+          'border-1': variant === 'bordered' || variant === 'faded',
         })
       }}
       radius={radius}
@@ -47,9 +65,10 @@ export function FrankInputUncontrolledBase({ isRequired, label, labelPlacement, 
       endContent={endContent}
       width={width}
       height={height}
+      value={value}
       onValueChange={onValueChange}
     />
   )
 }
 
-export default FrankInputUncontrolledBase;
+export default FrankInputBase;

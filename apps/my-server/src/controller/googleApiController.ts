@@ -6,7 +6,6 @@ const autoComplete = async (req: Request, res: Response) => {
     try {
         const response = await fetch(url);
         const data = await response.json();
-        console.log("data check ===> ", data);
         if (data.status !== "OK") {
             throw new Error(data.error_message);
         }

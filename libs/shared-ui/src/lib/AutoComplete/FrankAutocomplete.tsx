@@ -1,25 +1,25 @@
 import { Autocomplete, AutocompleteItem } from "@heroui/react";
 import { Key, ReactNode } from "react";
-import { IoSearchOutline } from "react-icons/io5";
 
-type DefaultItemsType = {
+export type DefaultAutocompleteItemsType = {
   label: string | ReactNode,
   key: string,
   description?: string,
 }
 
-type Props = {
+export type FrankAutocompleteProps = {
   className?: string;
   label?: ReactNode;
   labelPlacement?: "outside" | "outside-left" | "inside";
   placeholder?: string;
-  defaultItems?: DefaultItemsType[];
+  defaultItems?: DefaultAutocompleteItemsType[];
   variant?: "flat" | "faded" | "bordered" | "underlined";
   radius?: "sm" | "md" | "lg" | "none" | "full";
   selectedKey?: string | null;
   onSelectionChange?: (key: Key | null) => void;
   inputValue?: string;
   onInputChange?: (value: string) => void;
+  endContent?: ReactNode;
 }
 
 export function FrankAutocomplete({
@@ -31,9 +31,10 @@ export function FrankAutocomplete({
   radius,
   selectedKey,
   onSelectionChange,
-  inputValue='',
-  onInputChange
-}: Props) {
+  inputValue = '',
+  onInputChange,
+  endContent,
+}: FrankAutocompleteProps) {
   return (
     <Autocomplete
       label={label}
@@ -56,12 +57,13 @@ export function FrankAutocomplete({
         selectorButton: 'hidden',
         endContentWrapper: 'aspect-square flex items-center justify-center',
       }}
-      endContent={<IoSearchOutline />}
+      endContent={endContent}
       fullWidth
       selectedKey={selectedKey}
       onSelectionChange={onSelectionChange}
       inputValue={inputValue}
       onInputChange={onInputChange}
+      defaultFilter={() => true}
     >
       {(item) => <AutocompleteItem
         key={item.key}

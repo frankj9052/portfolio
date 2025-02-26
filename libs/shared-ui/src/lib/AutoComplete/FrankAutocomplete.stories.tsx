@@ -1,7 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { FrankAutocomplete } from './FrankAutocomplete';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import axios from 'axios'
+import {debounce} from 'lodash'
+import { IoSearchOutline } from 'react-icons/io5';
 
 const meta = {
     component: FrankAutocomplete,
@@ -32,24 +34,37 @@ export const Default: Story = {
         labelPlacement: 'outside',
         placeholder: 'Enter Address',
         variant: 'bordered',
-        radius: 'sm'
+        radius: 'sm',
+        onSelectionChange: (key) => {
+            console.log("key ===> ", key);
+        },
+        endContent: <IoSearchOutline />,
     },
     decorators: [
         (Story, context) => {
             const [input, setInput] = useState<string | undefined>(undefined);
             const [predictions, setPredictions] = useState<PredictionsType[]>([]);
+            const fetchPredictions = useRef(
+                debounce((query: string | undefined) => {
+                    if (query && query.length > 0) {
+                        const url = `http://localhost:3000/public/googleApi/autoComplete?input=${query}`;
+                        axios.get(url)
+                            .then((response) => {
+                                setPredictions(response.data);
+                            })
+                            .catch((error) => {
+                                console.log("error ===> ", error);
+                            });
+                    } else {
+                        setPredictions([]);
+                    }
+                }, 500)
+            ).current;
+        
+
             useEffect(() => {
-                if (input && input.length > 0) {
-                    const url = `http://localhost:3000/public/googleApi/autoComplete?input=${input}`;
-                    axios.get(url).then((response) => {
-                        setPredictions(response.data);
-                    }).catch((error) => {
-                        console.log("error ===> ", error)
-                    })
-                } else {
-                    setPredictions([]);
-                }
-            }, [input])
+                fetchPredictions(input);
+            }, [input, fetchPredictions])
             return (
                 <div className='w-[288px]'>
                     <Story
@@ -60,8 +75,8 @@ export const Default: Story = {
                                 setInput(value);
                             },
                             defaultItems: predictions.map((prediction) => ({
-                                label: prediction.structured_formatting.main_text,
-                                key: prediction.place_id,                                
+                                label: prediction.description,
+                                key: prediction.description,                                
                             }))
                         }}
                     />
