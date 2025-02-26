@@ -13,7 +13,7 @@ export * from './lib/Checkbox/FrankCheckbox';
 export * from './lib/Checkbox-Group/FrankCheckboxGroup';
 
 // Input
-export * from './lib/Input/FrankInputUncontrolledBase';
+export * from './lib/Input/FrankInputBase';
 
 // Modal
 export * from './lib/Modal/FrankModal';
