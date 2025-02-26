@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { FrankAutocomplete } from './FrankAutocomplete';
 import { useEffect, useRef, useState } from 'react';
-import axios from 'axios'
-import {debounce} from 'lodash'
+import axios from 'axios';
+import {debounce} from 'lodash';
 import { IoSearchOutline } from 'react-icons/io5';
 
 const meta = {

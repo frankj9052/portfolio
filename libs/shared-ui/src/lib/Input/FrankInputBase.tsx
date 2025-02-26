@@ -53,8 +53,9 @@ export function FrankInputBase(
       name={name}
       placeholder={placeholder}
       type={type}
-      variant={variant}
+      variant={variant}      
       classNames={{
+        label: '!translate-y-[-40px]',
         inputWrapper: clsx('min-h-[0px]', {
           'border-1': variant === 'bordered' || variant === 'faded',
         })

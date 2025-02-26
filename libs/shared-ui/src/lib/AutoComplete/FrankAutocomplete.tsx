@@ -44,6 +44,7 @@ export function FrankAutocomplete({
       variant={variant}
       inputProps={{
         classNames: {
+          label: '!translate-y-[-40px]',
           inputWrapper: 'border-1 h-[32px] min-h-0',
           input: 'text-[13px]'
         }
