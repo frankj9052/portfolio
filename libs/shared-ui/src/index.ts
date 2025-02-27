@@ -3,6 +3,10 @@ export * from './lib/shared-ui';
 // AutoComplete
 export * from './lib/AutoComplete/FrankAutocomplete';
 
+// Avatar
+export * from './lib/Avatar/FrankAvatar';
+export * from './lib/Avatar/UserListItem';
+
 // Button
 export * from './lib/Button/FrankButtonBase';
 
