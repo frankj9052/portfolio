@@ -1,9 +1,11 @@
 import { Autocomplete, AutocompleteItem } from "@heroui/react";
+import clsx from "clsx";
 import { Key, ReactNode } from "react";
 
 export type DefaultAutocompleteItemsType = {
   label: string | ReactNode,
   key: string,
+  textValue: string,
   description?: string,
 }
 
@@ -53,12 +55,14 @@ export function FrankAutocomplete({
       }}
       radius={radius}
       popoverProps={{
-        radius: 'sm'
+        radius: 'sm',
       }}
       classNames={{
-        popoverContent: 'text-[13px]',
-        selectorButton: 'hidden',
+        selectorButton: clsx('h-[20px] min-w-0 w-[20px]', {
+          'hidden': !!endContent
+        }),
         endContentWrapper: 'aspect-square flex items-center justify-center',
+        clearButton: 'min-w-0 h-[20px] w-[20px]'
       }}
       endContent={endContent}
       fullWidth
@@ -70,6 +74,7 @@ export function FrankAutocomplete({
     >
       {(item) => <AutocompleteItem
         key={item.key}
+        textValue={item.textValue}
       >
         {item.label}
       </AutocompleteItem>}

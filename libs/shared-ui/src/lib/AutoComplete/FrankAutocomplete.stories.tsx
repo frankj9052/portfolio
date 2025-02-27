@@ -47,7 +47,7 @@ export const Default: Story = {
             const fetchPredictions = useRef(
                 debounce((query: string | undefined) => {
                     if (query && query.length > 0) {
-                        const url = `http://localhost:3000/public/googleApi/autoComplete?input=${query}`;
+                        const url = `http://localhost:5000/public/googleApi/autoComplete?input=${query}`;
                         axios.get(url)
                             .then((response) => {
                                 setPredictions(response.data);
@@ -76,7 +76,8 @@ export const Default: Story = {
                             },
                             defaultItems: predictions.map((prediction) => ({
                                 label: prediction.description,
-                                key: prediction.description,                                
+                                key: prediction.description,    
+                                textValue: prediction.description,                            
                             }))
                         }}
                     />
@@ -84,4 +85,37 @@ export const Default: Story = {
             )
         }
     ]
+}
+
+export const ProviderAutocomplete: Story = {
+    args: {
+        label: <div className='font-[500] font-inter text-[14px] text-[#303030]'>Schedule for</div>,
+        labelPlacement: 'outside',
+        placeholder: 'Select a provider',
+        variant: 'bordered',
+        radius: 'sm',
+        defaultItems: [
+            {
+                key: 'id01',
+                label: <div className='text-[13px]'>Doctor 01</div>,
+                textValue: 'Doctor 01'
+            },
+            {
+                key: 'id02',
+                label: <div className='text-[13px]'>Doctor 02</div>,
+                textValue: 'Doctor 02'
+            },
+            {
+                key: 'id03',
+                label: <div className='text-[13px]'>Doctor 03</div>,
+                textValue: 'Doctor 03'
+            },
+            {
+                key: 'id04',
+                label: <div className='text-[13px]'>Cat 01</div>,
+                textValue: 'Cat 01'
+            },
+        ],
+        defaultFilter: true
+    }
 }
