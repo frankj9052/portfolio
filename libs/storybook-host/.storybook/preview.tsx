@@ -11,6 +11,7 @@ const preview: Preview = {
       </HeroUIProvider>
     )
   ],
+
   parameters: {
     controls: {
       matchers: {
@@ -19,6 +20,8 @@ const preview: Preview = {
       },
     },
   },
+
+  tags: ["autodocs"]
 };
 
 export default preview;

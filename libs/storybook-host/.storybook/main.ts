@@ -5,7 +5,9 @@ const config: StorybookConfig = {
     '../src/lib/**/*.@(mdx|stories.@(js|jsx|ts|tsx))',
     '../../shared-ui/src/lib/**/*.@(mdx|stories.@(js|jsx|ts|tsx))'
   ],
+
   addons: ['@storybook/addon-essentials', '@storybook/addon-interactions'],
+
   framework: {
     name: '@storybook/react-vite',
     options: {
@@ -14,6 +16,12 @@ const config: StorybookConfig = {
       },
     },
   },
+
+  docs: {},
+
+  typescript: {
+    reactDocgen: 'react-docgen-typescript'
+  }
 };
 
 export default config;

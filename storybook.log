@@ -1,0 +1,120 @@
+npm warn ERESOLVE overriding peer dependency
+npm warn While resolving: @module-federation/node@2.6.26
+npm warn Found: react@19.0.0
+npm warn node_modules/react
+npm warn   peer react@">=18 || >=19.0.0-rc.0" from @heroui/accordion@2.2.11
+npm warn   node_modules/@heroui/accordion
+npm warn     @heroui/accordion@"2.2.11" from @heroui/react@2.7.2
+npm warn     node_modules/@heroui/react
+npm warn   178 more (@heroui/alert, @heroui/aria-utils, ...)
+npm warn
+npm warn Could not resolve dependency:
+npm warn peerOptional react@"^16||^17||^18" from @module-federation/node@2.6.26
+npm warn node_modules/@module-federation/node
+npm warn   @module-federation/node@"^2.6.21" from @nx/module-federation@20.4.1
+npm warn   node_modules/@nx/module-federation
+npm warn
+npm warn Conflicting peer dependency: react@18.3.1
+npm warn node_modules/react
+npm warn   peerOptional react@"^16||^17||^18" from @module-federation/node@2.6.26
+npm warn   node_modules/@module-federation/node
+npm warn     @module-federation/node@"^2.6.21" from @nx/module-federation@20.4.1
+npm warn     node_modules/@nx/module-federation
+npm warn ERESOLVE overriding peer dependency
+npm warn While resolving: @module-federation/node@2.6.26
+npm warn Found: react-dom@19.0.0
+npm warn node_modules/react-dom
+npm warn   peer react-dom@">=18 || >=19.0.0-rc.0" from @heroui/accordion@2.2.11
+npm warn   node_modules/@heroui/accordion
+npm warn     @heroui/accordion@"2.2.11" from @heroui/react@2.7.2
+npm warn     node_modules/@heroui/react
+npm warn   99 more (@heroui/alert, @heroui/aria-utils, ...)
+npm warn
+npm warn Could not resolve dependency:
+npm warn peerOptional react-dom@"^16||^17||^18" from @module-federation/node@2.6.26
+npm warn node_modules/@module-federation/node
+npm warn   @module-federation/node@"^2.6.21" from @nx/module-federation@20.4.1
+npm warn   node_modules/@nx/module-federation
+npm warn
+npm warn Conflicting peer dependency: react-dom@18.3.1
+npm warn node_modules/react-dom
+npm warn   peerOptional react-dom@"^16||^17||^18" from @module-federation/node@2.6.26
+npm warn   node_modules/@module-federation/node
+npm warn     @module-federation/node@"^2.6.21" from @nx/module-federation@20.4.1
+npm warn     node_modules/@nx/module-federation
+npm warn ERESOLVE overriding peer dependency
+npm warn While resolving: @module-federation/utilities@3.1.44
+npm warn Found: react@19.0.0
+npm warn node_modules/react
+npm warn   peer react@">=18 || >=19.0.0-rc.0" from @heroui/accordion@2.2.11
+npm warn   node_modules/@heroui/accordion
+npm warn     @heroui/accordion@"2.2.11" from @heroui/react@2.7.2
+npm warn     node_modules/@heroui/react
+npm warn   178 more (@heroui/alert, @heroui/aria-utils, ...)
+npm warn
+npm warn Could not resolve dependency:
+npm warn peerOptional react@"^16 || ^17 || ^18" from @module-federation/utilities@3.1.44
+npm warn node_modules/@module-federation/utilities
+npm warn   @module-federation/utilities@"3.1.44" from @module-federation/node@2.6.26
+npm warn   node_modules/@module-federation/node
+npm warn
+npm warn Conflicting peer dependency: react@18.3.1
+npm warn node_modules/react
+npm warn   peerOptional react@"^16 || ^17 || ^18" from @module-federation/utilities@3.1.44
+npm warn   node_modules/@module-federation/utilities
+npm warn     @module-federation/utilities@"3.1.44" from @module-federation/node@2.6.26
+npm warn     node_modules/@module-federation/node
+npm warn ERESOLVE overriding peer dependency
+npm warn While resolving: @module-federation/utilities@3.1.44
+npm warn Found: react-dom@19.0.0
+npm warn node_modules/react-dom
+npm warn   peer react-dom@">=18 || >=19.0.0-rc.0" from @heroui/accordion@2.2.11
+npm warn   node_modules/@heroui/accordion
+npm warn     @heroui/accordion@"2.2.11" from @heroui/react@2.7.2
+npm warn     node_modules/@heroui/react
+npm warn   99 more (@heroui/alert, @heroui/aria-utils, ...)
+npm warn
+npm warn Could not resolve dependency:
+npm warn peerOptional react-dom@"^16 || ^17 || ^18" from @module-federation/utilities@3.1.44
+npm warn node_modules/@module-federation/utilities
+npm warn   @module-federation/utilities@"3.1.44" from @module-federation/node@2.6.26
+npm warn   node_modules/@module-federation/node
+npm warn
+npm warn Conflicting peer dependency: react-dom@18.3.1
+npm warn node_modules/react-dom
+npm warn   peerOptional react-dom@"^16 || ^17 || ^18" from @module-federation/utilities@3.1.44
+npm warn   node_modules/@module-federation/utilities
+npm warn     @module-federation/utilities@"3.1.44" from @module-federation/node@2.6.26
+npm warn     node_modules/@module-federation/node
+npm warn ERESOLVE overriding peer dependency
+npm error code ERESOLVE
+npm error ERESOLVE could not resolve
+npm error
+npm error While resolving: @storybook/addon-interactions@8.5.8
+npm error Found: storybook@8.5.3
+npm error node_modules/storybook
+npm error   peer storybook@"^8.5.8" from @storybook/test@8.5.8
+npm error   node_modules/@storybook/addon-interactions/node_modules/@storybook/test
+npm error     @storybook/test@"8.5.8" from @storybook/addon-interactions@8.5.8
+npm error     node_modules/@storybook/addon-interactions
+npm error       dev @storybook/addon-interactions@"^8.4.6" from the root project
+npm error
+npm error Could not resolve dependency:
+npm error peer storybook@"^8.5.8" from @storybook/addon-interactions@8.5.8
+npm error node_modules/@storybook/addon-interactions
+npm error   dev @storybook/addon-interactions@"^8.4.6" from the root project
+npm error
+npm error Conflicting peer dependency: storybook@8.6.2
+npm error node_modules/storybook
+npm error   peer storybook@"^8.5.8" from @storybook/addon-interactions@8.5.8
+npm error   node_modules/@storybook/addon-interactions
+npm error     dev @storybook/addon-interactions@"^8.4.6" from the root project
+npm error
+npm error Fix the upstream dependency conflict, or retry
+npm error this command with --force or --legacy-peer-deps
+npm error to accept an incorrect (and potentially broken) dependency resolution.
+npm error
+npm error
+npm error For a full report see:
+npm error C:\Users\Jurong\AppData\Local\npm-cache\_logs\2025-02-27T15_44_31_027Z-eresolve-report.txt
+npm error A complete log of this run can be found in: C:\Users\Jurong\AppData\Local\npm-cache\_logs\2025-02-27T15_44_31_027Z-debug-0.log

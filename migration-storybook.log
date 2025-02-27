@@ -1,0 +1,167 @@
+🔎 checking possible migrations..
+Unable to find .eslintrc config file, skipping
+
+🔎 found a 'remove-jest-testing-library' migration:
+╭ Automigration detected ──────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                              │
+│   Attention: We've detected that you're using the following packages which are known to be incompatible since Storybook 8:   │
+│                                                                                                                              │
+│   - @storybook/jest                                                                                                          │
+│   - @storybook/testing-library                                                                                               │
+│                                                                                                                              │
+│   We will uninstall them for you and install @storybook/test instead.                                                        │
+│                                                                                                                              │
+│   Also, we can help you migrate your stories to use the new package.                                                         │
+│                                                                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+? Do you want to run the 'remove-jest-testing-library' migration on your project? » (Y/n)√ Do you want to run the 'remove-jest-testing-library' migration on your project? ... yes
+
+An error occurred while installing dependencies:
+NPM error ERESOLVE - Dependency resolution error.
+
+Please check the logfile generated at ./storybook.log for troubleshooting and try again.
+❌ error when running remove-jest-testing-library migration
+HandledError: Error: NPM error ERESOLVE - Dependency resolution error.
+
+Please check the logfile generated at ./storybook.log for troubleshooting and try again.
+    at Ar.addDependencies (C:\Users\Jurong\AppData\Local\npm-cache\_npx\a181334d43285dc7\node_modules\@storybook\core\dist\common\index.cjs:19083:72)
+    at async Object.run (C:\Users\Jurong\AppData\Local\npm-cache\_npx\a181334d43285dc7\node_modules\@storybook\cli\dist\bin\index.cjs:445:312)
+    ... 3 lines matching cause stack trace ...
+    at async Command.<anonymous> (C:\Users\Jurong\AppData\Local\npm-cache\_npx\a181334d43285dc7\node_modules\@storybook\cli\dist\bin\index.cjs:637:2892) {
+  handled: true,
+  cause: Error: NPM error ERESOLVE - Dependency resolution error.
+  
+  Please check the logfile generated at ./storybook.log for troubleshooting and try again.
+      at Ar.runAddDeps (C:\Users\Jurong\AppData\Local\npm-cache\_npx\a181334d43285dc7\node_modules\@storybook\core\dist\common\index.cjs:19611:24)
+      at async Ar.addDependencies (C:\Users\Jurong\AppData\Local\npm-cache\_npx\a181334d43285dc7\node_modules\@storybook\core\dist\common\index.cjs:19080:9)
+      at async Object.run (C:\Users\Jurong\AppData\Local\npm-cache\_npx\a181334d43285dc7\node_modules\@storybook\cli\dist\bin\index.cjs:445:312)
+      at async runFixes (C:\Users\Jurong\AppData\Local\npm-cache\_npx\a181334d43285dc7\node_modules\@storybook\cli\dist\bin\index.cjs:569:1801)
+      at async automigrate (C:\Users\Jurong\AppData\Local\npm-cache\_npx\a181334d43285dc7\node_modules\@storybook\cli\dist\bin\index.cjs:567:1625)
+      at async doAutomigrate (C:\Users\Jurong\AppData\Local\npm-cache\_npx\a181334d43285dc7\node_modules\@storybook\cli\dist\bin\index.cjs:567:636)
+      at async Command.<anonymous> (C:\Users\Jurong\AppData\Local\npm-cache\_npx\a181334d43285dc7\node_modules\@storybook\cli\dist\bin\index.cjs:637:2892)
+}
+
+
+🔎 found a 'autodocsTrue' migration:
+╭ Automigration detected ────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                    │
+│   We've changed the configuration of autodocs (previous docsPage), so now the value:               │
+│     - docs.autodocs: true -- means automatically create docs for every CSF file                    │
+│     - docs.autodocs: 'tag' -- means only create autodocs for CSF files with the 'autodocs' tag     │
+│     - docs.autodocs: false -- means never create autodocs                                          │
+│                                                                                                    │
+│   Based on your prior configuration,  we can set the `docs.autodocs` to keep your old behaviour:   │
+│                                                                                                    │
+│   docs: { autodocs: true }                                                                         │
+│                                                                                                    │
+│   More info: https://github.com/storybookjs/storybook/blob/next/MIGRATION.md#autodocs-changes      │
+│                                                                                                    │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────╯
+? Do you want to run the 'autodocsTrue' migration on your project? » (Y/n)√ Do you want to run the 'autodocsTrue' migration on your project? ... yes
+✅ Setting 'docs.autodocs' to true in main.js
+✅ ran autodocsTrue migration
+
+🔎 found a 'react-docgen' migration:
+╭ Automigration detected ─────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                 │
+│   Since Storybook 8.0, react-docgen is now the default for generating component controls, replacing react-docgen-typescript.    │
+│   This offers better performance and suits most cases.                                                                          │
+│   However, for complex TypeScript types or specific type features, the generated controls might not be as precise.              │
+│                                                                                                                                 │
+│   For more on this change, check the migration guide:                                                                           │
+│   https://github.com/storybookjs/storybook/blob/next/MIGRATION.md#react-docgen-component-analysis-by-default                    │
+│                                                                                                                                 │
+│   For known "react-docgen" limitations, see:                                                                                    │
+│   https://github.com/storybookjs/storybook/issues/26606                                                                         │
+│                                                                                                                                 │
+│   Press Y to revert to react-docgen-typescript, press N to use react-docgen                                                     │
+│                                                                                                                                 │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+? Do you want to run the 'react-docgen' migration on your project? » (Y/n)√ Do you want to run the 'react-docgen' migration on your project? ... yes
+✅ Setting typescript.reactDocgen
+✅ ran react-docgen migration
+
+🔎 found a 'visual-tests-addon' migration:
+╭ Automigration detected ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                                                            │
+│   New to Storybook 8: Storybook's Visual Tests addon helps you catch unintentional changes/bugs in your stories. The addon is powered by Chromatic, a cloud-based testing tool developed   │
+│   by Storybook's core team.                                                                                                                                                                │
+│                                                                                                                                                                                            │
+│   Learn more: https://storybook.js.org/docs/writing-tests/visual-testing                                                                                                                   │
+│                                                                                                                                                                                            │
+│   Install Visual Tests addon in your project?                                                                                                                                              │
+│                                                                                                                                                                                            │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+? Do you want to run the 'visual-tests-addon' migration on your project? » (Y/n)√ Do you want to run the 'visual-tests-addon' migration on your project? ... yes
+
+An error occurred while installing dependencies:
+EPERM: operation not permitted, rename 'C:\Users\Jurong\AppData\Local\Temp\2db03afa6def2df80e1031ecef9985a4\storybook.log' -> 'C:\Users\Jurong\Documents\01_projects\20_personal_projects\16_monorepo\storybook.log'
+❌ error when running visual-tests-addon migration
+HandledError: Error: EPERM: operation not permitted, rename 'C:\Users\Jurong\AppData\Local\Temp\2db03afa6def2df80e1031ecef9985a4\storybook.log' -> 'C:\Users\Jurong\Documents\01_projects\20_personal_projects\16_monorepo\storybook.log'
+    at Ar.addDependencies (C:\Users\Jurong\AppData\Local\npm-cache\_npx\a181334d43285dc7\node_modules\@storybook\core\dist\common\index.cjs:19083:72)
+    at async Object.run (C:\Users\Jurong\AppData\Local\npm-cache\_npx\a181334d43285dc7\node_modules\@storybook\cli\dist\bin\index.cjs:515:141)
+    ... 3 lines matching cause stack trace ...
+    at async Command.<anonymous> (C:\Users\Jurong\AppData\Local\npm-cache\_npx\a181334d43285dc7\node_modules\@storybook\cli\dist\bin\index.cjs:637:2892) {
+  handled: true,
+  cause: Error: EPERM: operation not permitted, rename 'C:\Users\Jurong\AppData\Local\Temp\2db03afa6def2df80e1031ecef9985a4\storybook.log' -> 'C:\Users\Jurong\Documents\01_projects\20_personal_projects\16_monorepo\storybook.log'
+      at async rename (node:internal/fs/promises:783:10)
+      at async Ar.runAddDeps (C:\Users\Jurong\AppData\Local\npm-cache\_npx\a181334d43285dc7\node_modules\@storybook\core\dist\common\index.cjs:19611:13)
+      at async Ar.addDependencies (C:\Users\Jurong\AppData\Local\npm-cache\_npx\a181334d43285dc7\node_modules\@storybook\core\dist\common\index.cjs:19080:9)
+      at async Object.run (C:\Users\Jurong\AppData\Local\npm-cache\_npx\a181334d43285dc7\node_modules\@storybook\cli\dist\bin\index.cjs:515:141)
+      at async runFixes (C:\Users\Jurong\AppData\Local\npm-cache\_npx\a181334d43285dc7\node_modules\@storybook\cli\dist\bin\index.cjs:569:1801)
+      at async automigrate (C:\Users\Jurong\AppData\Local\npm-cache\_npx\a181334d43285dc7\node_modules\@storybook\cli\dist\bin\index.cjs:567:1625)
+      at async doAutomigrate (C:\Users\Jurong\AppData\Local\npm-cache\_npx\a181334d43285dc7\node_modules\@storybook\cli\dist\bin\index.cjs:567:636)
+      at async Command.<anonymous> (C:\Users\Jurong\AppData\Local\npm-cache\_npx\a181334d43285dc7\node_modules\@storybook\cli\dist\bin\index.cjs:637:2892) {
+    errno: -4048,
+    code: 'EPERM',
+    syscall: 'rename',
+    path: 'C:\\Users\\Jurong\\AppData\\Local\\Temp\\2db03afa6def2df80e1031ecef9985a4\\storybook.log',
+    dest: 'C:\\Users\\Jurong\\Documents\\01_projects\\20_personal_projects\\16_monorepo\\storybook.log'
+  }
+}
+
+
+🔎 found a 'autodocs-tags' migration:
+╭ Automigration detected ───────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                   │
+│   The docs.autodocs setting in libs\storybook-host\.storybook\main.ts is deprecated.                              │
+│                                                                                                                   │
+│   Learn more: https://github.com/storybookjs/storybook/blob/next/MIGRATION.md#mainjs-docsautodocs-is-deprecated   │
+│                                                                                                                   │
+│   Remove docs.autodocs and update libs\storybook-host\.storybook\preview.tsx?                                     │
+│                                                                                                                   │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+? Do you want to run the 'autodocs-tags' migration on your project? » (Y/n)√ Do you want to run the 'autodocs-tags' migration on your project? ... yes
+✅ Adding "autodocs" tag to libs\storybook-host\.storybook\preview.tsx
+✅ Removing "docs.autodocs" from libs\storybook-host\.storybook\main.ts
+✅ ran autodocs-tags migration
+
+╭ Migration check ran with failures ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                               │
+│   Successful migrations:                                                                                                                                      │
+│                                                                                                                                                               │
+│   autodocsTrue, react-docgen, autodocs-tags                                                                                                                   │
+│                                                                                                                                                               │
+│   Failed migrations:                                                                                                                                          │
+│                                                                                                                                                               │
+│   remove-jest-testing-library:                                                                                                                                │
+│   Error: NPM error ERESOLVE - Dependency resolution error.                                                                                                    │
+│                                                                                                                                                               │
+│   Please check the logfile generated at ./storybook.log for troubleshooting and try again.                                                                    │
+│   visual-tests-addon:                                                                                                                                         │
+│   Error: EPERM: operation not permitted, rename 'C:\Users\Jurong\AppData\Local\Temp\2db03afa6def2df80e1031ecef9985a4\storybook.log' ->                        │
+│   'C:\Users\Jurong\Documents\01_projects\20_personal_projects\16_monorepo\storybook.log'                                                                      │
+│                                                                                                                                                               │
+│   You can find the full logs in C:\Users\Jurong\Documents\01_projects\20_personal_projects\16_monorepo\migration-storybook.log                                │
+│                                                                                                                                                               │
+│   ─────────────────────────────────────────────────                                                                                                           │
+│                                                                                                                                                               │
+│   If you'd like to run the migrations again, you can do so by running 'npx storybook automigrate'                                                             │
+│                                                                                                                                                               │
+│   The automigrations try to migrate common patterns in your project, but might not contain everything needed to migrate to the latest version of Storybook.   │
+│                                                                                                                                                               │
+│   Please check the changelog and migration guide for manual migrations and more information: https://storybook.js.org/docs/migration-guide                    │
+│   And reach out on Discord if you need help: https://discord.gg/storybook                                                                                     │
+│                                                                                                                                                               │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
