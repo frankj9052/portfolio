@@ -13,6 +13,7 @@ export type FrankAutocompleteProps = {
   labelPlacement?: "outside" | "outside-left" | "inside";
   placeholder?: string;
   defaultItems?: DefaultAutocompleteItemsType[];
+  defaultFilter?: boolean;
   variant?: "flat" | "faded" | "bordered" | "underlined";
   radius?: "sm" | "md" | "lg" | "none" | "full";
   selectedKey?: string | null;
@@ -27,6 +28,7 @@ export function FrankAutocomplete({
   labelPlacement,
   placeholder,
   defaultItems,
+  defaultFilter,
   variant,
   radius,
   selectedKey,
@@ -64,7 +66,7 @@ export function FrankAutocomplete({
       onSelectionChange={onSelectionChange}
       inputValue={inputValue}
       onInputChange={onInputChange}
-      defaultFilter={() => true}
+      {...(!defaultFilter && { defaultFilter: () => true })}
     >
       {(item) => <AutocompleteItem
         key={item.key}

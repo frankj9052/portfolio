@@ -28,13 +28,17 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
     args: {
-        width: 117,
-        height: 32,
+        width: 81,
+        height: 24,
         text: {
-            content: 'test button',
-            fontWeight: 500
+            content: 'Apply to all',
+            fontWeight: 550,
+            fontFamily: 'Inter',
+            fontColor: '#303030',
+            fontSize: 12,
         },
         variant: 'bordered',
-        radius: 'full'
+        radius: 'sm',  
+        disableRipple: true,      
     },
 }

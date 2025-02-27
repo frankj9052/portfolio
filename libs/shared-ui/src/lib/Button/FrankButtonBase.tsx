@@ -50,7 +50,7 @@ export const FrankButtonBase = forwardRef<HTMLButtonElement, FrankButtonBaseProp
             height={height}
             variant={variant}
             className={clsx(`px-0 min-w-0`, {
-                'border-1 border-color-input-border': variant === 'bordered' || variant === 'ghost' || variant === 'faded',
+                'border-1 border-[#E3E3E3]': variant === 'bordered' || variant === 'ghost' || variant === 'faded',
             })}
             radius={radius}
             disableRipple={disableRipple}
