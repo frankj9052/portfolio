@@ -1,7 +1,5 @@
 import { Avatar, AvatarProps } from "@heroui/react";
 import { forwardRef } from "react";
-import { GoPerson } from "react-icons/go";
-import { IoPersonOutline } from "react-icons/io5";
 import { IoPersonSharp } from "react-icons/io5";
 
 export type FrankAvatarProps = {
