@@ -1,6 +1,5 @@
 import { Avatar, AvatarProps } from "@heroui/react";
 import { forwardRef } from "react";
-import { IoPersonSharp } from "react-icons/io5";
 
 export type FrankAvatarProps = {
   name?: string,
@@ -33,8 +32,6 @@ export const FrankAvatar = forwardRef<HTMLDivElement, FrankAvatarProps>(
         isDisabled={isDisabled}
         isBordered={isBordered}
         radius={radius}
-        showFallback
-        fallback={<IoPersonSharp size={20}/>}
         className={className}
         ref={ref}
         {...props}

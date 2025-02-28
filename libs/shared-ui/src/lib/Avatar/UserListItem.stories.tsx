@@ -23,3 +23,13 @@ export const Default: Story = {
         }
     },
 }
+
+export const WithImage: Story = {
+    args: {
+        user: {
+            name: 'Frank',
+            email: 'frank@test.com',
+            image: 'https://img.0756bf.com/uploads/allimg/2021042109/uqaqhuvavt0.jpg'
+        }
+    },
+}

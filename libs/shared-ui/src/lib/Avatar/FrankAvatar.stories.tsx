@@ -19,3 +19,16 @@ export const Default: Story = {
     args: {
     },
 }
+
+export const WithName: Story = {
+    args: {
+        name: 'Frank'
+    },
+}
+
+export const WithImage: Story = {
+    args: {
+        name: 'Frank',
+        src: 'https://img.0756bf.com/uploads/allimg/2021042109/uqaqhuvavt0.jpg'
+    },
+}
