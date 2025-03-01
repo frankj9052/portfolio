@@ -16,6 +16,9 @@ export * from './lib/Checkbox/FrankCheckbox';
 // Checkbox Group
 export * from './lib/Checkbox-Group/FrankCheckboxGroup';
 
+// Date Picker
+export * from './lib/DatePicker/FrankDatePicker';
+
 // Input
 export * from './lib/Input/FrankInputBase';
 
