@@ -25,6 +25,7 @@ export function FrankDatePicker({
                     'border-1': variant === 'bordered' || variant === 'faded',
                 })
             }}
+            
         />
     )
 }
