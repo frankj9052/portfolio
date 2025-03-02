@@ -1,14 +1,12 @@
-'use client'
+import { NavLinkType } from "@frankjia9052/shared-utils";
+import { NavbarItem } from "@heroui/react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-import { NavbarItem } from "@heroui/react"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-
-type Props = {
-    href: string,
-    text: string
-}
-export const NavLink = ({href, text}:Props) => {
+export const NavLink = ({
+    text,
+    href
+}: NavLinkType) => {
     const pathname = usePathname();
     return (
         <NavbarItem

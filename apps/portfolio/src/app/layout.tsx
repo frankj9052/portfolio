@@ -16,8 +16,8 @@ export default function RootLayout({
       lang="en"
       suppressHydrationWarning
     >
-      <body className='font-popins'>
-        <TopNav />
+      <body className='font-popins portfolio-theme text-color-text-black'>
+        <TopNav />        
         {children}
       </body>
     </html>

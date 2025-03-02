@@ -15,6 +15,9 @@ export default defineConfig({
   resolve: {
     alias: {
       "global.css": path.resolve(__dirname, "../../apps/portfolio/src/app/global.css"),
+      '@api': path.resolve(__dirname, './.storybook/mocks/mock-api.ts'),
+      'next/navigation': path.resolve(__dirname, './.storybook/mocks/mock-next-navigation.ts'),
+      'next/link': path.resolve(__dirname, './.storybook/mocks/mock-next-link.tsx'),
     }
   },
   test: {
