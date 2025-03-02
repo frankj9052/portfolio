@@ -4,7 +4,7 @@ import { ReactNode } from "react"
 export type FrankCheckboxGroupProps = {
     children: ReactNode,
     value?: string[],
-    onValueChange: (selected: string[]) => void
+    onValueChange?: (selected: string[]) => void
 }
 
 export function FrankCheckboxGroup({ children, value, onValueChange }: FrankCheckboxGroupProps) {

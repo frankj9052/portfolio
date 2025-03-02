@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { FrankDatePicker } from './FrankDatePicker';
+import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 
 const meta = {
     component: FrankDatePicker,
@@ -24,6 +25,9 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
     args: {
-        variant: 'bordered'
+        variant: 'bordered',
+        radius: 'sm',
+        endContent: <MdOutlineKeyboardArrowDown size={20}/>,
+        width: 144,
     },
 }
