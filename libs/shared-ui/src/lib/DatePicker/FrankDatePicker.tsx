@@ -1,5 +1,5 @@
 import { CalendarDate, DatePicker, DateValue } from "@heroui/react";
-import { CalendarDateTime, ZonedDateTime } from "@internationalized/date";
+import { CalendarDateTime, getLocalTimeZone, today, ZonedDateTime } from "@internationalized/date";
 import clsx from "clsx";
 import { ReactNode } from "react";
 
@@ -51,10 +51,13 @@ export function FrankDatePicker({
                 popoverProps={{
                     shadow: 'sm',
                 }}
+                showMonthAndYearPickers
                 calendarProps={{
                     classNames: {
                         base: clsx('pt-3 bg-transparent shadow-none'),
                         content: clsx("w-full px-4",),
+                        headerWrapper: 'px-0',
+                        // header: 'bg-blue-300',
                         grid: "w-full",
                         gridWrapper: "w-full",
                         gridHeader: "bg-transparent shadow-none",
