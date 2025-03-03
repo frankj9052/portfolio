@@ -11,7 +11,9 @@ export type FrankDatePickerProps = {
     radius?: "sm" | "md" | "lg" | "none" | "full",
     endContent?: ReactNode,
     minValue?: DateValue | null,
-    maxValue?: DateValue | null
+    maxValue?: DateValue | null,
+    label?: ReactNode,
+    labelPlacement?: "outside" | "outside-left" | "inside"
 }
 export function FrankDatePicker({
     variant,
@@ -21,7 +23,9 @@ export function FrankDatePicker({
     radius,
     endContent,
     minValue,
-    maxValue
+    maxValue,
+    label,
+    labelPlacement
 }: FrankDatePickerProps) {
     return (
         <DatePicker
@@ -32,7 +36,10 @@ export function FrankDatePicker({
             onChange={onChange}
             minValue={minValue}
             maxValue={maxValue}
+            label={label}
+            labelPlacement={labelPlacement}
             classNames={{
+                // label: 'translate-y-0',
                 selectorButton: 'w-[20px] h-[20px] min-w-0',
                 inputWrapper: clsx('min-h-0 h-[32px]', {
                     'border-1': variant === 'bordered' || variant === 'faded',
