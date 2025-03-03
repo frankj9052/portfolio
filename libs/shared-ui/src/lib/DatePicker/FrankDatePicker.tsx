@@ -5,7 +5,6 @@ import { ReactNode } from "react";
 
 export type FrankDatePickerProps = {
     width?: number,
-    height?: number,
     variant?: "flat" | "faded" | "bordered" | "underlined",
     defaultValue?: DateValue | null,
     value?: DateValue | null,
@@ -19,7 +18,6 @@ export type FrankDatePickerProps = {
 }
 export function FrankDatePicker({
     width,
-    height,
     variant,
     defaultValue,
     value,
@@ -35,9 +33,7 @@ export function FrankDatePicker({
         <div
             style={{
                 width: width ? `${width}px` : '100%',
-                height: height ? `${height}px` : '100%',
             }}
-            className="flex"
         >
             <DatePicker
                 aria-label="Date Picker"
@@ -50,9 +46,9 @@ export function FrankDatePicker({
                 label={label}
                 labelPlacement={labelPlacement}
                 classNames={{
-                    label: 'translate-y-[-26px] absolute',
+                    // label: 'translate-y-[0px]',                    
                     selectorButton: 'w-[20px] h-[20px] min-w-0',
-                    inputWrapper: clsx('min-h-0 ah-[32px] h-full', {
+                    inputWrapper: clsx('min-h-0 h-[32px]', {
                         'border-1': variant === 'bordered' || variant === 'faded',
                     }),
                 }}

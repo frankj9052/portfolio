@@ -26,7 +26,6 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
     args: {
         width: 144,
-        height: 32,
         variant: 'bordered',
         radius: 'sm',
         endContent: <MdOutlineKeyboardArrowDown size={20}/>,
