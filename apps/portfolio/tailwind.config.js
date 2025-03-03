@@ -16,19 +16,30 @@ module.exports = {
     extend: {
       colors: {
         'color-input-border': '#B5B5B5',
+        'color-text-black': '#0e2431',
+        'color-text-gray': '#777',
       },
       fontFamily: {
         'popins': ['Poppins', 'sans-serif'],
         'inter': ['Inter', 'sans-serif'],
-      }
-      
+      }, 
+      height: {
+        "vertical-center": "calc(100vh - 80px)",
+      },   
     },
-  },  
+  },
   darkMode: 'class',
   plugins: [
     heroui({
       themes: {
-
+        "portfolio-theme": {
+          extend: "light",
+          colors: {
+            primary: {
+              DEFAULT: "#6a59d1"
+            }            
+          },                    
+        }
       }
     })
   ],
@@ -53,7 +64,7 @@ module.exports = {
 //       900: "#0e2431", // --first-color
 //       DEFAULT: "#6a59d1", // --second-color
 //       foreground: "#fff", // 白色文本
-//     },                        
+//     },
 //     focus: "#614fd0", // --hover-color
 //     transparent: {
 //       light: "rgba(0,0,0,0.1)", // --bg-transparent-color
@@ -80,4 +91,33 @@ module.exports = {
 //       large: "3px",
 //     },
 //   },
+// }
+
+// .container {
+//   width: 100%;
+// }
+// @media (min-width: 640px) {
+//   .container {
+//       max-width: 640px;
+//   }
+// }
+// @media (min-width: 768px) {
+//   .container {
+//       max-width: 768px;
+//   }
+// }
+// @media (min-width: 1024px) {
+//   .container {
+//       max-width: 1024px;
+//   }
+// }
+// @media (min-width: 1280px) {
+//   .container {
+//       max-width: 1280px;
+//   }
+// }
+// @media (min-width: 1536px) {
+//   .container {
+//       max-width: 1536px;
+//   }
 // }

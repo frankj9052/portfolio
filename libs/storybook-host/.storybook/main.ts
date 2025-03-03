@@ -1,4 +1,5 @@
 import type { StorybookConfig } from '@storybook/react-vite';
+import path from 'path';
 
 const config: StorybookConfig = {
   stories: [
@@ -21,7 +22,18 @@ const config: StorybookConfig = {
 
   typescript: {
     reactDocgen: 'react-docgen-typescript'
+  },
+
+  viteFinal: async(config) => {
+    config.resolve!.alias = {
+      ...(config.resolve?.alias || {}),
+      '@api': path.resolve(__dirname, './mocks/mock-api.ts'),
+      'next/navigation': path.resolve(__dirname, './mocks/mock-next-navigation.ts'),
+      'next/link': path.resolve(__dirname, './mocks/mock-next-link.tsx'),
+    };
+    return config;
   }
+
 };
 
 export default config;

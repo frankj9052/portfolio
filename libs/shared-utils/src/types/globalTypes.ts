@@ -13,7 +13,13 @@ type TextType = {
     fontColor?: string
 }
 
+type NavLinkType = {
+    text: string,
+    href: string
+}
+
 export {
     ImageType,
-    TextType
+    TextType,
+    NavLinkType,
 }

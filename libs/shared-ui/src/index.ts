@@ -22,8 +22,14 @@ export * from './lib/DatePicker/FrankDatePicker';
 // Input
 export * from './lib/Input/FrankInputBase';
 
+// Link
+export * from './lib/Link/SocialMediaLinks';
+
 // Modal
 export * from './lib/Modal/FrankModal';
+
+// Navbar
+export * from './lib/Navbar/FrankTopNav';
 
 // Popover
 export * from './lib/Popover/FrankPopover';
