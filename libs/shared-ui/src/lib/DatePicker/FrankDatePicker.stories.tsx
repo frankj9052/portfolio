@@ -26,10 +26,11 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
     args: {
         width: 144,
+        height: 32,
         variant: 'bordered',
         radius: 'sm',
         endContent: <MdOutlineKeyboardArrowDown size={20}/>,
-        labelPlacement: 'outside',
-        label: <div className='font-inter font-[500] text-[14px] text-[#303030]'>Start Day</div>,
+        // labelPlacement: 'outside',
+        // label: <div className='font-inter font-[500] text-[14px] text-[#303030]'>Start Day</div>,
     },
 }

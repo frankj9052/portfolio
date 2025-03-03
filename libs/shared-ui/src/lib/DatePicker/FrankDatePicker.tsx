@@ -5,6 +5,7 @@ import { ReactNode } from "react";
 
 export type FrankDatePickerProps = {
     width?: number,
+    height?: number,
     variant?: "flat" | "faded" | "bordered" | "underlined",
     defaultValue?: DateValue | null,
     value?: DateValue | null,
@@ -13,11 +14,12 @@ export type FrankDatePickerProps = {
     endContent?: ReactNode,
     minValue?: DateValue | null,
     maxValue?: DateValue | null,
-    label?: ReactNode,
-    labelPlacement?: "outside" | "outside-left" | "inside"
+    // label?: ReactNode,
+    // labelPlacement?: "outside" | "outside-left" | "inside"
 }
 export function FrankDatePicker({
     width,
+    height,
     variant,
     defaultValue,
     value,
@@ -26,14 +28,16 @@ export function FrankDatePicker({
     endContent,
     minValue,
     maxValue,
-    label,
-    labelPlacement
+    // label,
+    // labelPlacement
 }: FrankDatePickerProps) {
     return (
         <div
             style={{
                 width: width ? `${width}px` : '100%',
+                height: height ? `${height}px` : '100%',
             }}
+            className="flex"
         >
             <DatePicker
                 aria-label="Date Picker"
@@ -43,12 +47,12 @@ export function FrankDatePicker({
                 onChange={onChange}
                 minValue={minValue}
                 maxValue={maxValue}
-                label={label}
-                labelPlacement={labelPlacement}
+                // label={label}
+                // labelPlacement={labelPlacement}
                 classNames={{
                     // label: 'translate-y-[0px]',                    
                     selectorButton: 'w-[20px] h-[20px] min-w-0',
-                    inputWrapper: clsx('!min-h-0 !h-[32px]', {
+                    inputWrapper: clsx('min-h-0 h-full', {
                         'border-1': variant === 'bordered' || variant === 'faded',
                     }),
                 }}
@@ -57,6 +61,13 @@ export function FrankDatePicker({
                 fullWidth
                 popoverProps={{
                     shadow: 'sm',
+                }}
+                timeInputProps={{
+                    classNames: {
+                        inputWrapper: clsx('min-h-0 h-full', {
+                            'border-1': variant === 'bordered' || variant === 'faded',
+                        }),
+                    }
                 }}
                 showMonthAndYearPickers
                 calendarProps={{
