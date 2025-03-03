@@ -48,7 +48,7 @@ export function FrankDatePicker({
                 classNames={{
                     // label: 'translate-y-[0px]',                    
                     selectorButton: 'w-[20px] h-[20px] min-w-0',
-                    inputWrapper: clsx('min-h-0 h-[32px]', {
+                    inputWrapper: clsx('!min-h-0 !h-[32px]', {
                         'border-1': variant === 'bordered' || variant === 'faded',
                     }),
                 }}
