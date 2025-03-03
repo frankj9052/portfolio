@@ -1,7 +1,7 @@
 import { CalendarDate, DatePicker, DateValue } from "@heroui/react";
 import { CalendarDateTime, ZonedDateTime } from "@internationalized/date";
 import clsx from "clsx";
-import { ReactNode, useState } from "react";
+import { ReactNode } from "react";
 
 export type FrankDatePickerProps = {
     variant?: "flat" | "faded" | "bordered" | "underlined",
@@ -25,7 +25,6 @@ export function FrankDatePicker({
     minValue,
     maxValue
 }: FrankDatePickerProps) {
-    const [open, setOpen] = useState(false);
     return (
         <div
             style={{
@@ -49,25 +48,10 @@ export function FrankDatePicker({
                 radius={radius}
                 endContent={endContent}
                 fullWidth
-                // isOpen={open}
-                onOpenChange={(isOpen) => {
-                    console.log("onOpenChange ===> ", isOpen)
-                }}
-                popoverTargetAction="toggle"
-                // onFocus={() => { 
-                //     setOpen(true);
-                // }}
-                // onBlur={() => {
-                //     setOpen(false);
-                //     console.log("onBlur")
-                // }}
                 popoverProps={{
                     shadow: 'sm',
-                    onOpenChange:(isOpen) => {
-                        console.log("onOpenChange ===> ", isOpen)
-                    } 
                 }}
-                calendarProps={{                    
+                calendarProps={{
                     classNames: {
                         base: clsx('pt-3 bg-transparent shadow-none'),
                         content: clsx("w-full px-4",),
