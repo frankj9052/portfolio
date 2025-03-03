@@ -18,15 +18,6 @@ const meta = {
             control: { type: 'radio' }
         }
     },
-    decorators: [
-        (Story) => {
-            return (
-                <div className='w-[144px]'>
-                    <Story />
-                </div>
-            )
-        }
-    ]
 } satisfies Meta<typeof FrankDatePicker>
 
 export default meta;
@@ -34,6 +25,8 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
     args: {
+        width: 144,
+        height: 32,
         variant: 'bordered',
         radius: 'sm',
         endContent: <MdOutlineKeyboardArrowDown size={20}/>,
