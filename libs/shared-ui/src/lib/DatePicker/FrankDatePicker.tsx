@@ -47,14 +47,16 @@ export function FrankDatePicker({
                 onChange={onChange}
                 minValue={minValue}
                 maxValue={maxValue}
-                // label={label}
-                // labelPlacement={labelPlacement}
+                className={clsx(
+                    "[&>div[data-slot='input-wrapper']]:min-h-0 [&>div[data-slot='input-wrapper']]:h-full", {
+                    "[&>div[data-slot='input-wrapper']]:border-1": variant === 'bordered' || variant === 'faded'
+                }
+                )}
                 classNames={{
-                    // label: 'translate-y-[0px]',                    
                     selectorButton: 'w-[20px] h-[20px] min-w-0',
-                    inputWrapper: clsx('min-h-0 h-full', {
-                        'border-1': variant === 'bordered' || variant === 'faded',
-                    }),
+                    // inputWrapper: clsx('min-h-0 h-full', {
+                    //     'border-1': variant === 'bordered' || variant === 'faded',
+                    // }),
                 }}
                 radius={radius}
                 endContent={endContent}
@@ -62,34 +64,17 @@ export function FrankDatePicker({
                 popoverProps={{
                     shadow: 'sm',
                 }}
-                timeInputProps={{
-                    classNames: {
-                        inputWrapper: clsx('min-h-0 h-full', {
-                            'border-1': variant === 'bordered' || variant === 'faded',
-                        }),
-                    }
-                }}
                 showMonthAndYearPickers
                 calendarProps={{
                     classNames: {
-                        base: clsx('pt-3 bg-transparent shadow-none'),
-                        content: clsx("w-full px-4",),
-                        headerWrapper: 'px-0',
-                        // header: 'bg-blue-300',
-                        grid: "w-full",
-                        gridWrapper: "w-full",
+                        base: clsx('apt-3 bg-transparent shadow-none'),
                         gridHeader: "bg-transparent shadow-none",
-                        gridBody: "bg-transparent",
                         cellButton: [
                             '[&[data-today="true"]]:bg-[#e3e3e3]',
                             'data-[selected=true]:!bg-[#003f3c]',
                             'data-[hover=true]:!bg-[#0c534f]',
                             'data-[hover=true]:text-[#e4ffe5]',
-                            'font-inter text-[13px] w-[23px] h-[23px]'
                         ],
-                        gridHeaderRow: 'justify-between px-0 py-0',
-                        gridBodyRow: "justify-between",
-                        gridHeaderCell: "w-[23px] h-[23px]"
                     }
                 }}
             />
