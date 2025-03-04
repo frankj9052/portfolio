@@ -24,16 +24,18 @@ const config: StorybookConfig = {
     reactDocgen: 'react-docgen-typescript'
   },
 
-  viteFinal: async(config) => {
-    config.resolve!.alias = {
-      ...(config.resolve?.alias || {}),
-      '@api': path.resolve(__dirname, './mocks/mock-api.ts'),
-      'next/navigation': path.resolve(__dirname, './mocks/mock-next-navigation.ts'),
-      'next/link': path.resolve(__dirname, './mocks/mock-next-link.tsx'),
-    };
+  viteFinal: async (config) => {
+    if (config.resolve) {
+      config.resolve.alias = {
+        ...(config.resolve?.alias || {}),
+        '@api': path.resolve(__dirname, './mocks/mock-api.ts'),
+        'next/navigation': path.resolve(__dirname, './mocks/mock-next-navigation.ts'),
+        'next/link': path.resolve(__dirname, './mocks/mock-next-link.tsx'),
+        'next/image': path.resolve(__dirname, './mocks/mock-next-image.tsx')
+      };
+    }
     return config;
   }
-
 };
 
 export default config;

@@ -1,5 +1,7 @@
 export * from './lib/shared-ui';
 
+// Assets
+
 // AutoComplete
 export * from './lib/AutoComplete/FrankAutocomplete';
 
@@ -9,6 +11,8 @@ export * from './lib/Avatar/UserListItem';
 
 // Button
 export * from './lib/Button/FrankButtonBase';
+export * from './lib/Button/FrankToggleButton';
+export * from './lib/Button/NoqButton';
 
 // Checkbox
 export * from './lib/Checkbox/FrankCheckbox';
@@ -36,6 +40,12 @@ export * from './lib/Popover/FrankPopover';
 
 // Ratio Group
 export * from './lib/Radio-Group/FrankRadioGroupBasic';
+
+// Spinner
+export * from './lib/Spinner/FrankSpinner';
+
+// SVG Icon
+export * from './lib/SVGIcon/FrankSVGIcon';
 
 //  Time Input
 export * from './lib/Time-Input/FrankTimeInput';

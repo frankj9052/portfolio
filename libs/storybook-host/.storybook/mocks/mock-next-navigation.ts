@@ -1,7 +1,7 @@
 export const useRouter = () => ({
-    push: () => {},
-    back: () => {},
-    refresh: () => {}
+    push: () => {console.log('push')},
+    back: () => {console.log('back')},
+    refresh: () => {console.log('refresh')}
 })
 
 export const usePathname = () => '/storybook-mocked-pathname';
