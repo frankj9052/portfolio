@@ -25,7 +25,7 @@ export const FrankToggleButton = forwardRef<HTMLDivElement, FrankToggleButtonPro
         <div
             ref={ref}
             {...props}
-            className={clsx("border-[1px] cursor-pointer py-[6px] px-[12px] rounded-full select-none flex items-center justify-center", {
+            className={clsx("border-[1px] cursor-pointer rounded-full select-none flex items-center justify-center", {
                 "bg-[#E8FCFA] border-[#0C534F] text-[#0C534F]": !!value,
                 "bg-white border-[#E3E3E3] text-black": !value
             })}
