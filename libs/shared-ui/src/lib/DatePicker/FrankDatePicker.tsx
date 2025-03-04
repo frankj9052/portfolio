@@ -3,6 +3,19 @@ import { CalendarDateTime, ZonedDateTime } from "@internationalized/date";
 import clsx from "clsx";
 import { ReactNode } from "react";
 
+export type OverlayPlacement =
+    'bottom'
+    | 'bottom-end'
+    | 'bottom-start'
+    | 'left'
+    | 'left-end'
+    | 'left-start'
+    | 'right'
+    | 'right-end'
+    | 'right-start'
+    | 'top'
+    | 'top-end'
+    | 'top-start';
 export type FrankDatePickerProps = {
     width?: number,
     height?: number,
@@ -14,6 +27,7 @@ export type FrankDatePickerProps = {
     endContent?: ReactNode,
     minValue?: DateValue | null,
     maxValue?: DateValue | null,
+    popoverPlacement?: OverlayPlacement
     // label?: ReactNode,
     // labelPlacement?: "outside" | "outside-left" | "inside"
 }
@@ -28,6 +42,7 @@ export function FrankDatePicker({
     endContent,
     minValue,
     maxValue,
+    popoverPlacement,
     // label,
     // labelPlacement
 }: FrankDatePickerProps) {
@@ -63,6 +78,7 @@ export function FrankDatePicker({
                 fullWidth
                 popoverProps={{
                     shadow: 'sm',
+                    placement: popoverPlacement
                 }}
                 showMonthAndYearPickers
                 calendarProps={{
