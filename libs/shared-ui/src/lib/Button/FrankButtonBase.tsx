@@ -6,6 +6,7 @@ export type FrankButtonBaseProps = {
     customizeContent?: ReactNode,
     width?: number,
     height?: number,
+    backgroundColor?: string,
 } & ButtonProps
 
 export const FrankButtonBase = forwardRef<HTMLButtonElement, FrankButtonBaseProps>(({
@@ -13,12 +14,13 @@ export const FrankButtonBase = forwardRef<HTMLButtonElement, FrankButtonBaseProp
     variant,
     width,
     height,
+    backgroundColor,
     ...props }, ref) => {
     return (
         <div
             style={{
                 width: width ? `${width}px` : '100%',
-                height: height ? `${height}px` : '100%',
+                height: height ? `${height}px` : '100%',                
             }}
         >
             <Button
@@ -29,6 +31,9 @@ export const FrankButtonBase = forwardRef<HTMLButtonElement, FrankButtonBaseProp
                 className={clsx(`px-0 min-w-0 h-full`, {
                     'border-1 border-[#E3E3E3]': variant === 'bordered' || variant === 'ghost' || variant === 'faded',
                 })}
+                style={{
+                    ...(backgroundColor && { backgroundColor: backgroundColor }),
+                }}
             >
                 <div
                     className='w-full h-full flex items-center justify-center gap-0.5'

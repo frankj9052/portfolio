@@ -69,7 +69,8 @@ const ButtonContent = () => {
 export const ContactMeInPortfolio: Story = {
     args: {
         variant: 'solid',
-        color: 'primary',
+        // color: 'primary',
+        backgroundColor: 'green',
         customizeContent: <ButtonContent />,
         radius: 'sm',
     },
