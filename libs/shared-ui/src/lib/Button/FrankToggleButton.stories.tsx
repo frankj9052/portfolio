@@ -9,7 +9,6 @@ const meta = {
     },
 
     args: {
-        toggleValue: (value) => console.log("toggle value changed to: ", value)
     },
 } satisfies Meta<typeof FrankToggleButton>
 

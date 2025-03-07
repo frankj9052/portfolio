@@ -1,7 +1,6 @@
 import clsx from "clsx";
-import { Dispatch, forwardRef, ReactNode, SetStateAction } from "react";
+import { forwardRef, ReactNode } from "react";
 export type FrankToggleButtonProps = {
-    toggleValue?: (value: boolean, setValue: Dispatch<SetStateAction<boolean>>) => void,
     content?: ReactNode,
     width?: number,
     height?: number,
@@ -10,7 +9,6 @@ export type FrankToggleButtonProps = {
 }
 
 export const FrankToggleButton = forwardRef<HTMLDivElement, FrankToggleButtonProps>(({
-    toggleValue,
     content,
     width,
     height,
