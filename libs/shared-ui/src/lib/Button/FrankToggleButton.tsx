@@ -1,40 +1,37 @@
 import clsx from "clsx";
-import React, { Dispatch, forwardRef, ReactNode, SetStateAction, useEffect, useState } from "react";
-
+import { Dispatch, forwardRef, ReactNode, SetStateAction } from "react";
 export type FrankToggleButtonProps = {
-    defaultSelected?: boolean,
     toggleValue?: (value: boolean, setValue: Dispatch<SetStateAction<boolean>>) => void,
     content?: ReactNode,
     width?: number,
     height?: number,
+    onClick?: () => void,
+    active?: boolean,
 }
 
 export const FrankToggleButton = forwardRef<HTMLDivElement, FrankToggleButtonProps>(({
-    defaultSelected,
     toggleValue,
     content,
     width,
     height,
+    onClick,
+    active,
     ...props
 }, ref) => {
-    const [value, setValue] = useState<boolean>(!!defaultSelected);
-    useEffect(() => {
-        toggleValue && toggleValue(value, setValue);
-    }, [value, toggleValue])
     return (
         <div
             ref={ref}
             {...props}
             className={clsx("border-[1px] cursor-pointer rounded-full select-none flex items-center justify-center", {
-                "bg-[#E8FCFA] border-[#0C534F] text-[#0C534F]": !!value,
-                "bg-white border-[#E3E3E3] text-black": !value
+                "bg-[#E8FCFA] border-[#0C534F] text-[#0C534F]": !!active,
+                "bg-white border-[#E3E3E3] text-black": !active
             })}
             style={{
                 width: width ? `${width}px` : '100%',
                 height: height ? `${height}px` : '100%',
             }}
             onClick={() => {
-                setValue(!value);
+                onClick && onClick();
             }}
         >
             {content && content}

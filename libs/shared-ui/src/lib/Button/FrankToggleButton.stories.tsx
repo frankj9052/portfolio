@@ -33,9 +33,9 @@ export const Default: Story = {
             </FrankSVGIcon>
             <span>Mon-Fri 9-5</span>
         </div>,
-        defaultSelected: true,
         width: 137,
-        height: 32
+        height: 32,
+        active: true
     },
 }
 
@@ -56,8 +56,8 @@ export const BookingTypeToggleButton: Story = {
             </FrankSVGIcon>
             <span>Online & Phone</span>
         </div>,
-        defaultSelected: true,
         width: 137,
-        height: 32
+        height: 32,
+        active: false
     },
 }
