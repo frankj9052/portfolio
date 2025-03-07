@@ -1,9 +1,9 @@
 import clsx from "clsx";
-import React, { forwardRef, ReactNode, useEffect, useState } from "react";
+import React, { Dispatch, forwardRef, ReactNode, SetStateAction, useEffect, useState } from "react";
 
 export type FrankToggleButtonProps = {
     defaultSelected?: boolean,
-    toggleValue?: (value: boolean) => void,
+    toggleValue?: (value: boolean, setValue: Dispatch<SetStateAction<boolean>>) => void,
     content?: ReactNode,
     width?: number,
     height?: number,
@@ -19,7 +19,7 @@ export const FrankToggleButton = forwardRef<HTMLDivElement, FrankToggleButtonPro
 }, ref) => {
     const [value, setValue] = useState<boolean>(!!defaultSelected);
     useEffect(() => {
-        toggleValue && toggleValue(value);
+        toggleValue && toggleValue(value, setValue);
     }, [value, toggleValue])
     return (
         <div
