@@ -10,10 +10,11 @@ export type NoqButtonProps = {
   icon?: React.ReactNode
   text?: string,
   textStyle?: string,
-  handleClick?: () => void
+  handleClick?: () => void,
+  height?: number
 }
 
-const NoqButton = forwardRef<HTMLButtonElement, NoqButtonProps>(({ theme, size, isDisabled, loading, icon, text, textStyle, handleClick, ...props }, ref) => {
+const NoqButton = forwardRef<HTMLButtonElement, NoqButtonProps>(({ theme, size, height, isDisabled, loading, icon, text, textStyle, handleClick, ...props }, ref) => {
   return (
     <button
       ref={ref}
@@ -32,7 +33,10 @@ const NoqButton = forwardRef<HTMLButtonElement, NoqButtonProps>(({ theme, size, 
       )}
       disabled={isDisabled || loading}
       color="default"
-      onClick={handleClick}      
+      onClick={handleClick}   
+      style={{
+        height: height && !size ? `${height}px` : '100%',
+      }}   
     >
       {loading ? (
         <FrankSpinner

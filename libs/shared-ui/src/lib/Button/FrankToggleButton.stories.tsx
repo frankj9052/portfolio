@@ -34,7 +34,6 @@ export const Default: Story = {
         </div>,
         width: 137,
         height: 32,
-        active: true
     },
 }
 
@@ -57,6 +56,5 @@ export const BookingTypeToggleButton: Story = {
         </div>,
         width: 137,
         height: 32,
-        active: false
     },
 }

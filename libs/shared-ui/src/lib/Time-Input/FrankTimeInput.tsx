@@ -40,7 +40,7 @@ export function FrankTimeInput({ width, height, value, setValue, ariaLabel, font
         variant='bordered'
         minValue={minValue ? parseTime(minValue) : undefined}
         errorMessage={errorMessage}
-        isInvalid={isInvalid}
+        isInvalid={isInvalid}        
       />
     </div>
   )
