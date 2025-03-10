@@ -6,7 +6,7 @@ type Props = {
   height?: number,
   value?: string | null,
   minValue?: string,
-  setValue: (value: TimeInputValue | null) => void,
+  setValue?: (value: TimeInputValue | null) => void,
   ariaLabel: string,
   fontSize?: number,
   errorMessage?: string,
@@ -34,8 +34,8 @@ export function FrankTimeInput({ width, height, value, setValue, ariaLabel, font
           input: `flex items-center justify-center text-[${fontSize}px] !text-inherit`,
           segment: 'flex items-center justify-center !text-inherit',
         }}
-        value={value ? parseTime(value) : undefined}
-        onChange={setValue}
+        value={value !== undefined ? value ? parseTime(value) : null : undefined}
+        onChange={setValue && setValue}
         aria-label={ariaLabel}
         variant='bordered'
         minValue={minValue ? parseTime(minValue) : undefined}

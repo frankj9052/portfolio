@@ -11,8 +11,8 @@ const meta = {
     args: {
         width: 60,
         height: 32,
-        value: null,
-        setValue: (value) => { console.log("value check in args ===> ", value) },
+        // value: null,
+        // setValue: (value) => { console.log("value check in args ===> ", value) },
         ariaLabel: 'test time input'
     },
 } satisfies Meta<typeof FrankTimeInput>
@@ -34,9 +34,8 @@ export const Default: Story = {
                         value,
                         setValue: (value) => {
                             if (value) {
-                                setValue(value?.toString());
+                                setValue(value.toString());
                             }
-                            setValue(null);
                         }
                     }}
                 />
@@ -47,7 +46,6 @@ export const Default: Story = {
 
 export const WithError: Story = {
     args: {
-        value: "12:20",
         minValue: "11:30",
         errorMessage: "Invalid time!",
         isInvalid: true
