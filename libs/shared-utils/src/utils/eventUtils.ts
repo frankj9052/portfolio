@@ -1,4 +1,4 @@
-import React = require("react");
+import * as React from "react";
 
 /**
  * stop propagation and default
@@ -7,8 +7,6 @@ function stopPropagationAndDefault(e: React.MouseEvent<HTMLDivElement, MouseEven
     e.preventDefault();
     e.stopPropagation();
 }
-
-
 
 export {
     stopPropagationAndDefault,
