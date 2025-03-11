@@ -10,6 +10,15 @@ const meta = {
 
     args: {
     },
+    argTypes: {
+        variant: {
+            options: ['Default', 'Small', 'WithShortcut'],
+            control: { type: 'radio' }
+        },
+        isStartDateSelection: {
+            control: { type: 'boolean' }
+        }
+    }
 } satisfies Meta<typeof FrankCalendar>
 
 export default meta;
@@ -17,7 +26,6 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
     args: {
-        // value: 12,
-        // handleValueChange: (value) => {console.log("value changed ===> ", value)}
+        variant: 'WithShortcut'
     },
 }

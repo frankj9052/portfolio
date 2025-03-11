@@ -89,8 +89,12 @@ function calendarDateToUnixTime(date: CalendarDate): number {
     return date.toDate(getLocalTimeZone()).getTime()
 }
 
-function formatToMonthName(date: Date): string {
-    return format(date, 'MMMM')
+// function formatToMonthName(date: Date): string {
+//     return format(date, 'MMMM')
+// }
+
+function numberToMonthName(month: number): string {
+    return format(new Date(0, month - 1), 'MMMM')
 }
 
 // get age based on date of birth
@@ -113,7 +117,8 @@ export {
     dateToCalendarDate,
     dateToCalendarTime,
     calendarDateToUnixTime,
-    formatToMonthName,
+    // formatToMonthName,
+    numberToMonthName,
     calculateAge,
     formatShortDateTime,
     timeAgo
