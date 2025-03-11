@@ -20,7 +20,17 @@ function debounce<T extends (...args: any[]) => void>(func: T, delay: number) {
     };
 }
 
+/**
+ * hello => Hello;
+ * WORLD => World
+ */
+function capitalize(word: string): string {
+    if (!word) return "";
+    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+}
+
 export {
     truncateString,
-    debounce
+    debounce,
+    capitalize
 }

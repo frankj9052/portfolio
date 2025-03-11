@@ -1,4 +1,5 @@
-import { CalendarDate, Time } from '@internationalized/date'
+import { CalendarDate, getLocalTimeZone, Time } from '@internationalized/date'
+import { differenceInMinutes, differenceInYears, endOfDay, format, formatDistance, startOfDay } from "date-fns";
 
 /**
  * Validates whether the given value represents a valid date.
@@ -84,8 +85,36 @@ const dateToCalendarTime = (date: Date): Time => {
     return new Time(hour, minute, second, millisecond);
 }
 
+function calendarDateToUnixTime(date: CalendarDate): number {
+    return date.toDate(getLocalTimeZone()).getTime()
+}
+
+function formatToMonthName(date: Date): string {
+    return format(date, 'MMMM')
+}
+
+// get age based on date of birth
+function calculateAge(dob: Date) {
+    return differenceInYears(new Date(), dob);
+}
+
+// format the time format
+function formatShortDateTime(date: Date) {
+    return format(date, 'dd MMM yy h:mm a')
+}
+
+// get how long it passed until now based on the given date
+function timeAgo(date: string) {
+    return formatDistance(new Date(date), new Date()) + ' ago';
+}
+
 export {
     isValidDate,
     dateToCalendarDate,
-    dateToCalendarTime
+    dateToCalendarTime,
+    calendarDateToUnixTime,
+    formatToMonthName,
+    calculateAge,
+    formatShortDateTime,
+    timeAgo
 }
