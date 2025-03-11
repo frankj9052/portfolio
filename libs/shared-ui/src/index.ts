@@ -14,6 +14,9 @@ export * from './lib/Button/FrankButtonBase';
 export * from './lib/Button/FrankToggleButton';
 export * from './lib/Button/NoqButton';
 
+// Calendar
+export * from './lib/Calendar/FrankCalendar';
+
 // Checkbox
 export * from './lib/Checkbox/FrankCheckbox';
 
