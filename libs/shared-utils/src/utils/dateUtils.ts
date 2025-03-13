@@ -89,10 +89,6 @@ function calendarDateToUnixTime(date: CalendarDate): number {
     return date.toDate(getLocalTimeZone()).getTime()
 }
 
-// function formatToMonthName(date: Date): string {
-//     return format(date, 'MMMM')
-// }
-
 function numberToMonthName(month: number): string {
     return format(new Date(0, month - 1), 'MMMM')
 }
@@ -117,7 +113,6 @@ export {
     dateToCalendarDate,
     dateToCalendarTime,
     calendarDateToUnixTime,
-    // formatToMonthName,
     numberToMonthName,
     calculateAge,
     formatShortDateTime,

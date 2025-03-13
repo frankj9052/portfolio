@@ -14,10 +14,24 @@ export type FrankModalProps = {
     backdrop?: "transparent" | "opaque" | "blur",
     draggable?: boolean;
     hideCloseButton?: boolean;
+    zIndex?: number;
 }
 
 // image modal is just show the original photo
-export function FrankModal({ isOpen, onClose, header, body, footerButtons, imageModal, size, placement = 'top-center', backdrop = 'transparent', draggable = false, hideCloseButton = false }: FrankModalProps) {
+export function FrankModal({ 
+    isOpen, 
+    onClose, 
+    header, 
+    body, 
+    footerButtons, 
+    imageModal, 
+    size, 
+    placement = 'top-center', 
+    backdrop = 'transparent', 
+    draggable = false, 
+    hideCloseButton = false,
+    zIndex = 50,
+ }: FrankModalProps) {
     // original close event has been covered by something else, we manually add one
     const handleClose = () => {
         setTimeout(() => onClose(), 10);
@@ -32,6 +46,7 @@ export function FrankModal({ isOpen, onClose, header, body, footerButtons, image
             onClose={handleClose}
             placement={placement}
             classNames={{
+                wrapper: `${zIndex ? `z-${zIndex}` : ''}`,
                 base: `${imageModal ? 'border-2 border-white' : ''}`,
                 body: `${imageModal ? 'p-0' : ''}`
             }}

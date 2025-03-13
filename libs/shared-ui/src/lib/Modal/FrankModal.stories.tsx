@@ -13,17 +13,41 @@ const meta = {
     args: {
         isOpen: undefined,
         onClose: undefined,
+        draggable: true
+    },
+    argTypes: {
+        isOpen: { control: "boolean" },
+        onClose: { action: "closed" },
+        header: { control: "text" },
+        body: { control: "text" },
+        footerButtons: { control: "object" },
+        imageModal: { control: "boolean" },
+        size: {
+            control: "select",
+            options: ["xs", "sm", "md", "lg", "xl", "2xl", "3xl", "4xl", "5xl", "full"],
+        },
+        placement: {
+            control: "select",
+            options: ["center", "top-center", "auto", "top", "bottom", "bottom-center"],
+        },
+        backdrop: {
+            control: "select",
+            options: ["transparent", "opaque", "blur"],
+        },
+        draggable: { control: "boolean" },
+        hideCloseButton: { control: "boolean" },
+        zIndex: { control: { type: "number", min: 0, max: 9999 } },
     },
     decorators: [
         (Story, context) => {
             const { onOpen, isOpen, onClose } = useDisclosure();
             return (
-                <div>
+                <div
+                    className='relative'
+                >
                     <FrankButtonBase
-                        handleClick={onOpen}
-                        text={{
-                            content: 'Open Modal'
-                        }}
+                        onPress={onOpen}
+                        customizeContent={<div>Open Modal</div>}
                         width={120}
                         height={30}
                         variant='solid'
@@ -35,6 +59,7 @@ const meta = {
                             onClose,
                         }}
                     />
+                    <div className='z-50 absolute left-0 top-0'>Test Area</div>
                 </div>
             )
         }
@@ -46,12 +71,10 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
     args: {
-        body:<div>This is modal body</div>,
+        body: <div>This is modal body</div>,
         footerButtons: [
             {
-                text:{
-                    content: 'test btn 1'
-                }
+                customizeContent: 'Footer Button',
             }
         ]
     },
