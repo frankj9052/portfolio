@@ -1,14 +1,20 @@
-import { HomeLayout } from "../components/home/HomeLayout";
+import { Spacer } from "@heroui/react";
+import { HeroSectionLayout } from "../components/home/HeroSectionLayout";
 
 export default function Index() {
   return (
     <div
-      className="md:h-vertical-center bg-red-300"
+      className="flex items-center justify-center"
     >
       <div
-        className="bg-blue-300 container mx-auto"
+        className="container mx-auto"
       >
-        <HomeLayout/>
+        <div
+          className="w-[90%] md:w-[80%] mx-auto md:h-vertical-center flex items-center"
+        >
+          <Spacer y={16} className="md:hidden"/>
+          <HeroSectionLayout />
+        </div>
       </div>
     </div>
   );

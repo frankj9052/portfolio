@@ -11,14 +11,14 @@ const data = {
 
 export const Info = () => {
     return (
-        <div>
+        <div className="flex-[0.5] flex flex-col md:gap-5">
             <h2
-                className="text-6xl font-semibold leading-[70px]"
+                className="md:text-6xl text-4xl font-semibold leading-[70px]"
             >
                 {data.title}
             </h2>
             <h3
-                className="text-color-text-gray text-xl font-semibold leading-[50px]"
+                className="text-color-text-gray md:text-xl text-lg font-semibold leading-[50px]"
             >
                 {data.subTitle}
             </h3>
@@ -27,7 +27,8 @@ export const Info = () => {
             >
                 {data.description}
             </p>
-            <Spacer y={10}/>
+            {/* <Spacer y={10} className="hidden md:block"/> */}
+            <Spacer y={5} className="md:hidden"/>
             <div
                 className="w-[196px] h-[65px]"
             >
