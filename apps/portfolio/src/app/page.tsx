@@ -1,7 +1,7 @@
 import { HeroSectionLayout } from "../components/home/HeroSectionLayout";
 
 export default async function Index() {
-  await new Promise((resolve) => setTimeout(resolve, 10000));
+  await new Promise((resolve) => setTimeout(resolve, 3000));
   return (
     <div
       className="flex items-center justify-center"
