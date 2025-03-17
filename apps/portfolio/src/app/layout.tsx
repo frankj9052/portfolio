@@ -1,3 +1,4 @@
+import { AnimatePresence } from 'framer-motion';
 import { TopNav } from '../components/navbar/TopNav';
 import './global.css';
 
@@ -17,8 +18,8 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className='font-popins portfolio-theme text-color-text-black'>
-        <TopNav />        
-        {children}
+          <TopNav />
+          {children}
       </body>
     </html>
   );

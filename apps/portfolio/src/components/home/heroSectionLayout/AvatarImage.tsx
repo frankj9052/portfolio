@@ -10,6 +10,7 @@ export const AvatarImage = () => {
                 width={535}
                 alt="avatar-01"
                 src={'/images/avatar-01.png'}
+                priority
             />
         </div>
     )

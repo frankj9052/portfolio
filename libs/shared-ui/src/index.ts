@@ -32,6 +32,9 @@ export * from './lib/Input/FrankInputBase';
 // Link
 export * from './lib/Link/SocialMediaLinks';
 
+// Loading
+export * from './lib/Loading/FrankLoadingSignature';
+
 // Modal
 export * from './lib/Modal/FrankModal';
 

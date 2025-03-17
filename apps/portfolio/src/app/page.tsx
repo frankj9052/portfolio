@@ -1,7 +1,7 @@
-import { Spacer } from "@heroui/react";
 import { HeroSectionLayout } from "../components/home/HeroSectionLayout";
 
-export default function Index() {
+export default async function Index() {
+  await new Promise((resolve) => setTimeout(resolve, 10000));
   return (
     <div
       className="flex items-center justify-center"
@@ -10,9 +10,8 @@ export default function Index() {
         className="container mx-auto"
       >
         <div
-          className="w-[90%] md:w-[80%] mx-auto md:h-vertical-center flex items-center"
+          className="w-[90%] md:w-[80%] mx-auto h-vertical-center flex items-center"
         >
-          <Spacer y={16} className="md:hidden"/>
           <HeroSectionLayout />
         </div>
       </div>

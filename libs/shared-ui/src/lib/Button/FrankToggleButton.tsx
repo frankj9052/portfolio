@@ -1,3 +1,4 @@
+'use client'
 import clsx from "clsx";
 import { forwardRef, ReactNode, useState } from "react";
 export type FrankToggleButtonProps = {

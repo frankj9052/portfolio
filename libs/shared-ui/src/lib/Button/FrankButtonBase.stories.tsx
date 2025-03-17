@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import FrankButtonBase from './FrankButtonBase';
 import { FaArrowAltCircleRight } from "react-icons/fa";
+import { IoArrowDown } from "react-icons/io5";
+import { motion } from 'framer-motion';
 
 const meta = {
     component: FrankButtonBase,
@@ -69,7 +71,6 @@ const ButtonContent = () => {
 export const ContactMeInPortfolio: Story = {
     args: {
         variant: 'solid',
-        // color: 'primary',
         backgroundColor: 'green',
         customizeContent: <ButtonContent />,
         radius: 'sm',
@@ -85,4 +86,29 @@ export const ContactMeInPortfolio: Story = {
             )
         }
     ]
+}
+
+export const ScrollDownButton: Story = {
+    args: {
+        variant: 'light',
+        disableRipple: true,
+        radius: 'sm',
+        customizeContent: <div
+            className='text-[#0E2431] font-[500] font-popins px-2 py-1 flex gap-2 items-center'
+        >
+            <span>Scroll Down</span>
+            <motion.span
+                animate={{
+                    y: [0, 5, 0],
+                }}
+                transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                }}
+            >
+                <IoArrowDown size={20}/>
+            </motion.span>
+        </div>,
+    }
 }
