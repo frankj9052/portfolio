@@ -1,9 +1,11 @@
 {
   "name": "@frankjia9052/shared-utils",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "./index.cjs",
   "module": "./index.js",
   "dependencies": {
-    "@internationalized/date": "^3.5.6"
+    "@internationalized/date": "^3.5.6",
+    "date-fns": "^4.1.0",
+    "react": "19.0.0"
   }
 }

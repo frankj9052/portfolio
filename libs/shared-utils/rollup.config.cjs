@@ -8,7 +8,11 @@ module.exports = withNx(
     compiler: 'swc',
     format: ['cjs', 'esm'],
     assets: [{ input: 'libs/shared-utils', output: '.', glob: '*.md' }],
-    external: ['@internationalized/date'],
+    external: [
+      '@internationalized/date', 
+      'date-fns',
+      'react'
+    ],
   },
   {
     // Provide additional rollup configuration here. See: https://rollupjs.org/configuration-options
