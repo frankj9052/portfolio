@@ -1,4 +1,3 @@
-'use client'
 import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, useDraggable } from "@heroui/react"
 import { ReactNode, RefObject, useRef } from 'react'
 import FrankButtonBase, { FrankButtonBaseProps } from "../Button/FrankButtonBase";

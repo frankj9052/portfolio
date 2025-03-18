@@ -1,4 +1,3 @@
-'use client';
 import { Spinner } from '@heroui/react';
 // import { useEffect, useRef, useState } from 'react';
 import styles from './FrankLoadingSignature.module.css';

@@ -1,4 +1,3 @@
-'use client'
 import { NavLinkType } from "@frankjia9052/shared-utils";
 import { Navbar, NavbarBrand, NavbarContent, NavbarMenu, NavbarMenuItem, NavbarMenuToggle } from "@heroui/react";
 import { ReactNode, useState } from "react";

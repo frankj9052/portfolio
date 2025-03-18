@@ -1,4 +1,3 @@
-'use client'
 import { useEffect } from "react";
 
 import { dateToCalendarDate, numberToMonthName } from "@frankjia9052/shared-utils";
