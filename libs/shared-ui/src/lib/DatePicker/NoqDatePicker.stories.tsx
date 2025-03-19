@@ -39,6 +39,27 @@ const meta = {
             control: { type: 'text' },
             description: 'Optional custom end content (e.g., an icon)',
         },
+        zIndex: {
+            control: { type: 'number' },
+            description: 'Controls the z-index of the calendar popover',
+            defaultValue: 1000,
+        },
+        minValue: {
+            control: { type: 'object' },
+            description: 'The minimum selectable date',
+        },
+        maxValue: {
+            control: { type: 'object' },
+            description: 'The maximum selectable date',
+        },
+        rangeStart: {
+            control: { type: 'object' },
+            description: 'The start date for a range selection',
+        },
+        rangeEnd: {
+            control: { type: 'object' },
+            description: 'The end date for a range selection',
+        },
     },
 } satisfies Meta<typeof NoqDatePicker>
 
