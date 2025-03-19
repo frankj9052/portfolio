@@ -19,15 +19,48 @@ export type NoqDatePickerProps = {
     height?: number,
     endContent?: ReactNode,
     value?: DateValue | null,
-    onValueChange?: (value: DateValue | null | undefined) => void
+    onValueChange?: (value: DateValue | null | undefined) => void,
+    isStartDateSelection?: boolean
 }
-
+/**
+ * NoqDatePicker Component
+ * 
+ * Purpose:
+ * This component is a date picker that allows users to either manually enter a date or select one from a calendar.
+ * 
+ * Features:
+ * - Users can input the year, month, and day manually.
+ * - Automatically moves to the next input field after completion.
+ * - Ensures date format validity and auto-formats input values.
+ * - Provides a calendar selection option, allowing users to pick a date by clicking the calendar icon.
+ * - Detects outside clicks and automatically closes the calendar popover.
+ * 
+ * Usage:
+ * ```tsx
+ * <NoqDatePicker
+ *   width={300} // Optional: Set component width
+ *   height={40} // Optional: Set component height
+ *   value={selectedDate} // Bind to the currently selected date value
+ *   onValueChange={(newDate) => setSelectedDate(newDate)} // Callback when the date changes
+ *   isStartDateSelection={true} // Optional: Whether it is the start date selection
+ * />
+ * ```
+ * 
+ * Props:
+ * - width?: number - Component width (px)
+ * - height?: number - Component height (px)
+ * - endContent?: ReactNode - Optional custom end content (e.g., an icon)
+ * - value?: DateValue | null - Currently selected date value
+ * - onValueChange?: (value: DateValue | null | undefined) => void - Callback for date value changes
+ * - isStartDateSelection?: boolean - Whether it is the start date selection
+ */
 export function NoqDatePicker({
     width,
     height,
     endContent,
     value,
-    onValueChange
+    onValueChange,
+    isStartDateSelection
 }: NoqDatePickerProps) {
     // input的值输入前是否清空
     const [shouldClearOnInput, setShouldClearOnInput] = useState<{
@@ -319,7 +352,7 @@ export function NoqDatePicker({
                                 }
                             }}
                             variant="WithShortcut"
-                            isStartDateSelection={true}
+                            isStartDateSelection={isStartDateSelection}
                         />
                     </div>
                 }
