@@ -6,11 +6,13 @@ export type FrankPopoverGeneralType = {
   isOpen?: boolean,
   popoverTrigger: ReactNode,
   popoverContent: ReactNode,
+  zIndex?: number
 }
 export function FrankPopoverGeneral({
   isOpen,
   popoverTrigger,
-  popoverContent
+  popoverContent,
+  zIndex
 }: FrankPopoverGeneralType) {
   const [isOpenState, setIsOpenState] = useControlledState(
     isOpen,
@@ -30,7 +32,7 @@ export function FrankPopoverGeneral({
       </div>
       {/* popover */}
       <div
-        className={clsx('', {
+        className={clsx(`z-${zIndex ?? 10}`, {
           'hidden': !isOpenState,
           'absolute': isOpenState
         })}

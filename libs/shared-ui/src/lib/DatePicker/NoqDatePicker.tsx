@@ -20,7 +20,8 @@ export type NoqDatePickerProps = {
     endContent?: ReactNode,
     value?: DateValue | null,
     onValueChange?: (value: DateValue | null | undefined) => void,
-    isStartDateSelection?: boolean
+    isStartDateSelection?: boolean,
+    zIndex?: number,
 }
 /**
  * NoqDatePicker Component
@@ -60,7 +61,8 @@ export function NoqDatePicker({
     endContent,
     value,
     onValueChange,
-    isStartDateSelection
+    isStartDateSelection,
+    zIndex,
 }: NoqDatePickerProps) {
     // input的值输入前是否清空
     const [shouldClearOnInput, setShouldClearOnInput] = useState<{
@@ -363,6 +365,7 @@ export function NoqDatePicker({
                     </div>
                 }
                 isOpen={isOpen}
+                zIndex={zIndex}
             />
         </div>
 

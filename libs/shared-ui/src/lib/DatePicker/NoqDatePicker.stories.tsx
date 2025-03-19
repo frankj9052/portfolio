@@ -48,4 +48,15 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
     args: {
     },
+    decorators: [
+        (Story) => {
+            return (
+                <div
+                    className='w-[500px] h-[500px] bg-gray-300 px-3 py-3'
+                >
+                    <Story />
+                </div>
+            )
+        }
+    ]
 }
