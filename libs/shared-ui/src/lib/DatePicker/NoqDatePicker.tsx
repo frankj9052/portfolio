@@ -227,7 +227,7 @@ export function NoqDatePicker({
                                         month: false,
                                     }));
                                 }}
-                                value={inputValue.month}
+                                value={formatNumberString(inputValue.month, 2)}
                                 onChange={(e) => {
                                     const inputEvent = e.nativeEvent as InputEvent;
                                     const lastInputNumber = inputEvent.data ? +inputEvent.data : null
@@ -282,7 +282,7 @@ export function NoqDatePicker({
                                         day: false,
                                     }));
                                 }}
-                                value={inputValue.day}
+                                value={formatNumberString(inputValue.day, 2)}
                                 onChange={(e) => {
                                     const inputEvent = e.nativeEvent as InputEvent;
                                     const lastInputNumber = inputEvent.data ? +inputEvent.data : null
