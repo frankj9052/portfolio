@@ -142,7 +142,7 @@ export function NoqDatePicker({
                         >
                             {/* Year Input */}
                             <input
-                                className="w-[40%] h-full focus:outline-none font-inter text-[13px] text-[#303030] focus:bg-gray-100 rounded-md caret-transparent text-center cursor-pointer"
+                                className="w-[38%] h-full focus:outline-none font-inter text-[13px] text-[#303030] focus:bg-gray-100 rounded-md caret-transparent text-center cursor-pointer"
                                 type='text'
                                 onFocus={() => {
                                     setIsOpen(true);
@@ -203,12 +203,13 @@ export function NoqDatePicker({
                                         year: newYearValue
                                     }))
                                 }}
+                                placeholder="YYYY"
                                 ref={yearRef}
                             />
                             <span>-</span>
                             {/* Month Input */}
                             <input
-                                className="w-[20%] h-full focus:outline-none font-inter text-[13px] text-[#303030] focus:bg-gray-100 rounded-md caret-transparent text-center cursor-pointer"
+                                className="w-[25%] h-full focus:outline-none font-inter text-[13px] text-[#303030] focus:bg-gray-100 rounded-md caret-transparent text-center cursor-pointer"
                                 type='text'
                                 onFocus={() => {
                                     setIsOpen(true);
@@ -257,12 +258,13 @@ export function NoqDatePicker({
                                         month: newMonthValue
                                     }))
                                 }}
+                                placeholder="MM"
                                 ref={monthRef}
                             />
                             <span>-</span>
                             {/* Day Input */}
                             <input
-                                className="w-[20%] h-full focus:outline-none font-inter text-[13px] text-[#303030] focus:bg-gray-100 rounded-md caret-transparent text-center cursor-pointer"
+                                className="w-[25%] h-full focus:outline-none font-inter text-[13px] text-[#303030] focus:bg-gray-100 rounded-md caret-transparent text-center cursor-pointer"
                                 type='text'
                                 onFocus={() => {
                                     setIsOpen(true);
@@ -311,6 +313,7 @@ export function NoqDatePicker({
                                         day: newDayValue
                                     }))
                                 }}
+                                placeholder="DD"
                                 ref={dayRef}
                             />
                         </div>
