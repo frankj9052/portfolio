@@ -315,8 +315,8 @@ function calendarData(
       isToday: current.compare(today(timeZone)) === 0,
       isDisabled: current.compare(firstDayOfMonth) < 0
         || current.compare(lastDayofMonth) > 0
-        || (minValue ? current.compare(minValue) <= 0 : false)
-        || (maxValue ? current.compare(maxValue) >= 0 : false),
+        || (minValue ? current.compare(minValue) < 0 : false)
+        || (maxValue ? current.compare(maxValue) > 0 : false),
       isHightLight: rangeStart && rangeEnd
         ? current.compare(rangeStart) >= 0 && current.compare(rangeEnd) <= 0
         : false,
