@@ -11,6 +11,35 @@ const meta = {
     args: {
         width: 144,
     },
+    argTypes: {
+        width: {
+            control: { type: 'number' },
+            description: 'Component width (px)',
+            defaultValue: 300,
+        },
+        height: {
+            control: { type: 'number' },
+            description: 'Component height (px)',
+            defaultValue: 40,
+        },
+        value: {
+            control: { type: 'object' },
+            description: 'Currently selected date value',
+        },
+        onValueChange: {
+            action: 'date changed',
+            description: 'Callback for date value changes',
+        },
+        isStartDateSelection: {
+            control: { type: 'boolean' },
+            description: 'Whether it is the start date selection',
+            defaultValue: false,
+        },
+        endContent: {
+            control: { type: 'text' },
+            description: 'Optional custom end content (e.g., an icon)',
+        },
+    },
 } satisfies Meta<typeof NoqDatePicker>
 
 export default meta;
