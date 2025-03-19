@@ -172,7 +172,7 @@ export const FrankCalendar = ({
         {/* Right Calendar */}
         <div
           className={clsx("flex-1 h-full flex flex-col gap-3", {
-            'py-3 px-4': variant === 'Default' || variant === 'WithShortcut',
+            'pt-3 pb-2 px-4': variant === 'Default' || variant === 'WithShortcut',
           })}
         >
           {/* Calendar Header */}
@@ -237,7 +237,7 @@ export const FrankCalendar = ({
                 calendarDays.map((calendarDay, index) => (
                   <div
                     key={`${calendarDay.date.toString()}`}
-                    className={clsx("text-center h-[28px] text-[13px] text-[#303030] flex justify-center items-center", {
+                    className={clsx("text-center h-[24px] text-[13px] text-[#303030] flex justify-center items-center mb-1", {
                       'bg-[#E3E3E3]': calendarDay.isHightLight,
                       'rounded-l-lg': (rangeStart &&calendarDay.date.compare(rangeStart) === 0)
                       || index % 7 === 0,

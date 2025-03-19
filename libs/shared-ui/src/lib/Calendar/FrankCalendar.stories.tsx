@@ -99,7 +99,7 @@ export const Default: Story = {
         // minValue: parseDate('2025-03-07')
         // maxValue: parseDate('2025-03-28')
         // rangeStart: parseDate('2025-03-07'),
-        // rangeEnd: parseDate('2025-03-12')
+        // rangeEnd: parseDate('2025-03-28')
     },
     decorators: [
         (Story) => {
