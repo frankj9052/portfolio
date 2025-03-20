@@ -40,7 +40,8 @@ const FakeCard = ({index}:{index:number}) => {
 
 export const Default: Story = {
     args: {
-        slidesPerView: 6,
+        // slidesPerView: 4,
+        childWidth: 223,
         spaceBetween: 20,
         loop: true,
         autoPlay: true,

@@ -2,13 +2,14 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 import { Swiper, SwiperClass, SwiperSlide } from "swiper/react"
-import { Children, ReactNode, useCallback, useEffect, useRef } from 'react'
+import { Children, ReactNode, useCallback, useEffect, useRef, useState } from 'react'
 import { Pagination, Navigation } from 'swiper/modules'
 import { useControlledState } from '../useHooks/useControlledState'
 import useTimer from '../useHooks/useTimer'
 
 export type FrankCarouselProps = {
     children: ReactNode,
+    childWidth?: number,
     slidesPerView?: number,
     spaceBetween?: number,
     centeredSlides?: boolean,
@@ -37,7 +38,8 @@ export type FrankCarouselProps = {
  */
 export function FrankCarousel({
     children,
-    slidesPerView = 1,
+    childWidth,
+    slidesPerView,
     spaceBetween = 64,
     centeredSlides,
     initialSlide = 0,
@@ -52,9 +54,34 @@ export function FrankCarousel({
         0
     );
     const swiperRef = useRef<SwiperClass | null>(null);
+    const containerRef = useRef<HTMLDivElement | null>(null);
     const timer = useTimer();
+    const [slidesPerViewState, setSlidesPerViewState] = useState(1);
 
-    // 点击slide切换到该slide下
+    // 计算 slidesPerView
+    const updateSlidesPerView = useCallback(() => {
+        if (!containerRef.current || !childWidth || slidesPerView) return;
+        const containerWidth = containerRef.current.clientWidth;
+        const newSlidesPerView = Math.floor((containerWidth + spaceBetween) / (childWidth + spaceBetween));
+        setSlidesPerViewState(newSlidesPerView || 1);
+    }, [childWidth, spaceBetween, slidesPerView]);
+
+    useEffect(() => {
+        // 初始化时计算一次
+        updateSlidesPerView();
+
+        // 监听窗口大小变化
+        const resizeObserver = new ResizeObserver(updateSlidesPerView);
+        if (containerRef.current) {
+            resizeObserver.observe(containerRef.current);
+        }
+
+        return () => {
+            resizeObserver.disconnect();
+        };
+    }, [updateSlidesPerView]);
+
+    // 点击slide切换到该slide下 => 自动播放
     const handleSlideClick = useCallback((index: number) => {
         if (swiperRef.current && swiperRef?.current?.loopedSlides) {
             swiperRef.current.slideToLoop(index, undefined, true);
@@ -81,9 +108,10 @@ export function FrankCarousel({
             style={{
                 width: width ? `${width}px` : '100%',
             }}
+            ref={containerRef}
         >
             <Swiper
-                slidesPerView={slidesPerView}
+                slidesPerView={slidesPerView ?? slidesPerViewState}
                 spaceBetween={spaceBetween}
                 centeredSlides={centeredSlides}
                 pagination={false}
