@@ -19,7 +19,8 @@ module.exports = withNx(
       'clsx',
       'styled-components',
       'react-icons',
-      'swiper'
+      'swiper',
+      'framer-motion'
     ],
     format: ['esm', 'cjs'],
     assets: [{ input: 'libs/shared-ui', output: '.', glob: 'README.md' }]

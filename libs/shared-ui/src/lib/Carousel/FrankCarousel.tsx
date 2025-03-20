@@ -2,7 +2,7 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 import { Swiper, SwiperClass, SwiperSlide } from "swiper/react"
-import { Children, ReactNode, useCallback, useEffect, useRef, useState } from 'react'
+import { Children, ReactNode, useCallback, useEffect, useRef } from 'react'
 import { Pagination, Navigation } from 'swiper/modules'
 import { useControlledState } from '../useHooks/useControlledState'
 import useTimer from '../useHooks/useTimer'
@@ -32,6 +32,7 @@ export type FrankCarouselProps = {
  * @param props.autoPlay Whether to auto play the slides.
  * @param props.activeIndex The active index of the slide.
  * @param props.onActiveIndexChange The callback function when the active index changes.
+ * @param props.width The width of the carousel.
  * @returns
  */
 export function FrankCarousel({
