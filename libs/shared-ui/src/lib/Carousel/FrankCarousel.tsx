@@ -62,11 +62,8 @@ export function FrankCarousel({
     const updateSlidesPerView = useCallback(() => {
         if (!containerRef.current || !childWidth || slidesPerView) return;
         const containerWidth = containerRef.current.clientWidth;
-        const newSlidesPerView = Math.floor((containerWidth + spaceBetween) / (childWidth + spaceBetween));
+        const newSlidesPerView = Math.round((containerWidth + spaceBetween) / (childWidth + spaceBetween));
         setSlidesPerViewState(newSlidesPerView || 1);
-        console.log("containerWidth + spaceBetween ===> ", containerWidth + spaceBetween)
-        console.log("childWidth + spaceBetween ===> ", childWidth + spaceBetween)
-        console.log("spaceBetween ===> ", spaceBetween)
     }, [childWidth, spaceBetween, slidesPerView]);
 
     useEffect(() => {
