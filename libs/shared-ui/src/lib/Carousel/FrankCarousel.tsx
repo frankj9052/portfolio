@@ -11,7 +11,7 @@ export type FrankCarouselProps = {
     children: ReactNode,
     childWidth?: number,
     slidesPerView?: number,
-    spaceBetween?: number,
+    // spaceBetween?: number,
     centeredSlides?: boolean,
     initialSlide?: number,
     loop?: boolean,
@@ -26,7 +26,6 @@ export type FrankCarouselProps = {
  * @param props
  * @param props.children The children nodes to render inside the carousel.
  * @param props.slidesPerView The number of slides to show per view.
- * @param props.spaceBetween The space between each slide.
  * @param props.centeredSlides Whether to center the slides.
  * @param props.initialSlide The initial slide index.
  * @param props.loop Whether to loop the slides.
@@ -40,7 +39,7 @@ export function FrankCarousel({
     children,
     childWidth,
     slidesPerView,
-    spaceBetween = 64,
+    // spaceBetween = 64,
     centeredSlides,
     initialSlide = 0,
     loop,
@@ -57,6 +56,7 @@ export function FrankCarousel({
     const containerRef = useRef<HTMLDivElement | null>(null);
     const timer = useTimer();
     const [slidesPerViewState, setSlidesPerViewState] = useState(1);
+    const spaceBetween = 0;
 
     // 计算 slidesPerView
     const updateSlidesPerView = useCallback(() => {
@@ -64,6 +64,9 @@ export function FrankCarousel({
         const containerWidth = containerRef.current.clientWidth;
         const newSlidesPerView = Math.floor((containerWidth + spaceBetween) / (childWidth + spaceBetween));
         setSlidesPerViewState(newSlidesPerView || 1);
+        console.log("containerWidth + spaceBetween ===> ", containerWidth + spaceBetween)
+        console.log("childWidth + spaceBetween ===> ", childWidth + spaceBetween)
+        console.log("spaceBetween ===> ", spaceBetween)
     }, [childWidth, spaceBetween, slidesPerView]);
 
     useEffect(() => {
