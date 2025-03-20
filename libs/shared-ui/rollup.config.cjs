@@ -18,7 +18,8 @@ module.exports = withNx(
       '@frankjia9052/shared-ui',
       'clsx',
       'styled-components',
-      'react-icons'
+      'react-icons',
+      'swiper'
     ],
     format: ['esm', 'cjs'],
     assets: [{ input: 'libs/shared-ui', output: '.', glob: 'README.md' }]

@@ -1,5 +1,7 @@
 export * from './lib/shared-ui';
 
+// Animations
+export * from './lib/Animations/BreathingGlow';
 // Assets
 
 // AutoComplete
@@ -16,6 +18,9 @@ export * from './lib/Button/NoqButton';
 
 // Calendar
 export * from './lib/Calendar/FrankCalendar';
+
+// Carousel
+export * from './lib/Carousel/FrankCarousel';
 
 // Checkbox
 export * from './lib/Checkbox/FrankCheckbox';
@@ -51,6 +56,9 @@ export * from './lib/Radio-Group/FrankRadioGroupBasic';
 // Spinner
 export * from './lib/Spinner/FrankSpinner';
 
+// StaticEffects
+export * from './lib/StaticEffects/LinearGradientTextColor';
+
 // SVG Icon
 export * from './lib/SVGIcon/FrankSVGIcon';
 
@@ -60,3 +68,4 @@ export * from './lib/Time-Input/FrankTimeInput';
 // useHooks
 export * from './lib/useHooks/useControlledState';
 export * from './lib/useHooks/useClickOutside';
+export * from './lib/useHooks/useTimer';
