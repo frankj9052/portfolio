@@ -7,11 +7,17 @@ import { Pagination, Navigation } from 'swiper/modules'
 import { useControlledState } from '../useHooks/useControlledState'
 import useTimer from '../useHooks/useTimer'
 
+export type SlideType = {
+    width?: number,
+    content: ReactNode
+}
+
 export type FrankCarouselProps = {
     children: ReactNode,
     childWidth?: number,
-    slidesPerView?: number,
-    // spaceBetween?: number,
+    endSpace?: number,
+    slidesPerView?: number | 'auto',
+    spaceBetween?: number,
     centeredSlides?: boolean,
     initialSlide?: number,
     loop?: boolean,
@@ -19,12 +25,15 @@ export type FrankCarouselProps = {
     activeIndex?: number,
     onActiveIndexChange?: (index: number) => void,
     width?: number,
+    freeMode?: boolean,
 }
 /**
  * A carousel component that wraps the Swiper library.
  *
  * @param props
  * @param props.children The children nodes to render inside the carousel.
+ * @param props.childWidth The width of each child node.
+ * @param props.endSpace The space to add at the end of the carousel.
  * @param props.slidesPerView The number of slides to show per view.
  * @param props.centeredSlides Whether to center the slides.
  * @param props.initialSlide The initial slide index.
@@ -38,8 +47,9 @@ export type FrankCarouselProps = {
 export function FrankCarousel({
     children,
     childWidth,
+    endSpace = 0,
     slidesPerView,
-    // spaceBetween = 64,
+    spaceBetween = 0,
     centeredSlides,
     initialSlide = 0,
     loop,
@@ -47,6 +57,7 @@ export function FrankCarousel({
     activeIndex,
     onActiveIndexChange,
     width,
+    freeMode,
 }: FrankCarouselProps) {
     const [activeIndexState, setActiveIndexState] = useControlledState(
         activeIndex,
@@ -56,7 +67,6 @@ export function FrankCarousel({
     const containerRef = useRef<HTMLDivElement | null>(null);
     const timer = useTimer();
     const [slidesPerViewState, setSlidesPerViewState] = useState(1);
-    const spaceBetween = 0;
 
     // 计算 slidesPerView
     const updateSlidesPerView = useCallback(() => {
@@ -112,6 +122,7 @@ export function FrankCarousel({
         >
             <Swiper
                 slidesPerView={slidesPerView ?? slidesPerViewState}
+                freeMode={freeMode}
                 spaceBetween={spaceBetween}
                 centeredSlides={centeredSlides}
                 pagination={false}
@@ -130,6 +141,9 @@ export function FrankCarousel({
                     Children.map(children, (child, index) => (
                         <SwiperSlide
                             key={`swiper-item-${index}`}
+                            style={{
+                                ...(childWidth && { width: `${Children.count(children) === index + 1 && childWidth ? childWidth + endSpace : childWidth}px` })
+                            }}
                         >
                             {child}
                         </SwiperSlide>

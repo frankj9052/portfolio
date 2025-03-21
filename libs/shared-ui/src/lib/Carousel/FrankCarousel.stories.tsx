@@ -30,22 +30,28 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const FakeCard = ({index}:{index:number}) => {
-    return(
-        <div className='flex items-center justify-center bg-blue-200 w-[223px] h-[333px] border-1 border-[#000] ml-[20px]'>
-            {index}
+const FakeCard = ({ index }: { index: number }) => {
+    return (
+        <div className='bg-blue-200 w-[200px] h-[333px] border-1 border-[#000] flex ml-[20px]'>
+            <div
+                className='flex flex-col items-center justify-center h-full bg-pink-200 flex-1'
+            >
+                <div>{index}</div>
+                <div>main</div>
+                <div>content</div>
+            </div>
+
         </div>
     )
 }
 
 export const Default: Story = {
     args: {
-        // slidesPerView: 4,
-        childWidth: 223,
-        // spaceBetween: 20,
-        loop: true,
-        autoPlay: true,
-        children: Array.from({length: 14}).map((_, index) => (
+        childWidth: 200,
+        spaceBetween: 20,
+        freeMode: true,
+        slidesPerView: 'auto',
+        children: Array.from({ length: 14 }).map((_, index) => (
             <FakeCard
                 key={index}
                 index={index}
@@ -53,3 +59,10 @@ export const Default: Story = {
         ))
     },
 }
+
+// slidesPerView: 4,
+// childWidth: 223,
+// spaceBetween: 20,
+// loop: true,
+// autoPlay: true,
+// width: 1440,
