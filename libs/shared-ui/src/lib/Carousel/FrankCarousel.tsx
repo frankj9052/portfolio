@@ -25,6 +25,7 @@ export type FrankCarouselProps = {
     onActiveIndexChange?: (index: number) => void,
     width?: number,
     freeMode?: boolean,
+    slideToClickedSlide?: boolean,
 }
 
 /**
@@ -42,6 +43,8 @@ export type FrankCarouselProps = {
  * @param props.activeIndex The active index of the slide.
  * @param props.onActiveIndexChange The callback function when the active index changes.
  * @param props.width The width of the carousel.
+ * @param props.freeMode Whether to enable free mode.
+ * @param props.slideToClickedSlide Whether to slide to the clicked slide.
  * @returns
  */
 export const FrankCarousel = forwardRef<FrankCarouselRefType, FrankCarouselProps>(
@@ -59,6 +62,7 @@ export const FrankCarousel = forwardRef<FrankCarouselRefType, FrankCarouselProps
         onActiveIndexChange,
         width,
         freeMode,
+        slideToClickedSlide,
     }, ref) => {
         const [activeIndexState, setActiveIndexState] = useControlledState(
             activeIndex,
@@ -144,7 +148,7 @@ export const FrankCarousel = forwardRef<FrankCarouselRefType, FrankCarouselProps
                         setActiveIndexState?.(swiper.realIndex);
                         onActiveIndexChange?.(swiper.realIndex);
                     }}
-                    slideToClickedSlide={true}
+                    slideToClickedSlide={slideToClickedSlide}
                     onSwiper={(swiper) => { swiperRef.current = swiper }}
                 >
                     {
