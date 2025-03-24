@@ -49,8 +49,27 @@ export const Default: Story = {
     args: {
         childWidth: 200,
         spaceBetween: 20,
+        endSpace: 40,
         freeMode: true,
         slidesPerView: 'auto',
+        // autoPlay: true,
+        // loop: true,
+        children: Array.from({ length: 14 }).map((_, index) => (
+            <FakeCard
+                key={index}
+                index={index}
+            />
+        ))
+    },
+}
+
+export const NotFreeMode: Story = {
+    args: {
+        childWidth: 200,
+        spaceBetween: 20,
+        slidesPerView: 6,
+        // autoPlay: true,
+        // loop: true,
         children: Array.from({ length: 14 }).map((_, index) => (
             <FakeCard
                 key={index}
