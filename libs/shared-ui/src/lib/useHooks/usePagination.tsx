@@ -18,6 +18,7 @@ export interface UsePaginationReturn {
     goToNextPage: () => void;
     goToPreviousPage: () => void;
     setPageSize: (size: number) => void;
+    setTotalItems: (total: number) => void;
 }
 
 /**
@@ -43,13 +44,14 @@ export interface UsePaginationReturn {
  */
 
 export const usePagination = ({
-    totalItems,
+    totalItems: initialTotalItems,
     pageSize: initialPageSize = 10,
     currentPage: initialCurrentPage = 1,
     maxPagesToShow = 5,
 }: UsePaginationProps): UsePaginationReturn => {
     const [pageSize, setPageSize] = useState(initialPageSize);
     const [currentPage, setCurrentPage] = useState(initialCurrentPage);
+    const [totalItems, setTotalItems] = useState(initialTotalItems);
 
     const totalPages = useMemo(() => Math.ceil(totalItems / pageSize), [totalItems, pageSize]);
 
@@ -98,6 +100,17 @@ export const usePagination = ({
         }
     };
 
+    const handleSetTotalItems = (total: number) => {
+        const newTotalItems = Math.max(0, total);
+        setTotalItems(newTotalItems);
+
+        // Recalculate current page to ensure it doesn't exceed new total pages
+        const newTotalPages = Math.ceil(newTotalItems / pageSize);
+        if (currentPage > newTotalPages) {
+            setCurrentPage(Math.max(1, newTotalPages));
+        }
+    };
+
     return {
         currentPage,
         totalPages,
@@ -109,6 +122,7 @@ export const usePagination = ({
         goToNextPage,
         goToPreviousPage,
         setPageSize: handleSetPageSize,
+        setTotalItems: handleSetTotalItems
     };
 };
 
