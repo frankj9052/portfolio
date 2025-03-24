@@ -156,7 +156,8 @@ export const FrankCarousel = forwardRef<FrankCarouselRefType, FrankCarouselProps
                             <SwiperSlide
                                 key={`swiper-item-${index}`}
                                 style={{
-                                    ...(childWidth && { width: `${Children.count(children) === index + 1 && childWidth ? childWidth + endSpace : childWidth}px` })
+                                    ...(childWidth && { width: `${Children.count(children) === index + 1 && childWidth ? childWidth + endSpace : childWidth}px` }),
+                                    ...(endSpace && { marginLeft: `${endSpace && index === 0 ? endSpace : 0}px` }),
                                 }}
                             >
                                 {child}

@@ -5,6 +5,16 @@ interface WindowSize {
   height: number | null;
 }
 
+/**
+ * A custom hook that provides the current window size, updating its value when the window is resized.
+ * 
+ * The width and height are returned in an object, initially set to null, and updated with the current
+ * window dimensions. The resize event is throttled according to the specified delay.
+ *
+ * @param {number} [throttleDelay=100] - The delay in milliseconds to throttle the resize event handler (default is 100ms).
+ * @returns {WindowSize} - An object containing the width and height of the window.
+ */
+
 export function useWindowSize(throttleDelay = 100): WindowSize {
   const [windowSize, setWindowSize] = useState<WindowSize>({
     width: null,
