@@ -44,7 +44,7 @@ export interface UsePaginationReturn {
  */
 
 export const usePagination = ({
-    totalItems: initialTotalItems,
+    totalItems: initialTotalItems = 0,
     pageSize: initialPageSize = 10,
     currentPage: initialCurrentPage = 1,
     maxPagesToShow = 5,
@@ -96,7 +96,7 @@ export const usePagination = ({
         // 重新计算当前页，确保不超过新的总页数
         const newTotalPages = Math.ceil(totalItems / newPageSize);
         if (currentPage > newTotalPages) {
-            setCurrentPage(newTotalPages);
+            setCurrentPage(Math.max(1, newTotalPages));
         }
     };
 
