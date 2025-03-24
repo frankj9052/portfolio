@@ -15,7 +15,7 @@ export type NoqButtonProps = {
   width?: number,
 }
 
-const NoqButton = forwardRef<HTMLButtonElement, NoqButtonProps>(({
+export const NoqButton = forwardRef<HTMLButtonElement, NoqButtonProps>(({
   theme,
   size,
   height,
