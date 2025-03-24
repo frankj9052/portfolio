@@ -117,3 +117,14 @@ export const OpenAddTreatmentModalBtn: Story = {
     text: 'Label'
   }
 }
+
+export const SignUpForFree: Story = {
+  args: {
+    handleClick: () => { console.log("click") },
+    theme: 'Brand',
+    text: 'Sign up for Free!',
+    width: 262,
+    height: 60,
+    textStyle: 'text-center w-full'
+  }
+}

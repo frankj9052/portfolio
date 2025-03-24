@@ -11,10 +11,23 @@ export type NoqButtonProps = {
   text?: string,
   textStyle?: string,
   handleClick?: () => void,
-  height?: number
+  height?: number,
+  width?: number,
 }
 
-const NoqButton = forwardRef<HTMLButtonElement, NoqButtonProps>(({ theme, size, height, isDisabled, loading, icon, text, textStyle, handleClick, ...props }, ref) => {
+const NoqButton = forwardRef<HTMLButtonElement, NoqButtonProps>(({
+  theme,
+  size,
+  height,
+  width,
+  isDisabled,
+  loading,
+  icon,
+  text,
+  textStyle,
+  handleClick,
+  ...props
+}, ref) => {
   return (
     <button
       ref={ref}
@@ -27,16 +40,18 @@ const NoqButton = forwardRef<HTMLButtonElement, NoqButtonProps>(({ theme, size, 
       }, {
         "px-[8px] py-[4px] aw-[66px] h-[24px] text-[12px] ": size === 'sm',
         "px-[8px] py-[6px] aw-[76px] h-[33px]  text-[13px]": size === 'md',
-        "px-[8px] py-[8px] aw-[82px] h-[36px]  text-[14px]": size === 'lg'
+        "px-[8px] py-[8px] aw-[82px] h-[36px]  text-[14px]": size === 'lg',
+        "w-full": !size && !width,
       },
 
       )}
       disabled={isDisabled || loading}
       color="default"
-      onClick={handleClick}   
+      onClick={handleClick}
       style={{
         height: height && !size ? `${height}px` : '100%',
-      }}   
+        width: width && !size ? `${width}px` : '100%',
+      }}
     >
       {loading ? (
         <FrankSpinner
@@ -46,7 +61,7 @@ const NoqButton = forwardRef<HTMLButtonElement, NoqButtonProps>(({ theme, size, 
 
       )
         : (
-          <div className={clsx(`flex items-center gap-1 w-full ${textStyle ?? ''}`, {
+          <div className={clsx(`flex items-center gap-1 w-full`, {
             'justify-center': !text
           })}>
             {icon && (
@@ -54,7 +69,11 @@ const NoqButton = forwardRef<HTMLButtonElement, NoqButtonProps>(({ theme, size, 
                 {icon}
               </span>
             )}
-            {text}
+            <span
+              className={`${textStyle ?? ''}`}
+            >
+              {text}
+            </span>
           </div>
         )}
     </button>
