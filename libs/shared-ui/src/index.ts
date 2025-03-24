@@ -68,4 +68,5 @@ export * from './lib/Time-Input/FrankTimeInput';
 // useHooks
 export * from './lib/useHooks/useControlledState';
 export * from './lib/useHooks/useClickOutside';
+export * from './lib/useHooks/usePagination';
 export * from './lib/useHooks/useTimer';
