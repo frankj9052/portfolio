@@ -104,7 +104,7 @@ export function CardParallax({
     return (
         <div
             ref={container}
-            className="relative amt-[50vh]"
+            className="relative"
         >
             {
                 Children.map(children, (child, index) => {
