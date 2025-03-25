@@ -16,6 +16,7 @@ type CardProps = {
     isScaled?: boolean,
     gap?: number,
     startPoint?: number,
+    cardHeader?: ReactNode,
 }
 
 const Card = ({
@@ -27,6 +28,7 @@ const Card = ({
     isScaled,
     gap = 25,
     startPoint = 5,
+    cardHeader,
 }: CardProps) => {
     const container = useRef(null);
     const { scrollYProgress } = useScroll({
@@ -44,7 +46,7 @@ const Card = ({
         <div
             ref={container}
             className="h-screen flex items-center justify-center sticky top-0"
-        >
+        >            
             {/* Card */}
             <motion.div
                 style={{
@@ -53,6 +55,7 @@ const Card = ({
                 }}
                 className="flex flex-col relative origin-top"
             >
+                {index === 0 && cardHeader && cardHeader}
                 {/* body */}
                 {enhancedChildren}
             </motion.div>
@@ -62,6 +65,7 @@ const Card = ({
 
 export type CardParallaxProps = {
     children: ReactNode,
+    cardHeader?: ReactNode,
     isScaled?: boolean,
     gap?: number,
     startPoint?: number,
@@ -80,6 +84,7 @@ export type CardParallaxProps = {
 
 export function CardParallax({
     children,
+    cardHeader,
     isScaled,
     gap,
     startPoint,
@@ -120,6 +125,7 @@ export function CardParallax({
                             isScaled={isScaled}
                             gap={gap}
                             startPoint={startPoint}
+                            cardHeader={cardHeader}
                         />
                     )
                 })

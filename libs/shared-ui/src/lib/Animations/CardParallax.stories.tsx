@@ -28,6 +28,12 @@ const meta = {
                     />
                     <Story />
                 </div>
+                <div
+                    className='w-full h-screen bg-yellow-200'
+                />
+                <div
+                    className='w-full h-screen bg-pink-200'
+                />
             </div>
         )
     ]
@@ -65,7 +71,7 @@ export const Default: Story = {
     args: {
         isScaled: true,
         gap: 60,
-        startPoint: 25,
+        // startPoint: 25,
         children: color.map((color, index) => {
             return (
                 <Card
