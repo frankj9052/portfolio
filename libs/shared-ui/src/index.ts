@@ -2,6 +2,7 @@ export * from './lib/shared-ui';
 
 // Animations
 export * from './lib/Animations/BreathingGlow';
+export * from './lib/Animations/CardParallax';
 // Assets
 
 // AutoComplete
