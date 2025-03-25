@@ -1,6 +1,8 @@
 import { MotionValue, useScroll, useTransform, motion } from "framer-motion";
 import { Children, cloneElement, isValidElement, ReactElement, ReactNode, useEffect, useRef } from "react";
 import Lenis from 'lenis';
+import Image from "next/image";
+import { ImageType } from "@frankjia9052/shared-utils";
 
 type ScalableChildProps = {
     imageScale?: MotionValue<number>;
@@ -17,6 +19,7 @@ type CardProps = {
     gap?: number,
     startPoint?: number,
     cardHeader?: ReactNode,
+    backgroundImage?: ImageType
 }
 
 const Card = ({
@@ -29,6 +32,7 @@ const Card = ({
     gap = 25,
     startPoint = 5,
     cardHeader,
+    backgroundImage
 }: CardProps) => {
     const container = useRef(null);
     const { scrollYProgress } = useScroll({
@@ -46,7 +50,16 @@ const Card = ({
         <div
             ref={container}
             className="h-screen flex items-center justify-center sticky top-0"
-        >            
+        >
+            {
+                index === 0 && backgroundImage&& <Image
+                    width={backgroundImage?.width}
+                    height={backgroundImage?.height}
+                    alt={backgroundImage?.alt || 'bg'}
+                    src={backgroundImage?.src || ''}
+                    className="absolute w-full h-full object-cover"
+                />
+            }
             {/* Card */}
             <motion.div
                 style={{
@@ -69,6 +82,7 @@ export type CardParallaxProps = {
     isScaled?: boolean,
     gap?: number,
     startPoint?: number,
+    backgroundImage?: ImageType,
 }
 /**
  * A component that creates a parallax effect by scaling and positioning
@@ -76,9 +90,11 @@ export type CardParallaxProps = {
  * Require: framer-motion, lenis
  *
  * @param children The children to render inside the parallax. include imageScale:MotionValue<number> in props if it include img and need scale requirement.
+ * @param cardHeader The header of the parallax.
  * @param isScaled Whether the children should be scaled.
  * @param gap The gap between each child.
  * @param startPoint The starting point of the parallax effect, in screen view.
+ * @param backgroundImage The background image of the parallax effect.
  * @returns A JSX element that renders the parallax effect.
  */
 
@@ -88,6 +104,7 @@ export function CardParallax({
     isScaled,
     gap,
     startPoint,
+    backgroundImage,
 }: CardParallaxProps) {
     const container = useRef(null);
     const { scrollYProgress } = useScroll({
@@ -126,6 +143,7 @@ export function CardParallax({
                             gap={gap}
                             startPoint={startPoint}
                             cardHeader={cardHeader}
+                            backgroundImage={backgroundImage}
                         />
                     )
                 })

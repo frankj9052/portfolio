@@ -72,6 +72,12 @@ export const Default: Story = {
         isScaled: true,
         gap: 60,
         // startPoint: 25,
+        backgroundImage: {
+            width: 1502,
+            height: 962,
+            alt: 'bg',
+            src: 'https://static.vecteezy.com/system/resources/previews/001/971/264/non_2x/beautiful-cherry-blossom-with-bokeh-lights-background-concept-free-vector.jpg',
+        },
         children: color.map((color, index) => {
             return (
                 <Card
