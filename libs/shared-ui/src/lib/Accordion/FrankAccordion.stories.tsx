@@ -34,6 +34,27 @@ const meta = {
             control: { type: "radio" },
             defaultValue: "light",
         },
+        defaultExpandedKeys: {
+            description: "Iterable of item keys that should be expanded by default.",
+            control: "object",
+        },
+        disabledKeys: {
+            description: "Iterable of item keys that should be disabled (not expandable).",
+            control: "object",
+        },
+        selectedKeys: {
+            description: "Iterable of keys currently selected (controlled behavior).",
+            control: "object",
+        },
+        setSelectedKeys: {
+            description: "Callback function triggered when selection changes (controlled behavior).",
+            control: false, // functions usually not controllable in Storybook
+        },
+        hideShadow: {
+            description: "If true, hides box-shadow styling for the accordion container.",
+            control: "boolean",
+            defaultValue: false,
+        },
     }
 } satisfies Meta<typeof FrankAccordion>
 
