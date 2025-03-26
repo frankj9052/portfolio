@@ -52,7 +52,7 @@ const Card = ({
             className="h-screen flex items-center justify-center sticky top-0"
         >
             {
-                index === 0 && backgroundImage&& <Image
+                index === 0 && backgroundImage && <Image
                     width={backgroundImage?.width}
                     height={backgroundImage?.height}
                     alt={backgroundImage?.alt || 'bg'}
@@ -83,6 +83,7 @@ export type CardParallaxProps = {
     gap?: number,
     startPoint?: number,
     backgroundImage?: ImageType,
+    wheelSpeed?: number,
 }
 /**
  * A component that creates a parallax effect by scaling and positioning
@@ -105,6 +106,7 @@ export function CardParallax({
     gap,
     startPoint,
     backgroundImage,
+    wheelSpeed = 1.2
 }: CardParallaxProps) {
     const container = useRef(null);
     const { scrollYProgress } = useScroll({
@@ -113,7 +115,11 @@ export function CardParallax({
     })
 
     useEffect(() => {
-        const lenis = new Lenis();
+        const lenis = new Lenis({
+            duration: wheelSpeed, // default 1.2
+            easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // default easing function            
+            smoothWheel: true,
+        });
 
         function raf(time: number) {
             lenis.raf(time);
@@ -121,7 +127,7 @@ export function CardParallax({
         }
 
         requestAnimationFrame(raf);
-    }, [])
+    }, [wheelSpeed])
 
     return (
         <div
