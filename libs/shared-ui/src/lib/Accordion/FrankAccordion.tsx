@@ -43,6 +43,7 @@ export type FrankAccordionProps = {
  * - setSelectedKeys?: Callback function to update selected keys.
  * - hideShadow?: If true, removes shadows from accordion items.
  * - width?: Width of the accordion container.
+ * - disableIndicatorAnimation?: If true, disables the indicator animation.
  */
 
 export function FrankAccordion({
@@ -90,7 +91,6 @@ export function FrankAccordion({
                                 title={item.title}
                                 subtitle={item.subtitle}
                                 indicator={(isOpen) => {
-                                    console.log("is open check outside ===> ", isOpen.isOpen);
                                     if (item.indicator && item.indicator.isOpen && item.indicator.isClose) {
                                         return isOpen.isOpen ? item.indicator.isOpen : item.indicator.isClose;
                                     }
