@@ -1,5 +1,8 @@
 export * from './lib/shared-ui';
 
+// Accordion
+export * from './lib/Accordion/FrankAccordion';
+
 // Animations
 export * from './lib/Animations/BreathingGlow';
 export * from './lib/Animations/CardParallax';
