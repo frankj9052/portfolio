@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { AccordionItemType, FrankAccordion } from './FrankAccordion';
-
+import { FaMinus, FaPlus } from "react-icons/fa6";
 const meta = {
     component: FrankAccordion,
     tags: ['autodocs'],
@@ -99,6 +99,7 @@ export const Default: Story = {
         hideShadow: true,
         width: 512,
         variant: 'splitted',
+        disableIndicatorAnimation: true,
         items: items.map((item, index) => ({
             ariaLabel: item.ariaLabel,
             title: <div
@@ -108,6 +109,10 @@ export const Default: Story = {
                 className='text-[14px] font-inter text-[#666]'
             >{item.content}</div>,
             key: index,
+            indicator: {
+                isOpen: <FaMinus className='text-[#313131]'/>,
+                isClose: <FaPlus className='text-[#313131]'/>
+            },            
         }))
     },
 }

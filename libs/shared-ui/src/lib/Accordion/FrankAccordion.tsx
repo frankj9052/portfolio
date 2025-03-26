@@ -10,7 +10,7 @@ export type AccordionItemType = {
     subtitle?: string,
     indicator?: {
         isOpen: ReactNode,
-        isClosed: ReactNode,
+        isClose: ReactNode,
     }
 }
 
@@ -24,6 +24,7 @@ export type FrankAccordionProps = {
     setSelectedKeys?: (keys: Iterable<string | number>) => void,
     hideShadow?: boolean,
     width?: number,
+    disableIndicatorAnimation?: boolean,
 }
 
 /**
@@ -53,7 +54,8 @@ export function FrankAccordion({
     selectedKeys,
     setSelectedKeys,
     hideShadow,
-    width
+    width,
+    disableIndicatorAnimation,
 }: FrankAccordionProps) {
     const [selectedKeysState, setSelectedKeysState] = useControlledState(
         selectedKeys,
@@ -77,6 +79,7 @@ export function FrankAccordion({
                 }}
                 className={`${hideShadow && "shadow-none"} px-0`}
                 fullWidth
+                disableIndicatorAnimation={disableIndicatorAnimation}
             >
                 {
                     items && items.map((item, index) => {
@@ -87,8 +90,9 @@ export function FrankAccordion({
                                 title={item.title}
                                 subtitle={item.subtitle}
                                 indicator={(isOpen) => {
-                                    if (item.indicator && item.indicator.isOpen && item.indicator.isClosed) {
-                                        return isOpen ? item.indicator.isOpen : item.indicator.isClosed
+                                    console.log("is open check outside ===> ", isOpen.isOpen);
+                                    if (item.indicator && item.indicator.isOpen && item.indicator.isClose) {
+                                        return isOpen.isOpen ? item.indicator.isOpen : item.indicator.isClose;
                                     }
                                 }}
                                 classNames={{
