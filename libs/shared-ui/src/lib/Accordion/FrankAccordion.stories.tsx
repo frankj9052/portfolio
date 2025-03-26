@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { FrankAccordion } from './FrankAccordion';
+import { AccordionItemType, FrankAccordion } from './FrankAccordion';
 
 const meta = {
     component: FrankAccordion,
@@ -22,11 +22,6 @@ const meta = {
             options: ["multiple", "single", "none"],
             control: { type: "radio" },
             defaultValue: "multiple",
-        },
-        isCompact: {
-            description: "Enables compact mode with reduced padding and spacing.",
-            control: "boolean",
-            defaultValue: false,
         },
         variant: {
             description: "Defines the visual style of the Accordion. Each variant applies a different design treatment.",
@@ -55,25 +50,64 @@ const meta = {
             control: "boolean",
             defaultValue: false,
         },
+        width: {
+            description: "Sets a fixed width (in pixels) for the accordion container.",
+            control: { type: "number" },
+            defaultValue: undefined,
+        },
     }
 } satisfies Meta<typeof FrankAccordion>
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+const items: AccordionItemType[] = [
+    {
+        ariaLabel: "What is Noq Clinic, and how does it work?",
+        title: "What is Noq Clinic, and how does it work?",
+        content: "Noq Clinic is an online healthcare booking platform that helps you find and book appointments with trusted doctors, specialists, and healthcare providers. Simply search for a doctor based on specialty, location, or availability, select a time that works for you, and confirm your appointment—all in just a few clicks.",
+    },
+    {
+        ariaLabel: "How do I search for a doctor on Noq Clinic?",
+        title: "How do I search for a doctor on Noq Clinic?",
+        content: "Noq Clinic is an online healthcare booking platform that helps you find and book appointments with trusted doctors, specialists, and healthcare providers. Simply search for a doctor based on specialty, location, or availability, select a time that works for you, and confirm your appointment—all in just a few clicks.",
+    },
+    {
+        ariaLabel: "Is Noq Clinic free to use for patients?",
+        title: "Is Noq Clinic free to use for patients?",
+        content: "Noq Clinic is an online healthcare booking platform that helps you find and book appointments with trusted doctors, specialists, and healthcare providers. Simply search for a doctor based on specialty, location, or availability, select a time that works for you, and confirm your appointment—all in just a few clicks.",
+    },
+    {
+        ariaLabel: "What types of healthcare providers are available on Noq Clinic?",
+        title: "What types of healthcare providers are available on Noq Clinic?",
+        content: "Noq Clinic is an online healthcare booking platform that helps you find and book appointments with trusted doctors, specialists, and healthcare providers. Simply search for a doctor based on specialty, location, or availability, select a time that works for you, and confirm your appointment—all in just a few clicks.",
+    },
+    {
+        ariaLabel: "How do I know if a doctor is accepting new patients?",
+        title: "How do I know if a doctor is accepting new patients?",
+        content: "Noq Clinic is an online healthcare booking platform that helps you find and book appointments with trusted doctors, specialists, and healthcare providers. Simply search for a doctor based on specialty, location, or availability, select a time that works for you, and confirm your appointment—all in just a few clicks.",
+    },
+    {
+        ariaLabel: "Can I book appointments for family members?",
+        title: "Can I book appointments for family members?",
+        content: "Noq Clinic is an online healthcare booking platform that helps you find and book appointments with trusted doctors, specialists, and healthcare providers. Simply search for a doctor based on specialty, location, or availability, select a time that works for you, and confirm your appointment—all in just a few clicks.",
+    },
+]
+
 export const Default: Story = {
     args: {
-        items: [
-            {
-                ariaLabel: "test aria-label 1",
-                title: "test title 1",
-                content: <div>This is test content 1</div>
-            },
-            {
-                ariaLabel: "test aria-label 2",
-                title: "test title 2",
-                content: <div>This is test content 2</div>
-            },
-        ]
+        hideShadow: true,
+        width: 512,
+        variant: 'splitted',
+        items: items.map((item, index) => ({
+            ariaLabel: item.ariaLabel,
+            title: <div
+                className='font-[500] font-inter text-[#313131]'
+            >{item.title}</div>,
+            content: <div
+                className='text-[14px] font-inter text-[#666]'
+            >{item.content}</div>,
+            key: index,
+        }))
     },
 }
