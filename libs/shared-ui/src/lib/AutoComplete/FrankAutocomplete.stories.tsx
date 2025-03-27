@@ -42,7 +42,7 @@ export const Default: Story = {
     },
     decorators: [
         (Story, context) => {
-            const [input, setInput] = useState<string | undefined>(undefined);
+            const [input, setInput] = useState<string>("");
             const [predictions, setPredictions] = useState<PredictionsType[]>([]);
             const fetchPredictions = useRef(
                 debounce((query: string | undefined) => {
@@ -54,6 +54,18 @@ export const Default: Story = {
                             })
                             .catch((error) => {
                                 console.log("error ===> ", error);
+                                // temp test
+                                setPredictions([
+                                    {
+                                        description: query ?? '',
+                                        matched_substrings: [],
+                                        place_id: '',
+                                        reference: '',
+                                        structured_formatting: undefined,
+                                        terms: [],
+                                        types: []
+                                    }
+                                ])
                             });
                     } else {
                         setPredictions([]);
@@ -65,6 +77,7 @@ export const Default: Story = {
             useEffect(() => {
                 fetchPredictions(input);
             }, [input, fetchPredictions])
+
             return (
                 <div className='w-[288px]'>
                     <Story

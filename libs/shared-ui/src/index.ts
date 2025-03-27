@@ -10,6 +10,7 @@ export * from './lib/Animations/CardParallax';
 
 // AutoComplete
 export * from './lib/AutoComplete/FrankAutocomplete';
+export * from './lib/AutoComplete/NoqPublicSearchBar';
 
 // Avatar
 export * from './lib/Avatar/FrankAvatar';
