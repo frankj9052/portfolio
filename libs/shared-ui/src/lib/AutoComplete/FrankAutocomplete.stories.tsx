@@ -30,8 +30,6 @@ type PredictionsType = {
 
 export const Default: Story = {
     args: {
-        label: <div className='text-[#303030] text-[13px] font-inter font-[500]'>Enter Address</div>,
-        labelPlacement: 'outside',
         placeholder: 'Enter Address',
         variant: 'bordered',
         radius: 'sm',
@@ -39,6 +37,7 @@ export const Default: Story = {
             console.log("key ===> ", key);
         },
         endContent: <IoSearchOutline />,
+        height:32,
     },
     decorators: [
         (Story, context) => {
@@ -102,8 +101,6 @@ export const Default: Story = {
 
 export const ProviderAutocomplete: Story = {
     args: {
-        label: <div className='font-[500] font-inter text-[14px] text-[#303030]'>Schedule for</div>,
-        labelPlacement: 'outside',
         placeholder: 'Select a provider',
         variant: 'bordered',
         radius: 'sm',
@@ -129,6 +126,6 @@ export const ProviderAutocomplete: Story = {
                 textValue: 'Cat 01'
             },
         ],
-        defaultFilter: true
+        defaultFilter: true,
     }
 }
