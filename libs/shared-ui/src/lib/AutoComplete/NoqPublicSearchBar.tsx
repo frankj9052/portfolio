@@ -17,13 +17,15 @@ export type NoqPublicSearchBarProps = {
         onInputChange?: (value: string) => void,
         onSelectionChange?: (key: Key | null) => void,
         addressPlaceholder?: string,
-    }
+    },
+    handleSearchSubmit?: () => void,
 }
 
 export function NoqPublicSearchBar({
     height,
     searchMainInput,
-    searchAddressInput
+    searchAddressInput,
+    handleSearchSubmit
 }: NoqPublicSearchBarProps) {
     return (
         <div
@@ -93,6 +95,7 @@ export function NoqPublicSearchBar({
                             backgroundColor="#0C534F"
                             disableRipple
                             radius="full"
+                            onPress={handleSearchSubmit}
                             customizeContent={
                                 <div
                                     className="flex h-full items-center justify-center gap-[10px] font-inter text-white"
