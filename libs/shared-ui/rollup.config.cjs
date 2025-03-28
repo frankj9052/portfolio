@@ -21,7 +21,13 @@ module.exports = withNx(
       'react-icons',
       'swiper',
       'framer-motion',
-      'lenis'
+      'lenis',
+      "@fullcalendar/core",
+      "@fullcalendar/daygrid",
+      "@fullcalendar/interaction",
+      "@fullcalendar/list",
+      "@fullcalendar/react",
+      "@fullcalendar/timegrid",
     ],
     format: ['esm', 'cjs'],
     assets: [{ input: 'libs/shared-ui', output: '.', glob: 'README.md' }]

@@ -57,6 +57,7 @@ export function FrankAutocomplete({
       }}
     >
       <Autocomplete
+        aria-hidden={false}
         className="h-full"
         placeholder={placeholder}
         defaultItems={defaultItems ?? []}

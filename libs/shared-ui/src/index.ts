@@ -23,6 +23,7 @@ export * from './lib/Button/NoqButton';
 
 // Calendar
 export * from './lib/Calendar/FrankCalendar';
+export * from './lib/Calendar/FrankFullCalendar';
 
 // Carousel
 export * from './lib/Carousel/FrankCarousel';

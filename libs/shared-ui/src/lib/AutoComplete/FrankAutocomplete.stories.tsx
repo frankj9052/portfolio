@@ -30,6 +30,7 @@ type PredictionsType = {
 
 export const Default: Story = {
     args: {
+        ariaLabel: "storybook test",
         placeholder: 'Enter Address',
         variant: 'bordered',
         radius: 'sm',
@@ -101,6 +102,7 @@ export const Default: Story = {
 
 export const ProviderAutocomplete: Story = {
     args: {
+        ariaLabel: "storybook test",
         placeholder: 'Select a provider',
         variant: 'bordered',
         radius: 'sm',
