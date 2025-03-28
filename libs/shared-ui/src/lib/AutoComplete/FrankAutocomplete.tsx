@@ -10,6 +10,7 @@ export type DefaultAutocompleteItemsType = {
 }
 
 export type FrankAutocompleteProps = {
+  ariaLabel: string;
   className?: string;
   placeholder?: string;
   defaultItems?: DefaultAutocompleteItemsType[];
@@ -32,6 +33,7 @@ export type FrankAutocompleteProps = {
 }
 
 export function FrankAutocomplete({
+  ariaLabel,
   placeholder,
   defaultItems,
   defaultFilter,
@@ -90,6 +92,7 @@ export function FrankAutocomplete({
         onSelectionChange={onSelectionChange}
         inputValue={inputValue}
         onInputChange={onInputChange}
+        aria-label={ariaLabel}
         {...(!defaultFilter && { defaultFilter: () => true })}
       >
         {(item) => <AutocompleteItem

@@ -52,8 +52,8 @@ export function NoqPublicSearchBar({
                         defaultItems={searchMainInput?.defaultItems}
                         onInputChange={searchMainInput?.onInputChange}
                         onSelectionChange={searchMainInput?.onSelectionChange}
-                        defaultFilter={false}
-
+                        defaultFilter={false}    
+                        ariaLabel="Specialty, condition, or procedure search"                    
                     />
                 </div>
                 {/* Divider */}
@@ -85,6 +85,7 @@ export function NoqPublicSearchBar({
                         onInputChange={searchAddressInput?.onInputChange}
                         onSelectionChange={searchAddressInput?.onSelectionChange}
                         defaultFilter={false}
+                        ariaLabel="Location search"
                     />
                     <div
                         className="hidden lg:block mr-[10px]"
