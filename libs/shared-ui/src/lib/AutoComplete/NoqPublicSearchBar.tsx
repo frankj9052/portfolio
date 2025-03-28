@@ -114,6 +114,7 @@ export function NoqPublicSearchBar({
                     height={48}
                     backgroundColor="#0C534F"
                     disableRipple
+                    onPress={handleSearchSubmit}
                     customizeContent={
                         <div
                             className="flex h-full items-center justify-center gap-[10px] font-inter text-white"
