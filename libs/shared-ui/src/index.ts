@@ -71,8 +71,9 @@ export * from './lib/SVGIcon/FrankSVGIcon';
 export * from './lib/Time-Input/FrankTimeInput';
 
 // useHooks
-export * from './lib/useHooks/useControlledState';
 export * from './lib/useHooks/useClickOutside';
+export * from './lib/useHooks/useControlledState';
+export * from './lib/useHooks/useDebouncedCallback';
 export * from './lib/useHooks/usePagination';
 export * from './lib/useHooks/useTimer';
 export * from './lib/useHooks/useWindowSize';

@@ -12,14 +12,6 @@ const truncateString = (text?: string | null, num = 50): (string | null) => {
     return null;
 }
 
-function debounce<T extends (...args: any[]) => void>(func: T, delay: number) {
-    let timer: ReturnType<typeof setTimeout>;
-    return (...args: Parameters<T>) => {
-        clearTimeout(timer);
-        timer = setTimeout(() => func(...args), delay);
-    };
-}
-
 /**
  * hello => Hello;
  * WORLD => World
@@ -54,7 +46,6 @@ function formatNumberString(input: string | number, length: number): string {
 
 export {
     truncateString,
-    debounce,
     capitalize,
     formatNumberString,
 }
