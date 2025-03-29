@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { FrankFullCalendar } from './FrankFullCalendar';
+import { CalendarViewSwitcher } from './CalendarViewSwitcher';
 
 const meta = {
-    component: FrankFullCalendar,
+    component: CalendarViewSwitcher,
     tags: ['autodocs'],
     parameters: {
         layout: "centered"
@@ -10,14 +10,12 @@ const meta = {
 
     args: {
     },
-} satisfies Meta<typeof FrankFullCalendar>
+} satisfies Meta<typeof CalendarViewSwitcher>
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
     args: {
-        width: 1098,
-        height: 714
     },
 }

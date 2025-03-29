@@ -1,0 +1,7 @@
+.fullCalendar {
+    background-color: yellow;
+}
+
+.fullCalendar .fc-today-button {
+    background-color: red !important;
+}

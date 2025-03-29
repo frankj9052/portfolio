@@ -68,6 +68,11 @@ export * from './lib/StaticEffects/LinearGradientTextColor';
 // SVG Icon
 export * from './lib/SVGIcon/FrankSVGIcon';
 
+// Tabs
+export * from './lib/Tabs/CalendarViewSwitcher';
+export * from './lib/Tabs/FrankTabs';
+export * from './lib/Tabs/FrankArrowSwitcher';
+
 //  Time Input
 export * from './lib/Time-Input/FrankTimeInput';
 
