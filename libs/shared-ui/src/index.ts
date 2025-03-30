@@ -6,6 +6,7 @@ export * from './lib/Accordion/FrankAccordion';
 // Animations
 export * from './lib/Animations/BreathingGlow';
 export * from './lib/Animations/CardParallax';
+export * from './lib/Animations/NumberRiser';
 // Assets
 
 // AutoComplete
@@ -62,6 +63,7 @@ export * from './lib/Radio-Group/FrankRadioGroupBasic';
 export * from './lib/Spinner/FrankSpinner';
 
 // StaticEffects
+export * from './lib/StaticEffects/HeroTitle';
 export * from './lib/StaticEffects/LinearGradientTextColor';
 
 // SVG Icon

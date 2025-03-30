@@ -6,8 +6,10 @@ import { MediaIcons } from "./heroSectionLayout/MediaIcons"
 import { FrankButtonBase } from "@frankjia9052/shared-ui"
 import { motion } from "framer-motion"
 import { IoArrowDown } from "react-icons/io5";
+import { useRouter } from "next/navigation"
 
 export const HeroSectionLayout = () => {
+    const router = useRouter();
     return (
         <div
             className="flex flex-col gap-8"
@@ -58,7 +60,7 @@ export const HeroSectionLayout = () => {
                         </div>
                     }
                     disableRipple
-                    onPress={() => { console.log("click id 3") }}
+                    onPress={() => { router.push("/about") }}
                     radius="sm"
                     variant="light"
                     width={196}

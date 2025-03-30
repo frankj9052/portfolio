@@ -18,6 +18,7 @@ module.exports = {
         'color-input-border': '#B5B5B5',
         'color-text-black': '#0e2431',
         'color-text-gray': '#777',
+        'color-line': '#d7d7d7',
       },
       fontFamily: {
         'popins': ['Poppins', 'sans-serif'],
