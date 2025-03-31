@@ -1,7 +1,15 @@
 .fullCalendar {
-    background-color: yellow;
+    /* background-color: yellow; */
 }
 
 .fullCalendar .fc-today-button {
-    background-color: red !important;
+    /* background-color: red !important; */
+}
+
+.fullCalendar colgroup {
+    /* background-color: yellow; */
+}
+
+.fullCalendar .fc-col-header-cell {
+    border-top: 5px solid black !important;
 }

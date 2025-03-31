@@ -6,9 +6,12 @@ import listPlugin from '@fullcalendar/list';
 import styles from './FrankFullCalendar.module.css'
 import { useEffect, useRef, useState } from 'react';
 import { useControlledState } from '../useHooks/useControlledState';
-import { format } from 'date-fns';
+import { addDays, format, isEqual, isSameDay, subDays } from 'date-fns';
 import NoqButton from '../Button/NoqButton';
 import FrankButtonBase from '../Button/FrankButtonBase';
+import FrankArrowSwitcher from '../Tabs/FrankArrowSwitcher';
+import CalendarViewSwitcher from '../Tabs/CalendarViewSwitcher';
+import clsx from 'clsx';
 
 export type FrankFullCalendarProps = {
     width?: number,
@@ -63,6 +66,11 @@ export function FrankFullCalendar({
             if (todayBtn instanceof HTMLElement) {
                 todayBtn.classList.add(styles['fc-today-button']);
             }
+            const columnheaders = calendarWrapperRef.current.querySelectorAll('.fc-col-header-cell');
+            console.log("columnheader ===> ", columnheaders);
+            if (columnheaders && columnheaders.length > 0) {
+                columnheaders.forEach((columnheader) => columnheader.classList.add(styles['fc-col-header-cell']));
+            }
         }
     }, [])
 
@@ -85,16 +93,20 @@ export function FrankFullCalendar({
         >
             {/* Customer Header */}
             <div
-                className='bg-red-200 flex justify-between items-center'
+                className='flex justify-between items-center py-4'
             >
                 {/* Date */}
-                <div>
+                <div
+                    className='font-[500] text-2xl tracking-[-0.2px] text-[#303030]'
+                >
                     {
                         getDateBasedOnView(focusedDateState)
                     }
                 </div>
                 {/* Control */}
-                <div>
+                <div
+                    className='flex gap-3'
+                >
                     <FrankButtonBase
                         customizeContent={<div
                             className='font-inter text-[13px] text-[#303030] font-[500]'
@@ -110,6 +122,40 @@ export function FrankFullCalendar({
                         onPress={() => {
                             setFocusedDateState?.(new Date());
                             onFocusedDateChange?.(new Date());
+                        }}
+                    />
+                    <FrankArrowSwitcher
+                        handleLeftArrowClick={() => {
+                            if (currentViewState === 'timeGridWeek') {
+                                setFocusedDateState?.(subDays(focusedDateState, 7));
+                                onFocusedDateChange?.(subDays(focusedDateState, 7));
+                                return;
+                            }
+                            setFocusedDateState?.(subDays(focusedDateState, 1));
+                            onFocusedDateChange?.(subDays(focusedDateState, 1));
+                        }}
+                        handleRightArrowClick={() => {
+                            if (currentViewState === 'timeGridWeek') {
+                                setFocusedDateState?.(addDays(focusedDateState, 7));
+                                onFocusedDateChange?.(addDays(focusedDateState, 7));
+                                return;
+                            }
+                            setFocusedDateState?.(addDays(focusedDateState, 1));
+                            onFocusedDateChange?.(addDays(focusedDateState, 1));
+                        }}
+                    />
+                    <CalendarViewSwitcher
+                        handleClickLeftButton={() => {
+                            setCurrentViewState?.('listDay');
+                            onCurrentViewChange?.('listDay');
+                        }}
+                        handleClickMiddleButton={() => {
+                            setCurrentViewState?.('timeGridDay');
+                            onCurrentViewChange?.('timeGridDay');
+                        }}
+                        handleClickRightButton={() => {
+                            setCurrentViewState?.('timeGridWeek');
+                            onCurrentViewChange?.('timeGridWeek');
                         }}
                     />
                 </div>
@@ -132,21 +178,50 @@ export function FrankFullCalendar({
                 headerToolbar={false}
                 weekends={true}
                 allDaySlot={false}
-            // views={{
-            //     timeGridDay: {
-            //         titleFormat: {
-            //             day: 'numeric',
-            //             month: 'long',
-            //             year: 'numeric',
-            //         },
-            //     },
-            //     timeGridWeek: {
-            //         titleFormat: {
-            //             month: 'long',
-            //             year: 'numeric',
-            //         }
-            //     },
-            // }}
+                nowIndicator={true}   // 当前时间红线
+                editable={true}                
+                events={[
+                    {
+                        id: '1',
+                        title: 'nothing',
+                        start: '2025-03-29T10:00:00',
+                        end: '2025-03-29T11:00:00',
+                        color: '#C530C5'
+                    }
+                ]}
+                slotLabelContent={(args) => {
+                    const hour = args.date.getHours();
+                    return (
+                        <div
+                            className='text-[12px] leading-[16px] text-[#616161] select-none'
+                        >
+                            {hour}
+                        </div>
+                    )
+                }}
+                dayHeaderContent={(args) => {
+                    return (
+                        <div
+                            className={clsx('flex gap-1 font-[550] font-inter text-[12px] leading-[16px] tracking-[0px] text-[#003F3C] py-[8px] select-none', {
+                                'text-[#003F3C] font-bold': isSameDay(args.date, new Date()),
+                            })}
+                        >
+                            <span>
+                                {args.date.toLocaleDateString('en-US', { weekday: 'short' })}
+                            </span>
+                            <div>{args.date.getDate()}</div>
+                        </div>
+                    )
+                }}
+                eventContent={(args) => {
+                    return (
+                        <div
+                            className='absolute left-[-1px] top-[-1px] right-[-1px] bottom-[-1px] bg-red-200'
+                        >
+
+                        </div>
+                    )
+                }}
             />
         </div>
     )
