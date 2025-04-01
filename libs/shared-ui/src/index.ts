@@ -25,6 +25,11 @@ export * from './lib/Button/NoqButton';
 // Calendar
 export * from './lib/Calendar/FrankCalendar';
 export * from './lib/Calendar/FrankFullCalendar';
+export * from './lib/Calendar/FrankBigCalendar';
+export * from './lib/Calendar/FrankBigCalendarParts/TimeGridWeek';
+export * from './lib/Calendar/FrankBigCalendarParts/TimeGridDay';
+export * from './lib/Calendar/FrankBigCalendarParts/CalendarGrid';
+export * from './lib/Calendar/FrankBigCalendarParts/TimeScale';
 
 // Carousel
 export * from './lib/Carousel/FrankCarousel';

@@ -22,7 +22,7 @@ export type FrankFullCalendarProps = {
     onFocusedDateChange?: (newDate: Date) => void
 }
 
-export type CurrentViewType = 'timeGridWeek' | 'timeGridDay' | 'listDay'
+type CurrentViewType = 'timeGridWeek' | 'timeGridDay' | 'listDay'
 
 export function FrankFullCalendar({
     width,
@@ -59,20 +59,15 @@ export function FrankFullCalendar({
         }
     })
 
-    // 改元素
-    useEffect(() => {
-        if (calendarWrapperRef.current) {
-            const todayBtn = calendarWrapperRef.current.querySelector('.fc-today-button');
-            if (todayBtn instanceof HTMLElement) {
-                todayBtn.classList.add(styles['fc-today-button']);
-            }
-            const columnheaders = calendarWrapperRef.current.querySelectorAll('.fc-col-header-cell');
-            console.log("columnheader ===> ", columnheaders);
-            if (columnheaders && columnheaders.length > 0) {
-                columnheaders.forEach((columnheader) => columnheader.classList.add(styles['fc-col-header-cell']));
-            }
-        }
-    }, [])
+    // 添加元素类名
+    // useEffect(() => {
+    //     if (calendarWrapperRef.current) {
+    //         const fcEvents = calendarWrapperRef.current.querySelectorAll('.fc-event');
+    //         if (fcEvents && fcEvents.length > 0) {
+    //             fcEvents.forEach((fcEvents) => fcEvents.classList.add(styles['fc-event']));
+    //         }
+    //     }
+    // }, [])
 
     const getDateBasedOnView = (date: Date): string => {
         switch (currentViewState) {
@@ -179,14 +174,22 @@ export function FrankFullCalendar({
                 weekends={true}
                 allDaySlot={false}
                 nowIndicator={true}   // 当前时间红线
-                editable={true}                
+                editable={true}  
+                eventClassNames={styles['fc-event']}              
                 events={[
                     {
                         id: '1',
                         title: 'nothing',
-                        start: '2025-03-29T10:00:00',
-                        end: '2025-03-29T11:00:00',
-                        color: '#C530C5'
+                        start: '2025-03-31T10:00:00',
+                        end: '2025-03-31T11:00:00',
+                        color: 'transparent'
+                    },
+                    {
+                        id: '2',
+                        title: 'nothing',
+                        start: '2025-03-31T12:00:00',
+                        end: '2025-03-31T13:00:00',
+                        color: '#C53000'
                     }
                 ]}
                 slotLabelContent={(args) => {
@@ -202,7 +205,7 @@ export function FrankFullCalendar({
                 dayHeaderContent={(args) => {
                     return (
                         <div
-                            className={clsx('flex gap-1 font-[550] font-inter text-[12px] leading-[16px] tracking-[0px] text-[#003F3C] py-[8px] select-none', {
+                            className={clsx('flex gap-1 font-[550] font-inter text-[12px] leading-[16px] tracking-[0px] text-[#003F3C] py-[5px] select-none', {
                                 'text-[#003F3C] font-bold': isSameDay(args.date, new Date()),
                             })}
                         >
@@ -214,9 +217,10 @@ export function FrankFullCalendar({
                     )
                 }}
                 eventContent={(args) => {
+                    
                     return (
                         <div
-                            className='absolute left-[-1px] top-[-1px] right-[-1px] bottom-[-1px] bg-red-200'
+                            className='absolute left-[-1px] top-[-1px] right-[-1px] bottom-[-1px] bg-blue-200'
                         >
 
                         </div>

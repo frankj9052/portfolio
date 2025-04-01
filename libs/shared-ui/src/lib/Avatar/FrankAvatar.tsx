@@ -11,6 +11,19 @@ export type FrankAvatarProps = {
   className?: string,
 } & AvatarProps
 
+/**
+ * FrankAvatarProps defines the prop types for the FrankAvatar component.
+ * 
+ * @property {string} [name] - The user's name or nickname, used to display initials if no image is provided.
+ * @property {string} [src] - The URL of the avatar image.
+ * @property {"sm" | "md" | "lg"} [size] - The size of the avatar: small (sm), medium (md), or large (lg).
+ * @property {boolean} [isDisabled] - Whether to disable avatar interactions, such as click or hover effects.
+ * @property {boolean} [isBordered] - Whether to display a border around the avatar.
+ * @property {"sm" | "md" | "lg" | "none" | "full"} [radius] - The border radius of the avatar: small, medium, large, none, or full (circle).
+ * @property {string} [className] - Custom CSS class for additional styling.
+ * 
+ * Inherits all original props from AvatarProps provided by @heroui/react.
+ */
 export const FrankAvatar = forwardRef<HTMLDivElement, FrankAvatarProps>(
   (
     {

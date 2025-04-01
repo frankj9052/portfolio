@@ -108,6 +108,38 @@ function timeAgo(date: string) {
     return formatDistance(new Date(date), new Date()) + ' ago';
 }
 
+/**
+ * Generates an array of dates with 30-minute intervals between the given start time and end time.
+ * 
+ * @param {Date} startTime - The start time of the time range.
+ * @param {Date} endTime - The end time of the time range.
+ * @returns {Date[]} An array of dates with 30-minute intervals between the start time and end time.
+ * 
+ * @example
+ * const startTime = new Date(2025, 0, 15, 8, 0, 0, 0); // 2025-01-15 08:00:00
+ * const endTime = new Date(2025, 0, 15, 18, 0, 0, 0); // 2025-01-15 18:00:00
+ * const timeArray = generateTimeArray(startTime, endTime);
+ * console.log(timeArray);
+ * // [
+ * //   2025-01-15T08:00:00.000Z,
+ * //   2025-01-15T08:30:00.000Z,
+ * //   2025-01-15T09:00:00.000Z,
+ * //   ...,
+ * //   2025-01-15T17:30:00.000Z,
+ * // ]
+ */
+function generateTimeArray(startTime: Date, endTime: Date): Date[] {
+    const timeArray: Date[] = [];
+    const currentTime = new Date(startTime);
+
+    while (currentTime <= endTime) {
+        timeArray.push(new Date(currentTime));
+        currentTime.setMinutes(currentTime.getMinutes() + 30);
+    }
+
+    return timeArray
+}
+
 export {
     isValidDate,
     dateToCalendarDate,
@@ -116,5 +148,6 @@ export {
     numberToMonthName,
     calculateAge,
     formatShortDateTime,
-    timeAgo
+    timeAgo,
+    generateTimeArray
 }

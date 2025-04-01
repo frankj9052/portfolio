@@ -21,11 +21,11 @@ export function CalendarViewSwitcher({
             {/* Left */}
             <div
                 className={clsx([
-                    "flex items-center justify-center border-[#E3E3E3] border-x-1 border-y-1 w-10 h-8 rounded-l-lg bg-white",
+                    "flex items-center justify-center border-[#E3E3E3] border-x-1 border-y-1 w-10 h-8 rounded-l-lg",
                 ], {
                     "bg-[#EBEBEB] text-[#4A4A4A]": currentSelection === "left",
                     "hover:bg-[#FAFAFA] hover:border-[#CCC]": currentSelection !== "left",
-                    "cursor-pointer": currentSelection !== "left",
+                    "cursor-pointer bg-white": currentSelection !== "left",
                 })}
                 onClick={() => {
                     setCurrentSelection("left");
@@ -43,11 +43,11 @@ export function CalendarViewSwitcher({
             {/* Middle */}
             <div
                 className={clsx([
-                    "flex items-center justify-center border-[#E3E3E3] border-x-1 border-y-1 w-10 h-8 bg-white -ml-px",
+                    "flex items-center justify-center border-[#E3E3E3] border-x-1 border-y-1 w-10 h-8 -ml-px",
                 ], {
                     "bg-[#EBEBEB] text-[#4A4A4A]": currentSelection === "middle",
                     "hover:bg-[#FAFAFA] hover:border-[#CCC]": currentSelection !== "middle",
-                    "cursor-pointer": currentSelection !== "middle",
+                    "cursor-pointer bg-white": currentSelection !== "middle",
                 })}
                 onClick={() => {
                     setCurrentSelection("middle");
@@ -65,11 +65,11 @@ export function CalendarViewSwitcher({
             {/* Right */}
             <div
                 className={clsx([
-                    "flex items-center justify-center border-[#E3E3E3] border-x-1 border-y-1 w-10 h-8 rounded-r-xl bg-white -ml-px",
+                    "flex items-center justify-center border-[#E3E3E3] border-x-1 border-y-1 w-10 h-8 rounded-r-xl -ml-px",
                 ], {
                     "bg-[#EBEBEB] text-[#4A4A4A]": currentSelection === "right",
                     "hover:bg-[#FAFAFA] hover:border-[#CCC]": currentSelection !== "right",
-                    "cursor-pointer": currentSelection !== "right",
+                    "cursor-pointer bg-white": currentSelection !== "right",
                 })}
                 onClick={() => {
                     setCurrentSelection("right");
