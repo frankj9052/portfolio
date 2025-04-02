@@ -2,9 +2,11 @@ import TimeScale from "./TimeScale";
 import CalendarGrid, { CalendarGridRef } from "./CalendarGrid";
 import { ShiftType } from "../FrankBigCalendar";
 import { format } from "date-fns";
-import Image from "next/image";
 import FrankAvatar from "../../Avatar/FrankAvatar";
 import { useEffect, useRef, useState } from "react";
+import DraggableShift from "./DraggableShift";
+import { ResizableShift } from "./ResizableShift";
+import { DropContainer } from "./DropContainer";
 
 // 工具函数：计算 top 偏移（距离顶部像素）
 const getTopOffset = (
@@ -58,7 +60,6 @@ export function TimeGridDay({
     useEffect(() => {
         if (calenderRef.current) {
             const { scrollHeight, clientHeight } = calenderRef.current;
-            console.log('scrollHeight', scrollHeight, 'clientHeight', clientHeight)
             calenderRef.current.scrollTop = (scrollHeight - clientHeight) / 2;
         }
     }, [])
@@ -163,11 +164,12 @@ export function TimeGridDay({
                     />
 
                     {/* 渲染医生shift */}
-                    <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
+                    <div className="absolute top-0 left-0 w-full z-[5] h-full">
                         {groupedKeys.map((key, colIndex) => {
                             const shifts = groupedByDoctorPerDay[key];
                             const widthPercent = 100 / totalColumns;
                             const leftPercent = colIndex * widthPercent;
+                            const firstShift = shifts[0];
 
                             return (
                                 <div
@@ -180,27 +182,47 @@ export function TimeGridDay({
                                         left: `${leftPercent}%`,
                                     }}
                                 >
-                                    {shifts.map((shift, sIdx) => {
-                                        const top = getTopOffset(shift.startTime, startHour, actualRowHeight, intervalPerHour);
-                                        const height = getEventHeight(shift.startTime, shift.endTime, actualRowHeight, intervalPerHour);
-
-                                        return (
-                                            <div
-                                                key={`${shift.doctorUserId}-${sIdx}`}
-                                                className="absolute w-[calc(100%-2px)] rounded text-white text-xs px-2 py-1"
-                                                style={{
-                                                    top,
-                                                    height,
-                                                    backgroundColor: shift.backgroundColor,
-                                                }}
-                                            >
-                                                <div className="font-semibold truncate">{shift.doctorName}</div>
-                                                <div className="text-[10px]">
-                                                    {format(shift.startTime, "HH:mm")} - {format(shift.endTime, "HH:mm")}
-                                                </div>
-                                            </div>
-                                        );
-                                    })}
+                                    <DropContainer
+                                        doctorUserId={firstShift.doctorUserId}
+                                        startHour={startHour}
+                                        rowHeight={actualRowHeight}
+                                        intervalPerHour={intervalPerHour}
+                                        onDrop={(shift, newStart, newEnd) => {
+                                            console.log("新时间：", newStart, newEnd, "ShiftId:", shift.doctorUserId);
+                                            // TODO: 在此调用更新函数
+                                        }}
+                                    >
+                                        {shifts.map((shift, sIdx) => {
+                                            const top = getTopOffset(shift.startTime, startHour, actualRowHeight, intervalPerHour);
+                                            const height = getEventHeight(shift.startTime, shift.endTime, actualRowHeight, intervalPerHour);
+                                            const containerWidth = width || calenderRef.current?.clientWidth || 0;
+                                            const columnWidth = containerWidth * (widthPercent / 100);
+                                            return (
+                                                <DraggableShift
+                                                    shift={shift}
+                                                    key={`${shift.doctorUserId}-${sIdx}`}
+                                                    rowHeight={actualRowHeight}
+                                                    intervalPerHour={intervalPerHour}
+                                                    startHour={startHour}
+                                                >
+                                                    <div
+                                                        className="absolute w-[calc(100%-2px)] rounded text-white text-xs px-2 py-1"
+                                                        style={{
+                                                            top,
+                                                            height,
+                                                            backgroundColor: shift.backgroundColor,
+                                                        }}
+                                                    >
+                                                        <div className="font-semibold truncate">{shift.doctorName}</div>
+                                                        <div className="text-[10px]">
+                                                            <div>top: {top}</div>
+                                                            {format(shift.startTime, "HH:mm")} - {format(shift.endTime, "HH:mm")}
+                                                        </div>
+                                                    </div>
+                                                </DraggableShift>
+                                            );
+                                        })}
+                                    </DropContainer>
                                 </div>
                             );
                         })}
@@ -213,3 +235,41 @@ export function TimeGridDay({
 }
 
 export default TimeGridDay;
+
+// const temp = () => {
+//     return (
+//         <DraggableShift
+//             shift={shift}
+//             key={`${shift.doctorUserId}-${sIdx}`}
+//             rowHeight={actualRowHeight}
+//             intervalPerHour={intervalPerHour}
+//             startHour={startHour}
+//         >
+//             <ResizableShift
+//                 width={columnWidth}
+//                 height={height}
+//                 rowHeight={actualRowHeight}
+//                 onResizeStop={(deltaMinutes) => {
+//                     const newEnd = new Date(shift.endTime.getTime() + deltaMinutes * 60000);
+//                     // TODO: 回传更新函数
+//                     console.log("新的结束事件", newEnd);
+//                 }}
+//             >
+//                 <div
+//                     className="absolute w-[calc(100%-2px)] rounded text-white text-xs px-2 py-1"
+//                     style={{
+//                         top,
+//                         height,
+//                         backgroundColor: shift.backgroundColor,
+//                     }}
+//                 >
+//                     <div className="font-semibold truncate">{shift.doctorName}</div>
+//                     <div className="text-[10px]">
+//                         <div>top: {top}</div>
+//                         {format(shift.startTime, "HH:mm")} - {format(shift.endTime, "HH:mm")}
+//                     </div>
+//                 </div>
+//             </ResizableShift>
+//         </DraggableShift>
+//     )
+// }

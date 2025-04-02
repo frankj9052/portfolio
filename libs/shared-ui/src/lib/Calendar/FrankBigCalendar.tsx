@@ -1,12 +1,13 @@
 import { Card } from "@heroui/react";
 import { useControlledState } from "../useHooks/useControlledState";
-import { addDays, format, subDays } from "date-fns";
+import { addDays, format, isSameDay, subDays } from "date-fns";
 import FrankButtonBase from "../Button/FrankButtonBase";
 import FrankArrowSwitcher from "../Tabs/FrankArrowSwitcher";
 import CalendarViewSwitcher from "../Tabs/CalendarViewSwitcher";
 import TimeGridWeek from "./FrankBigCalendarParts/TimeGridWeek";
 import TimeGridDay from "./FrankBigCalendarParts/TimeGridDay";
-import { useEffect, useRef } from "react";
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 
 export type ViewType = 'timeGridWeek' | 'timeGridDay' | 'listDay';
 export type BookingStatus = "AVAILABLE" | "BOOKED" | "UNAVAILABLE" | "PENDING" | "CANCELLED" | "ARRIVED" | "COMPLETE" | "MISS"
@@ -78,7 +79,7 @@ export function FrankBigCalendar({
         return <TimeGridWeek />
       case 'timeGridDay':
         return <TimeGridDay
-          shiftsData={shiftsData}
+          shiftsData={shiftsData.filter(shift => isSameDay(shift.startTime, focusedDateState))}
           startHour={0}
           endHour={24}
         />
@@ -91,90 +92,94 @@ export function FrankBigCalendar({
 
   // 切换视图
   return (
-    <Card
-      style={{
-        width: width ? `${width}px` : '100%',
-        height: height ? `${height}px` : '100%',
-      }}
-      shadow="sm"
-      className="px-4 pt-4 pb-7"
+    <DndProvider
+      backend={HTML5Backend}
     >
-      {/* Calendar Controller */}
-      <div
-        className='flex justify-between items-center pb-4'
+      <Card
+        style={{
+          width: width ? `${width}px` : '100%',
+          height: height ? `${height}px` : '100%',
+        }}
+        shadow="sm"
+        className="px-4 pt-4 pb-7"
       >
-        {/* Date */}
+        {/* Calendar Controller */}
         <div
-          className='font-[500] text-2xl tracking-[-0.2px] text-[#303030]'
+          className='flex justify-between items-center pb-4'
         >
-          {
-            getDateBasedOnView(focusedDateState)
-          }
+          {/* Date */}
+          <div
+            className='font-[500] text-2xl tracking-[-0.2px] text-[#303030]'
+          >
+            {
+              getDateBasedOnView(focusedDateState)
+            }
+          </div>
+          {/* Control */}
+          <div
+            className='flex gap-3'
+          >
+            <FrankButtonBase
+              customizeContent={<div
+                className='font-inter text-[13px] text-[#303030] font-[500]'
+              >
+                Today
+              </div>}
+              variant='bordered'
+              height={32}
+              width={62}
+              disableRipple
+              backgroundColor='#FFF'
+              radius='sm'
+              onPress={() => {
+                setFocusedDateState?.(new Date());
+                onFocusedDateChange?.(new Date());
+              }}
+            />
+            <FrankArrowSwitcher
+              handleLeftArrowClick={() => {
+                if (currentViewState === 'timeGridWeek') {
+                  setFocusedDateState?.(subDays(focusedDateState, 7));
+                  onFocusedDateChange?.(subDays(focusedDateState, 7));
+                  return;
+                }
+                setFocusedDateState?.(subDays(focusedDateState, 1));
+                onFocusedDateChange?.(subDays(focusedDateState, 1));
+              }}
+              handleRightArrowClick={() => {
+                if (currentViewState === 'timeGridWeek') {
+                  setFocusedDateState?.(addDays(focusedDateState, 7));
+                  onFocusedDateChange?.(addDays(focusedDateState, 7));
+                  return;
+                }
+                setFocusedDateState?.(addDays(focusedDateState, 1));
+                onFocusedDateChange?.(addDays(focusedDateState, 1));
+              }}
+            />
+            <CalendarViewSwitcher
+              handleClickLeftButton={() => {
+                setCurrentViewState?.('listDay');
+                onCurrentViewChange?.('listDay');
+              }}
+              handleClickMiddleButton={() => {
+                setCurrentViewState?.('timeGridDay');
+                onCurrentViewChange?.('timeGridDay');
+              }}
+              handleClickRightButton={() => {
+                setCurrentViewState?.('timeGridWeek');
+                onCurrentViewChange?.('timeGridWeek');
+              }}
+            />
+          </div>
         </div>
-        {/* Control */}
+        {/* Calendar Body */}
         <div
-          className='flex gap-3'
+          className="min-h-[calc(100%-48px)]"
         >
-          <FrankButtonBase
-            customizeContent={<div
-              className='font-inter text-[13px] text-[#303030] font-[500]'
-            >
-              Today
-            </div>}
-            variant='bordered'
-            height={32}
-            width={62}
-            disableRipple
-            backgroundColor='#FFF'
-            radius='sm'
-            onPress={() => {
-              setFocusedDateState?.(new Date());
-              onFocusedDateChange?.(new Date());
-            }}
-          />
-          <FrankArrowSwitcher
-            handleLeftArrowClick={() => {
-              if (currentViewState === 'timeGridWeek') {
-                setFocusedDateState?.(subDays(focusedDateState, 7));
-                onFocusedDateChange?.(subDays(focusedDateState, 7));
-                return;
-              }
-              setFocusedDateState?.(subDays(focusedDateState, 1));
-              onFocusedDateChange?.(subDays(focusedDateState, 1));
-            }}
-            handleRightArrowClick={() => {
-              if (currentViewState === 'timeGridWeek') {
-                setFocusedDateState?.(addDays(focusedDateState, 7));
-                onFocusedDateChange?.(addDays(focusedDateState, 7));
-                return;
-              }
-              setFocusedDateState?.(addDays(focusedDateState, 1));
-              onFocusedDateChange?.(addDays(focusedDateState, 1));
-            }}
-          />
-          <CalendarViewSwitcher
-            handleClickLeftButton={() => {
-              setCurrentViewState?.('listDay');
-              onCurrentViewChange?.('listDay');
-            }}
-            handleClickMiddleButton={() => {
-              setCurrentViewState?.('timeGridDay');
-              onCurrentViewChange?.('timeGridDay');
-            }}
-            handleClickRightButton={() => {
-              setCurrentViewState?.('timeGridWeek');
-              onCurrentViewChange?.('timeGridWeek');
-            }}
-          />
+          {getCalendar(currentViewState)}
         </div>
-      </div>
-      {/* Calendar Body */}
-      <div
-        className="min-h-[calc(100%-48px)]"
-      >
-        {getCalendar(currentViewState)}
-      </div>
-    </Card>
+      </Card>
+    </DndProvider>
   )
 }
 

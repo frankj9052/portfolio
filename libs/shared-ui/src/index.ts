@@ -26,9 +26,13 @@ export * from './lib/Button/NoqButton';
 export * from './lib/Calendar/FrankCalendar';
 export * from './lib/Calendar/FrankFullCalendar';
 export * from './lib/Calendar/FrankBigCalendar';
-export * from './lib/Calendar/FrankBigCalendarParts/TimeGridWeek';
-export * from './lib/Calendar/FrankBigCalendarParts/TimeGridDay';
+export * from './lib/Calendar/FrankBigCalendarParts/CalendarEventComponent';
 export * from './lib/Calendar/FrankBigCalendarParts/CalendarGrid';
+export * from './lib/Calendar/FrankBigCalendarParts/DraggableShift';
+export * from './lib/Calendar/FrankBigCalendarParts/DropContainer';
+export * from './lib/Calendar/FrankBigCalendarParts/ResizableShift';
+export * from './lib/Calendar/FrankBigCalendarParts/TimeGridDay';
+export * from './lib/Calendar/FrankBigCalendarParts/TimeGridWeek';
 export * from './lib/Calendar/FrankBigCalendarParts/TimeScale';
 
 // Carousel
