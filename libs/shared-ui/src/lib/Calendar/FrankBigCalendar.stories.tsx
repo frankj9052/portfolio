@@ -30,7 +30,34 @@ const shiftsData: ShiftType[] = [
         doctorName: 'Kale',
         backgroundColor: '#0071E9',
         appointments: []
-    }
+    },
+    {
+        startTime: set(today, {hours: 7, minutes: 0, seconds: 0, milliseconds: 0}),
+        endTime: set(today, {hours: 9, minutes: 0, seconds: 0, milliseconds: 0}),
+        photo: 'https://images.theconversation.com/files/304957/original/file-20191203-66986-im7o5.jpg?ixlib=rb-4.1.0&q=45&auto=format&w=1356&h=668&fit=crop',
+        doctorUserId: '03',
+        doctorName: 'Lily',
+        backgroundColor: '#E5A500',
+        appointments: []
+    },
+    {
+        startTime: set(today, {hours: 12, minutes: 15, seconds: 0, milliseconds: 0}),
+        endTime: set(today, {hours: 15, minutes: 15, seconds: 0, milliseconds: 0}),
+        photo: 'https://hips.hearstapps.com/hmg-prod/images/portrait-of-a-happy-young-doctor-in-his-clinic-royalty-free-image-1661432441.jpg?crop=0.66698xw:1xh;center,top&resize=640:*',
+        doctorUserId: '03',
+        doctorName: 'Lily',
+        backgroundColor: '#E5A500',
+        appointments: []
+    },
+    {
+        startTime: set(today, {hours: 16, minutes: 30, seconds: 0, milliseconds: 0}),
+        endTime: set(today, {hours: 21, minutes: 30, seconds: 0, milliseconds: 0}),
+        photo: 'https://hips.hearstapps.com/hmg-prod/images/portrait-of-a-happy-young-doctor-in-his-clinic-royalty-free-image-1661432441.jpg?crop=0.66698xw:1xh;center,top&resize=640:*',
+        doctorUserId: '03',
+        doctorName: 'Lily',
+        backgroundColor: '#E5A500',
+        appointments: []
+    },
 ]
 const meta = {
     component: FrankBigCalendar,

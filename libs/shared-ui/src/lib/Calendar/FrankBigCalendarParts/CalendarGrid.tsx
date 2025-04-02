@@ -11,6 +11,7 @@ export type CalendarGridProps = {
 
 export type CalendarGridRef = {
     getHeight: () => number | null;
+    getWidth: () => number | null;
 };
 
 export const CalendarGrid = forwardRef<CalendarGridRef, CalendarGridProps>(({
@@ -24,11 +25,12 @@ export const CalendarGrid = forwardRef<CalendarGridRef, CalendarGridProps>(({
     const gridRef = useRef<HTMLDivElement>(null);
     useImperativeHandle(ref, () => ({
         getHeight: () => gridRef.current?.offsetHeight ?? null,
+        getWidth: () => gridRef.current?.offsetWidth ?? null
     }));
 
     return (
         <div
-            className="grid border-t border-l border-gray-200 min-h-full"
+            className="grid border-t border-l border-gray-200 min-h-full relative"
             style={{
                 width: width ? `${width}px` : '100%',
                 gridTemplateColumns: `repeat(${columnCount}, 1fr)`,

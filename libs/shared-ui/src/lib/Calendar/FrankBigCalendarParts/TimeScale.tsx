@@ -1,3 +1,5 @@
+export const TIMESCALE_WIDTH = 32
+
 export type TimeScaleProps = {
     startHour?: number,
     endHour?: number,
@@ -17,7 +19,7 @@ export function TimeScale({
     })
     return (
         <div
-            className="grid text-sm font-inter h-full w-8"
+            className={`grid text-sm font-inter h-full w-[${TIMESCALE_WIDTH}px]`}
             style={{
 
             }}

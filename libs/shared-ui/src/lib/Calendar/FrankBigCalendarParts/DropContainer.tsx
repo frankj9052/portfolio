@@ -58,13 +58,6 @@ export const DropContainer = ({
                 height: '100%',
             }}
             className="relative"
-        // onDragOver={(e) => e.preventDefault()}
-        // onDrop={(e) => {
-        //     const item = JSON.parse(e.dataTransfer?.getData('text') || '{}');
-        //     if (item.doctorUserId !== doctorUserId) {
-        //         return; // 不允许拖到别的医生列
-        //     }
-        // }}
         >
             {children}
         </div>
