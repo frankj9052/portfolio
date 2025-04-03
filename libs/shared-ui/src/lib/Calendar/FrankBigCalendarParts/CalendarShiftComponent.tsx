@@ -1,7 +1,6 @@
-import { BookingStatus, ShiftType } from "../FrankBigCalendar";
+import { ShiftType } from "../FrankBigCalendar";
 import { convertHexToRGBA, getEventHeight, getTopOffset, shiftColor } from "@frankjia9052/shared-utils";
 import clsx from "clsx";
-import Image from "next/image";
 import { BiBlock } from "react-icons/bi";
 import FrankSVGIcon from "../../SVGIcon/FrankSVGIcon";
 

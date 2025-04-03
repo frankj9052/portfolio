@@ -28,6 +28,9 @@ module.exports = withNx(
       "@fullcalendar/list",
       "@fullcalendar/react",
       "@fullcalendar/timegrid",
+      'react-dnd',
+      'react-dnd-html5-backend',
+      'react-resizable'
     ],
     format: ['esm', 'cjs'],
     assets: [{ input: 'libs/shared-ui', output: '.', glob: 'README.md' }]

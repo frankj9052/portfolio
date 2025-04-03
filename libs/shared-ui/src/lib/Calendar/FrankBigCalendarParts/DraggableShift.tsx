@@ -39,8 +39,8 @@ export const DraggableShift = ({
             document.body.classList.add('dragging-pointer');
             return {
                 shift,
-                doctorUserId: shift.doctorUserId,
-                id: `${shift.doctorUserId}-${shift.startTime.getTime()}`,
+                doctorUserId: shift.providerUserId,
+                id: `${shift.providerUserId}-${shift.startTime.getTime()}`,
                 offset: offset.current
             }
         },
@@ -91,7 +91,7 @@ export const DraggableShift = ({
     }, [preview]);
 
     // 然后只在拖动当前元素时才显示 ghost
-    const isDraggingThisItem = draggingItem?.id === `${shift.doctorUserId}-${shift.startTime.getTime()}`;
+    const isDraggingThisItem = draggingItem?.id === `${shift.providerUserId}-${shift.startTime.getTime()}`;
 
 
     return (
