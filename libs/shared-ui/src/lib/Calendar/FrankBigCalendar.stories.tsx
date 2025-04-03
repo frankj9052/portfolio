@@ -11,7 +11,41 @@ const shiftsData: ShiftType[] = [
         doctorUserId: '01',
         doctorName: 'Thomas',
         backgroundColor: '#C530C5',
-        appointments: []
+        appointments: [
+            {
+                startTime: set(today, {hours: 10, minutes: 0, seconds: 0, milliseconds: 0}),
+                endTime: set(today, {hours: 11, minutes: 0, seconds: 0, milliseconds: 0}),
+                patientUserId: '01',
+                patientName: 'John',
+                clinicLocation: 'locationId01',
+                appointmentType: 'Online',
+                patientGender: 'Male',
+                patientAge: 20,
+                status: 'BOOKED',                
+            },
+            {
+                startTime: set(today, {hours: 11, minutes: 0, seconds: 0, milliseconds: 0}),
+                endTime: set(today, {hours: 12, minutes: 0, seconds: 0, milliseconds: 0}),
+                patientUserId: '01',
+                patientName: 'John',
+                clinicLocation: 'locationId01',
+                appointmentType: 'Online',
+                patientGender: 'Male',
+                patientAge: 20,
+                status: 'BOOKED',                
+            },
+            {
+                startTime: set(today, {hours: 10, minutes: 0, seconds: 0, milliseconds: 0}),
+                endTime: set(today, {hours: 11, minutes: 0, seconds: 0, milliseconds: 0}),
+                patientUserId: '01',
+                patientName: 'John',
+                clinicLocation: 'locationId01',
+                appointmentType: 'Online',
+                patientGender: 'Male',
+                patientAge: 20,
+                status: 'BOOKED',                
+            },
+        ]
     },
     {
         startTime: set(today, {hours: 10, minutes: 0, seconds: 0, milliseconds: 0}),

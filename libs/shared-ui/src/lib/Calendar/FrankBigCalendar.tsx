@@ -14,15 +14,15 @@ export type BookingStatus = "AVAILABLE" | "BOOKED" | "UNAVAILABLE" | "PENDING" |
 export type AppointmentType = {
   startTime: Date,
   endTime: Date,
-  patientUserId: string,
-  patientName: string,
+  patientUserId?: string,
+  patientName?: string,
   clinicLocation?: string,
   appointmentType?: string,
   patientGender?: string,
   patientAge?: number,
-  doctorName?: string,
-  id?: string,
-  src?: string,
+  doctorName?: string, // 可能不需要
+  id?: string, // 可能不需要
+  src?: string, // 可能不需要
   status?: BookingStatus,
   room?: string
 }
