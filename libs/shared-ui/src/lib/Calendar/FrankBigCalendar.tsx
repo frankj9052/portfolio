@@ -10,17 +10,18 @@ import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 
 export type ViewType = 'timeGridWeek' | 'timeGridDay' | 'listDay';
-export type BookingStatus = "AVAILABLE" | "BOOKED" | "UNAVAILABLE" | "PENDING" | "CANCELLED" | "ARRIVED" | "COMPLETE" | "MISS"
-export type AppointmentType = {
+export type BookingStatus = "AVAILABLE" | "BOOKED" | "UNAVAILABLE" | "PENDING" | "CANCELLED" | "ARRIVED" | "COMPLETE" | "MISS";
+export type BookingMethod = "PHONE" | "ONLINE"
+export type BookingType = {
   startTime: Date,
   endTime: Date,
-  patientUserId?: string,
-  patientName?: string,
-  clinicLocation?: string,
-  appointmentType?: string,
-  patientGender?: string,
-  patientAge?: number,
-  doctorName?: string, // 可能不需要
+  clientUserId?: string,
+  clientName?: string,
+  location?: string,
+  bookingMethod?: BookingMethod[],
+  clientGender?: string, // 可能不需要
+  clientAge?: number,
+  providerName?: string, // 可能不需要
   id?: string, // 可能不需要
   src?: string, // 可能不需要
   status?: BookingStatus,
@@ -30,16 +31,17 @@ export type ShiftType = {
   startTime: Date,
   endTime: Date,
   photo: string,
-  doctorUserId: string,
-  doctorName?: string,
+  providerUserId: string,
+  providerName?: string,
   backgroundColor: string,
-  appointments?: AppointmentType[]
+  bookings?: BookingType[],
+  location?: string,
 }
 
 export type FrankBigCalendarProps = {
   width?: number,
   height?: number,
-  curerntView?: ViewType,
+  currentView?: ViewType,
   onCurrentViewChange?: (viewType: ViewType) => void,
   focusedDate?: Date,
   onFocusedDateChange?: (newDate: Date) => void,
@@ -50,14 +52,14 @@ export type FrankBigCalendarProps = {
 export function FrankBigCalendar({
   width,
   height,
-  curerntView,
+  currentView,
   onCurrentViewChange,
   focusedDate,
   onFocusedDateChange,
   shiftsData = [],
 }: FrankBigCalendarProps) {
   const [currentViewState, setCurrentViewState] = useControlledState<ViewType>(
-    curerntView,
+    currentView,
     'timeGridWeek'
   );
   const [focusedDateState, setFocusedDateState] = useControlledState(

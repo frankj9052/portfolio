@@ -4,34 +4,9 @@ import { ShiftType } from "../FrankBigCalendar";
 import { format } from "date-fns";
 import FrankAvatar from "../../Avatar/FrankAvatar";
 import { useEffect, useRef, useState } from "react";
-import CalendarEventComponent from "./CalendarEventComponent";
+import {CalendarShiftComponent} from "./CalendarShiftComponent";
 import CurrentTimeIndicator from "./CurrentTimeIndicator";
-
-// 工具函数：计算 top 偏移（距离顶部像素）
-const getTopOffset = (
-    startTime: Date,
-    calendarStartHour: number,
-    rowHeight: number,
-    intervalPerHour: number
-) => {
-    const hour = startTime.getHours();
-    const minutes = startTime.getMinutes();
-    const totalMinutesFromStart = (hour - calendarStartHour) * 60 + minutes;
-    const minutePerRow = 60 / intervalPerHour;
-    return (totalMinutesFromStart / minutePerRow) * rowHeight;
-};
-
-// 工具函数：计算事件高度（像素）
-const getEventHeight = (
-    startTime: Date,
-    endTime: Date,
-    rowHeight: number,
-    intervalPerHour: number
-) => {
-    const durationInMinutes = (endTime.getTime() - startTime.getTime()) / (1000 * 60);
-    const minutePerRow = 60 / intervalPerHour;
-    return (durationInMinutes / minutePerRow) * rowHeight;
-};
+import { getEventHeight, getTopOffset } from "@frankjia9052/shared-utils";
 
 export type TimeGridDayProps = {
     width?: number;
@@ -78,7 +53,7 @@ export function TimeGridDay({
     // 按医生+日期分组
     const groupedByDoctorPerDay = shiftsData?.reduce((acc, shift) => {
         const dateKey = format(shift.startTime, 'yyyy-MM-dd');
-        const key = `${shift.doctorUserId}-${dateKey}`;
+        const key = `${shift.providerUserId}-${dateKey}`;
         if (!acc[key]) {
             acc[key] = [];
         }
@@ -109,7 +84,7 @@ export function TimeGridDay({
                             const firstShift = groupedByDoctorPerDay[key][0]
                             return (
                                 <div
-                                    key={`${firstShift.doctorUserId}-${format(firstShift.startTime, 'yyyy-MM-dd')}`}
+                                    key={`${firstShift.providerUserId}-${format(firstShift.startTime, 'yyyy-MM-dd')}`}
                                     className="flex-1"
                                 >
                                     <div
@@ -118,7 +93,7 @@ export function TimeGridDay({
                                         {/* doctor avatar */}
                                         <div>
                                             <FrankAvatar
-                                                name={firstShift.doctorName}
+                                                name={firstShift.providerUserId}
                                                 src={firstShift.photo}
                                                 radius="full"
                                                 className="w-[24px] h-auto aspect-square"
@@ -128,7 +103,7 @@ export function TimeGridDay({
                                         <div
                                             className="font-inter font-[500] text-[13px] leading-[20px] text-[#303030]"
                                         >
-                                            {firstShift.doctorName}
+                                            {firstShift.providerName}
                                         </div>
                                     </div>
 
@@ -201,8 +176,10 @@ export function TimeGridDay({
                                                     height,
                                                 }}
                                             >
-                                                <CalendarEventComponent
+                                                <CalendarShiftComponent
                                                     shift={shift}
+                                                    rowHeight={actualRowHeight}
+                                                    intervalPerHour={intervalPerHour}
                                                 />
                                             </div>
                                         );

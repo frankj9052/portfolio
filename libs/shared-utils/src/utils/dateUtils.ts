@@ -109,6 +109,62 @@ function timeAgo(date: string) {
 }
 
 /**
+ * 计算事件在日历中的垂直偏移量（top offset）
+ *
+ * 用于将某个开始时间的事件正确定位到日历中对应的位置（例如用于生成 CSS `top` 值）。
+ *
+ * @param startTime - 事件的开始时间（Date 类型）
+ * @param calendarStartHour - 日历开始的小时数（例如 8 表示从早上 8 点开始）, 或者是上一级事件开始的时间
+ * @param rowHeight - 每一行（时间区块）的高度（单位：像素）
+ * @param intervalPerHour - 每小时被划分为多少段（例如 4 表示每 15 分钟一段）
+ * @returns 返回事件距离顶部的偏移量（单位：像素）
+ *
+ * 示例：
+ * 如果一个事件是 09:30 开始，日历从 08:00 开始，每小时分成 4 段（即 15 分钟一行），每行高度 20px，
+ * 那么它应该被定位在 ((90 / 15) * 20) = 120px 的位置。
+ */
+const getTopOffset = (
+    startTime: Date,
+    calendarStartHour: number,
+    rowHeight: number,
+    intervalPerHour: number
+) => {
+    const hour = startTime.getHours();
+    const minutes = startTime.getMinutes();
+    const totalMinutesFromStart = (hour - calendarStartHour) * 60 + minutes;
+    const minutePerRow = 60 / intervalPerHour;
+    return (totalMinutesFromStart / minutePerRow) * rowHeight;
+};
+
+/**
+ * 计算事件在日历中的高度（单位：像素）
+ *
+ * 用于根据事件的开始和结束时间，计算其在垂直日历视图中的显示高度，
+ * 通常用于生成 CSS 样式中的 `height` 值。
+ *
+ * @param startTime - 事件的开始时间（Date 类型）
+ * @param endTime - 事件的结束时间（Date 类型）
+ * @param rowHeight - 每一个时间区块（例如 15 分钟）的高度（单位：像素）
+ * @param intervalPerHour - 每小时被划分为的时间段数量（例如 4 表示每小时4段，每段15分钟）
+ * @returns 返回事件在日历中应该占用的高度（单位：像素）
+ *
+ * 示例：
+ * 如果事件从 10:00 到 10:45，rowHeight = 20px，intervalPerHour = 4（即每段15分钟），
+ * 那么 duration 是 45 分钟，占用 3 段，每段 20px，最终高度为 60px。
+ */
+const getEventHeight = (
+    startTime: Date,
+    endTime: Date,
+    rowHeight: number,
+    intervalPerHour: number
+) => {
+    const durationInMinutes = (endTime.getTime() - startTime.getTime()) / (1000 * 60);
+    const minutePerRow = 60 / intervalPerHour;
+    return (durationInMinutes / minutePerRow) * rowHeight;
+};
+
+// 不常用
+/**
  * Generates an array of dates with 30-minute intervals between the given start time and end time.
  * 
  * @param {Date} startTime - The start time of the time range.
@@ -149,5 +205,7 @@ export {
     calculateAge,
     formatShortDateTime,
     timeAgo,
-    generateTimeArray
+    generateTimeArray,
+    getTopOffset,
+    getEventHeight
 }
