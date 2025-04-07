@@ -94,7 +94,7 @@ export function TimeGridWeek({
     >
       {/* Calendar Header */}
       <div
-        className='h-8 pl-[26px] sticky left-0 top-0 bg-white z-10 box-content'
+        className='h-8 pl-[33px] sticky left-0 top-0 bg-white z-10 box-content'
       >
         <div
           className='h-full flex relative'
@@ -130,7 +130,7 @@ export function TimeGridWeek({
                 return (
                   <div
                     className={clsx('h-full abg-red-200 w-full box-content border-r-1', {
-                      'translate-x-[1px]': index !== 0 && index !== 3,
+                      'translate-x-[1px]': index !== 0 && index !== 3 && index !==1,
                       'translate-x-[2px]': index === 6
                     })}
                     key={`table-divider-${index}`}
