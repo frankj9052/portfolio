@@ -94,7 +94,7 @@ export function TimeGridWeek({
     >
       {/* Calendar Header */}
       <div
-        className='h-8 pl-[33px] sticky left-0 top-0 bg-white z-10 box-content'
+        className='h-8 pl-[33px] sticky left-0 top-0 bg-white z-10 box-content w-full'
       >
         <div
           className='h-full flex relative'
@@ -123,22 +123,8 @@ export function TimeGridWeek({
           }
           {/* Table */}
           <div
-            className='absolute bottom-[-1px] left-0 w-full h-2/3 flex border-l-1 border-b-1'
+            className='absolute bottom-[-1px] left-0 w-full h-2/3 flex border-b-1'
           >
-            {
-              Array.from({ length: 7 }).map((_, index) => {
-                return (
-                  <div
-                    className={clsx('h-full abg-red-200 w-full box-content border-r-1', {
-                      'translate-x-[1px]': index !== 0 && index !== 3 && index !==1,
-                      'translate-x-[2px]': index === 6
-                    })}
-                    key={`table-divider-${index}`}
-                  />
-                )
-              })
-            }
-
           </div>
         </div>
 
