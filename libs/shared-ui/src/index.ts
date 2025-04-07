@@ -26,7 +26,7 @@ export * from './lib/Button/NoqButton';
 export * from './lib/Calendar/FrankCalendar';
 export * from './lib/Calendar/FrankFullCalendar';
 export * from './lib/Calendar/FrankBigCalendar';
-export * from './lib/Calendar/FrankBigCalendarParts/CalendarEventComponent';
+export * from './lib/Calendar/FrankBigCalendarParts/CalendarShiftComponent';
 export * from './lib/Calendar/FrankBigCalendarParts/CalendarGrid';
 export * from './lib/Calendar/FrankBigCalendarParts/DraggableShift';
 export * from './lib/Calendar/FrankBigCalendarParts/DropContainer';
