@@ -81,7 +81,8 @@ export function FrankBigCalendar({
         return <TimeGridWeek
           shiftsData={shiftsData.filter(shift => isSameWeek(shift.startTime, focusedDateState))}
           startHour={0}
-          endHour={24}          
+          endHour={24}  
+          focusedDate={focusedDateState}        
         />
       case 'timeGridDay':
         return <TimeGridDay
