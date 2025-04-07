@@ -1,4 +1,4 @@
-import { format, isToday, getDay } from 'date-fns'
+import { format, isToday} from 'date-fns'
 import { useEffect, useRef, useState } from 'react'
 import clsx from 'clsx'
 import { ShiftType } from '../FrankBigCalendar'
@@ -6,13 +6,13 @@ import { getEventHeight, getTopOffset, getWeekDates } from '@frankjia9052/shared
 import TimeScale from './TimeScale'
 import CalendarGrid, { CalendarGridRef } from './CalendarGrid'
 import CalendarShiftComponent from './CalendarShiftComponent'
-import { toZonedTime } from 'date-fns-tz'
+import { formatInTimeZone } from 'date-fns-tz'
 import { getLocalTimeZone } from '@internationalized/date'
 import CurrentTimeIndicator from './CurrentTimeIndicator'
 
 const getGroupShiftsByDateAndDoctor = (shiftsData: ShiftType[]) => {
   return shiftsData.reduce((acc, shift) => {
-    const dateKey = format(shift.startTime, 'yyyy-MM-dd');
+    const dateKey = formatInTimeZone(shift.startTime, getLocalTimeZone(), 'yyyy-MM-dd');
     const doctorKey = shift.providerUserId;
     if (!acc[dateKey]) {
       acc[dateKey] = {};
@@ -48,8 +48,8 @@ export function TimeGridWeek({
 }: TimeGridWeekProps) {
   const calendarRef = useRef<HTMLDivElement>(null)
   const groupShiftsByDateAndDoctor = getGroupShiftsByDateAndDoctor(shiftsData);
-  const dateKeys = Object.keys(groupShiftsByDateAndDoctor);
   const daysOfWeek = getWeekDates(focusedDate);
+  const dateKeys = daysOfWeek.map((day) => format(day, 'yyyy-MM-dd'));
   const [actualRowHeight, setActualRowHeight] = useState<number>(rowHeight);
   const [actualColumnWidth, setActualColumnWidth] = useState<number>(0);
   const gridRef = useRef<CalendarGridRef>(null);
@@ -84,6 +84,8 @@ export function TimeGridWeek({
       calendarRef.current.scrollTop = (scrollHeight - clientHeight) / 2;
     }
   }, [])
+
+  console.log("groupShiftsByDateAndDoctor", groupShiftsByDateAndDoctor)
   return (
     <div
       style={{
@@ -159,10 +161,6 @@ export function TimeGridWeek({
           <div className="absolute top-0 left-0 w-full z-[5] h-full">
             {
               dateKeys.map((dateKey, i) => {
-                const date = new Date(dateKey);
-                const zonedDate = toZonedTime(date, getLocalTimeZone());
-                // 找到是周几
-                const index = getDay(zonedDate);
                 return (
                   <div
                     key={dateKey + '-' + i}
@@ -171,11 +169,11 @@ export function TimeGridWeek({
                       top: 0,
                       bottom: 0,
                       width: `${100 / daysOfWeek.length}%`,
-                      left: `${(index + 1) * (100 / daysOfWeek.length)}%`,
+                      left: `${(i) * (100 / daysOfWeek.length)}%`,
                     }}
                   >
                     {
-                      Object.keys(groupShiftsByDateAndDoctor[dateKey]).map((key, colIndex) => {
+                      Object.keys(groupShiftsByDateAndDoctor[dateKey] || {}).map((key, colIndex) => {
                         const shifts = groupShiftsByDateAndDoctor[dateKey][key];
                         const totalColumns = Object.keys(groupShiftsByDateAndDoctor[dateKey]).length;
                         const widthPercent = 100 / totalColumns;
@@ -220,9 +218,11 @@ export function TimeGridWeek({
                       })
                     }
                     {/* 当前时间指针 */}
-                    <CurrentTimeIndicator
-                      top={getTopOffset(new Date(), 0, actualRowHeight, intervalPerHour)}
-                    />
+                    {
+                      format(new Date(), 'yyyy-MM-dd') === dateKey && <CurrentTimeIndicator
+                        top={getTopOffset(new Date(), 0, actualRowHeight, intervalPerHour)}
+                      />
+                    }
                   </div>
                 )
               })
