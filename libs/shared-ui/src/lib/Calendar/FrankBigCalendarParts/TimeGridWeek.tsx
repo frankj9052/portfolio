@@ -8,6 +8,7 @@ import CalendarGrid, { CalendarGridRef } from './CalendarGrid'
 import CalendarShiftComponent from './CalendarShiftComponent'
 import { toZonedTime } from 'date-fns-tz'
 import { getLocalTimeZone } from '@internationalized/date'
+import CurrentTimeIndicator from './CurrentTimeIndicator'
 
 const getGroupShiftsByDateAndDoctor = (shiftsData: ShiftType[]) => {
   return shiftsData.reduce((acc, shift) => {
@@ -197,7 +198,6 @@ export function TimeGridWeek({
                                 const containerWidth = width || gridRef.current?.getWidth() || 0;
                                 const columnWidth = (containerWidth / 7) * (widthPercent / 100) - 2;
                                 return (
-
                                   <div
                                     className="absolute"
                                     style={{
@@ -219,6 +219,10 @@ export function TimeGridWeek({
                         )
                       })
                     }
+                    {/* 当前时间指针 */}
+                    <CurrentTimeIndicator
+                      top={getTopOffset(new Date(), 0, actualRowHeight, intervalPerHour)}
+                    />
                   </div>
                 )
               })
