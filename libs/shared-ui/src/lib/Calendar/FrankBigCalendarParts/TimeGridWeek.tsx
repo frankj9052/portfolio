@@ -1,75 +1,245 @@
-import { startOfWeek, addDays, format, setHours, setMinutes } from 'date-fns'
-import { useEffect, useRef } from 'react'
+import { format, isToday, getDay } from 'date-fns'
+import { useEffect, useRef, useState } from 'react'
 import clsx from 'clsx'
+import { ShiftType } from '../FrankBigCalendar'
+import { getEventHeight, getTopOffset, getWeekDates } from '@frankjia9052/shared-utils'
+import TimeScale from './TimeScale'
+import CalendarGrid, { CalendarGridRef } from './CalendarGrid'
+import CalendarShiftComponent from './CalendarShiftComponent'
+import { toZonedTime } from 'date-fns-tz'
+import { getLocalTimeZone } from '@internationalized/date'
 
-const resources = ['Dr. A', 'Dr. B', 'Dr. C']
-const hours = Array.from({ length: 10 }, (_, i) => i + 8) // 08:00 – 18:00
-
-export function TimeGridWeek() {
-  const now = new Date()
-  const weekStart = startOfWeek(now, { weekStartsOn: 1 }) // 周一开始
-  const scrollRef = useRef<HTMLDivElement>(null)
-
-  // 自动滚动到当前时间（粗略版）
-  useEffect(() => {
-    const hour = now.getHours()
-    const offset = (hour - 8) * 60 // 每小时 60px 假设
-    scrollRef.current?.scrollTo({ top: offset, behavior: 'smooth' })
-  }, [])
-
-  return (
-    <div className="flex flex-col h-screen overflow-hidden">
-      {/* Header：日期 + 资源名 */}
-      <div className="grid grid-cols-[80px_repeat(3,minmax(0,1fr))] border-b">
-        <div className="bg-white"></div>
-        {resources.map((resource, idx) => (
-          <div key={idx} className="text-center py-2 font-medium bg-gray-50 border-l">
-            {resource}
-          </div>
-        ))}
-      </div>
-
-      {/* 时间 + 网格主体 */}
-      <div ref={scrollRef} className="flex-1 overflow-y-auto relative">
-        <div className="grid grid-cols-[80px_repeat(3,minmax(0,1fr))]">
-          {/* 左侧时间栏 */}
-          <div className="flex flex-col">
-            {hours.map((hour) => (
-              <div key={hour} className="h-16 text-xs text-right pr-2 border-t">
-                {format(setHours(setMinutes(now, 0), hour), 'HH:mm')}
-              </div>
-            ))}
-          </div>
-
-          {/* 每个资源列 */}
-          {resources.map((_, resourceIdx) => (
-            <div key={resourceIdx} className="flex flex-col border-l">
-              {hours.map((hour, i) => (
-                <div key={i} className="h-16 border-t relative group">
-                  {/* 未来放事件 */}
-                </div>
-              ))}
-            </div>
-          ))}
-        </div>
-
-        {/* 当前时间线 */}
-        <div className="absolute left-0 right-0 pointer-events-none">
-          <TimeIndicator />
-        </div>
-      </div>
-    </div>
-  )
+const getGroupShiftsByDateAndDoctor = (shiftsData: ShiftType[]) => {
+  return shiftsData.reduce((acc, shift) => {
+    const dateKey = format(shift.startTime, 'yyyy-MM-dd');
+    const doctorKey = shift.providerUserId;
+    if (!acc[dateKey]) {
+      acc[dateKey] = {};
+    }
+    if (!acc[dateKey][doctorKey]) {
+      acc[dateKey][doctorKey] = [];
+    }
+    acc[dateKey][doctorKey].push(shift);
+    return acc;
+  }, {} as Record<string, Record<string, ShiftType[]>>)
 }
 
-function TimeIndicator() {
-  const now = new Date()
-  const hour = now.getHours()
-  const minutes = now.getMinutes()
-  const offset = ((hour - 8) * 60 + minutes) // 1分钟1px
+export type TimeGridWeekProps = {
+  width?: number,
+  height?: number,
+  shiftsData?: ShiftType[],
+  focusedDate?: Date,
+  startHour?: number,
+  endHour?: number,
+  rowHeight?: number,
+  intervalPerHour?: number
+}
+
+export function TimeGridWeek({
+  width,
+  height,
+  shiftsData = [],
+  focusedDate = new Date(),
+  startHour = 9,
+  endHour = 18,
+  rowHeight = 25,
+  intervalPerHour = 2,
+}: TimeGridWeekProps) {
+  const calendarRef = useRef<HTMLDivElement>(null)
+  const groupShiftsByDateAndDoctor = getGroupShiftsByDateAndDoctor(shiftsData);
+  const dateKeys = Object.keys(groupShiftsByDateAndDoctor);
+  const daysOfWeek = getWeekDates(focusedDate);
+  const [actualRowHeight, setActualRowHeight] = useState<number>(rowHeight);
+  const [actualColumnWidth, setActualColumnWidth] = useState<number>(0);
+  const gridRef = useRef<CalendarGridRef>(null);
+  const totalRows = (endHour - startHour) * intervalPerHour;
+
+  // 计算实际行高
+  useEffect(() => {
+    if (gridRef.current) {
+      const totalHeight = gridRef.current.getHeight();
+      if (totalHeight && totalHeight > 0) {
+        const newRowHeight = totalHeight / totalRows;
+        setActualRowHeight(newRowHeight);
+      }
+    }
+  }, [shiftsData, startHour, endHour, intervalPerHour, totalRows]);
+
+  // 计算实际列宽
+  useEffect(() => {
+    if (gridRef.current) {
+      const totalWidth = gridRef.current.getWidth();
+      if (totalWidth && totalWidth > 0) {
+        const newColumnWidth = (totalWidth - 2) / daysOfWeek.length;
+        setActualColumnWidth(newColumnWidth);
+      }
+    }
+  }, [daysOfWeek]);
+
+  // 滚动条默认处于中间
+  useEffect(() => {
+    if (calendarRef.current) {
+      const { scrollHeight, clientHeight } = calendarRef.current;
+      calendarRef.current.scrollTop = (scrollHeight - clientHeight) / 2;
+    }
+  }, [])
   return (
-    <div style={{ top: `${offset}px` }} className="h-px bg-red-500 w-full absolute z-10">
-      <div className="w-2 h-2 bg-red-500 rounded-full -mt-1" />
+    <div
+      style={{
+        width: width ? `${width}px` : '100%',
+        height: height ? `${height}px` : '100%',
+      }}
+      className='overflow-y-auto overflow-x-hidden font-inter text-[#0f1324]'
+      ref={calendarRef}
+    >
+      {/* Calendar Header */}
+      <div
+        className='h-8 pl-[26px] sticky left-0 top-0 bg-white z-10 box-content'
+      >
+        <div
+          className='h-full flex relative'
+        >
+          {
+            daysOfWeek.map((day, index) => {
+              return (
+                <div
+                  className={clsx('flex relative')}
+                  style={{
+                    width: `${actualColumnWidth}px`,
+                  }}
+                  key={day.toString() + '-' + index}
+                >
+                  <span
+                    className={clsx('flex-1 flex justify-center font-inter text-[12px] leading-4', {
+                      'text-[#616161]': !isToday(day),
+                      'text-[#003F3C] font-[550]': isToday(day)
+                    })}
+                  >
+                    {format(day, 'EEE d')}
+                  </span>
+                </div>
+              )
+            })
+          }
+          {/* Table */}
+          <div
+            className='absolute bottom-[-1px] left-0 w-full h-2/3 flex border-l-1 border-b-1'
+          >
+            {
+              Array.from({ length: 7 }).map((_, index) => {
+                return (
+                  <div
+                    className={clsx('h-full abg-red-200 w-full box-content border-r-1', {
+                      'translate-x-[1px]': index !== 0 && index !== 3,
+                      'translate-x-[2px]': index === 6
+                    })}
+                    key={`table-divider-${index}`}
+                  />
+                )
+              })
+            }
+
+          </div>
+        </div>
+
+      </div>
+      {/* Calendar Body */}
+      <div
+        className="flex h-[calc(100%-38px)]"
+      >
+        {/* Time Scale */}
+        <div
+          className="-translate-y-2"
+        >
+          <TimeScale
+            startHour={startHour}
+            endHour={endHour}
+            rowHeight={actualRowHeight * 2}
+          />
+        </div>
+        {/* 事件相对定位层 */}
+        <div
+          className="flex-1 relative"
+        >
+          <CalendarGrid
+            startHour={startHour}
+            endHour={endHour}
+            intervalPerHour={intervalPerHour}
+            columnCount={7}
+            ref={gridRef}
+          />
+          {/* 渲染医生shift */}
+          <div className="absolute top-0 left-0 w-full z-[5] h-full">
+            {
+              dateKeys.map((dateKey, i) => {
+                const date = new Date(dateKey);
+                const zonedDate = toZonedTime(date, getLocalTimeZone());
+                // 找到是周几
+                const index = getDay(zonedDate);
+                return (
+                  <div
+                    key={dateKey + '-' + i}
+                    className='absolute px-[2px]'
+                    style={{
+                      top: 0,
+                      bottom: 0,
+                      width: `${100 / daysOfWeek.length}%`,
+                      left: `${(index + 1) * (100 / daysOfWeek.length)}%`,
+                    }}
+                  >
+                    {
+                      Object.keys(groupShiftsByDateAndDoctor[dateKey]).map((key, colIndex) => {
+                        const shifts = groupShiftsByDateAndDoctor[dateKey][key];
+                        const totalColumns = Object.keys(groupShiftsByDateAndDoctor[dateKey]).length;
+                        const widthPercent = 100 / totalColumns;
+                        const leftPercent = colIndex * widthPercent;
+                        return (
+                          <div
+                            key={key}
+                            className="absolute px-[2px]"
+                            style={{
+                              top: 0,
+                              bottom: 0,
+                              width: `${widthPercent}%`,
+                              left: `${leftPercent}%`,
+                            }}
+                          >
+                            {
+                              shifts.map((shift) => {
+                                const top = getTopOffset(shift.startTime, startHour, actualRowHeight, intervalPerHour);
+                                const height = getEventHeight(shift.startTime, shift.endTime, actualRowHeight, intervalPerHour);
+                                const containerWidth = width || gridRef.current?.getWidth() || 0;
+                                const columnWidth = (containerWidth / 7) * (widthPercent / 100) - 2;
+                                return (
+
+                                  <div
+                                    className="absolute"
+                                    style={{
+                                      width: columnWidth,
+                                      top,
+                                      height,
+                                    }}
+                                    key={`${shift.providerUserId}-${shift.startTime}-${shift.endTime}`}
+                                  >
+                                    <CalendarShiftComponent
+                                      shift={shift}
+                                      rowHeight={actualRowHeight}
+                                      intervalPerHour={intervalPerHour}
+                                    />
+                                  </div>
+                                );
+                              })}
+                          </div>
+                        )
+                      })
+                    }
+                  </div>
+                )
+              })
+            }
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

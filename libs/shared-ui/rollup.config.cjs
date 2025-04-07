@@ -15,6 +15,8 @@ module.exports = withNx(
       '@heroui/react',
       '@frankjia9052/shared-utils',
       '@internationalized/date',
+      'date-fns',
+      'date-fns-tz',
       '@frankjia9052/shared-ui',
       'clsx',
       'styled-components',

@@ -4,7 +4,7 @@ import { ShiftType } from "../FrankBigCalendar";
 import { format } from "date-fns";
 import FrankAvatar from "../../Avatar/FrankAvatar";
 import { useEffect, useRef, useState } from "react";
-import {CalendarShiftComponent} from "./CalendarShiftComponent";
+import { CalendarShiftComponent } from "./CalendarShiftComponent";
 import CurrentTimeIndicator from "./CurrentTimeIndicator";
 import { getEventHeight, getTopOffset } from "@frankjia9052/shared-utils";
 
@@ -29,17 +29,18 @@ export function TimeGridDay({
 }: TimeGridDayProps) {
     const gridRef = useRef<CalendarGridRef>(null);
     const [actualRowHeight, setActualRowHeight] = useState<number>(rowHeight);
-    const calenderRef = useRef<HTMLDivElement>(null);
+    const calendarRef = useRef<HTMLDivElement>(null);
 
     // 滚动条默认处于中间
     useEffect(() => {
-        if (calenderRef.current) {
-            const { scrollHeight, clientHeight } = calenderRef.current;
-            calenderRef.current.scrollTop = (scrollHeight - clientHeight) / 2;
+        if (calendarRef.current) {
+            const { scrollHeight, clientHeight } = calendarRef.current;
+            calendarRef.current.scrollTop = (scrollHeight - clientHeight) / 2;
         }
     }, [])
     const totalRows = (endHour - startHour) * intervalPerHour;
 
+    // 计算实际行高
     useEffect(() => {
         if (gridRef.current) {
             const totalHeight = gridRef.current.getHeight();
@@ -70,7 +71,7 @@ export function TimeGridDay({
                 height: height ? `${height}px` : '100%',
             }}
             className="overflow-y-auto font-inter text-[#0f1324]"
-            ref={calenderRef}
+            ref={calendarRef}
         >
             {/* Calendar Header */}
             <div
@@ -123,7 +124,7 @@ export function TimeGridDay({
                     <TimeScale
                         startHour={startHour}
                         endHour={endHour}
-                        rowHeight={50}
+                        rowHeight={actualRowHeight * 2}
                     />
                 </div>
                 {/* 事件相对定位层 */}

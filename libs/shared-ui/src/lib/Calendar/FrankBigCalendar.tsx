@@ -1,6 +1,6 @@
 import { Card } from "@heroui/react";
 import { useControlledState } from "../useHooks/useControlledState";
-import { addDays, format, isSameDay, subDays } from "date-fns";
+import { addDays, format, isSameDay, isSameWeek, subDays } from "date-fns";
 import FrankButtonBase from "../Button/FrankButtonBase";
 import FrankArrowSwitcher from "../Tabs/FrankArrowSwitcher";
 import CalendarViewSwitcher from "../Tabs/CalendarViewSwitcher";
@@ -78,7 +78,11 @@ export function FrankBigCalendar({
   const getCalendar = (view: ViewType) => {
     switch (view) {
       case 'timeGridWeek':
-        return <TimeGridWeek />
+        return <TimeGridWeek
+          shiftsData={shiftsData.filter(shift => isSameWeek(shift.startTime, focusedDateState))}
+          startHour={0}
+          endHour={24}          
+        />
       case 'timeGridDay':
         return <TimeGridDay
           shiftsData={shiftsData.filter(shift => isSameDay(shift.startTime, focusedDateState))}

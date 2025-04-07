@@ -1,5 +1,5 @@
 import { CalendarDate, getLocalTimeZone, Time } from '@internationalized/date'
-import { differenceInYears, format, formatDistance } from "date-fns";
+import { addDays, differenceInYears, format, formatDistance, startOfWeek } from "date-fns";
 
 /**
  * Validates whether the given value represents a valid date.
@@ -109,6 +109,22 @@ function timeAgo(date: string) {
 }
 
 /**
+ * 获取给定日期所在一周（从周日开始）的所有日期。
+ *
+ * @param date - 任意目标日期
+ * @returns 包含从周日到周六的 7 个 Date 对象数组
+ *
+ * 示例：
+ * 输入：2025-04-04（周五）
+ * 返回：[2025-03-30 (周日), 2025-03-31 (周一), ..., 2025-04-05 (周六)]
+ */
+function getWeekDates(date: Date):Date[] {
+    const start = startOfWeek(date, {weekStartsOn: 0}); // 0 = 周日
+    const week = Array.from({length: 7}).map((_, index) => addDays(start, index));
+    return week;
+}
+
+/**
  * 计算事件在日历中的垂直偏移量（top offset）
  *
  * 用于将某个开始时间的事件正确定位到日历中对应的位置（例如用于生成 CSS `top` 值）。
@@ -207,5 +223,6 @@ export {
     timeAgo,
     generateTimeArray,
     getTopOffset,
-    getEventHeight
+    getEventHeight,
+    getWeekDates,
 }
