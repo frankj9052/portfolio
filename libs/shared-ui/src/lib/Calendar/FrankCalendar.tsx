@@ -1,12 +1,11 @@
 import { useEffect } from "react";
-
-import { frankSharedUtils } from "@frankjia9052/shared-utils";
 import { CalendarDate, DateValue, endOfMonth, getDayOfWeek, getLocalTimeZone, startOfMonth, startOfWeek, today } from "@internationalized/date";
 import { useControlledState } from "../useHooks/useControlledState";
 import clsx from "clsx";
 import { Card, Spacer } from "@heroui/react";
 import FrankButtonBase from "../Button/FrankButtonBase";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { dateToCalendarDate, numberToMonthName } from "@frankjia9052/shared-utils";
 
 const currentDay = today(getLocalTimeZone());
 type Props = {
@@ -34,7 +33,6 @@ export const FrankCalendar = ({
   rangeStart,
   rangeEnd
 }: Props) => {
-  const { dateToCalendarDate, numberToMonthName } = frankSharedUtils.utils.dateUtils;
   const [focusedValueState, setFocusedValueState] = useControlledState(
     focusedValue,
     dateToCalendarDate(new Date())

@@ -1,8 +1,8 @@
 import { ShiftType } from "../FrankBigCalendar";
-import { frankSharedUtils } from "@frankjia9052/shared-utils";
 import clsx from "clsx";
 import { BiBlock } from "react-icons/bi";
 import FrankSVGIcon from "../../SVGIcon/FrankSVGIcon";
+import { convertHexToRGBA, getEventHeight, getTopOffset, shiftColor } from "@frankjia9052/shared-utils";
 
 // 把svg转换成Data URI(优化编码并压缩)
 const svgPattern = `<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -40,8 +40,6 @@ export function CalendarShiftComponent({
   rowHeight,
   intervalPerHour
 }: CalendarShiftComponentProps) {
-  const {convertHexToRGBA, shiftColor} = frankSharedUtils.utils.colorUtils;
-  const {getEventHeight, getTopOffset} = frankSharedUtils.utils.dateUtils;
   const backgroundColor = convertHexToRGBA(shift.backgroundColor, 0.2);
   
   return (

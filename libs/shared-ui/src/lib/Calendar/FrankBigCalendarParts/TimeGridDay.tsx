@@ -6,7 +6,7 @@ import FrankAvatar from "../../Avatar/FrankAvatar";
 import { useEffect, useRef, useState } from "react";
 import { CalendarShiftComponent } from "./CalendarShiftComponent";
 import CurrentTimeIndicator from "./CurrentTimeIndicator";
-import { frankSharedUtils } from "@frankjia9052/shared-utils";
+import { getEventHeight, getTopOffset } from "@frankjia9052/shared-utils";
 
 export type TimeGridDayProps = {
     width?: number;
@@ -27,7 +27,6 @@ export function TimeGridDay({
     intervalPerHour = 2,
     shiftsData = [],
 }: TimeGridDayProps) {
-    const { getEventHeight, getTopOffset } = frankSharedUtils.utils.dateUtils;
     const gridRef = useRef<CalendarGridRef>(null);
     const [actualRowHeight, setActualRowHeight] = useState<number>(rowHeight);
     const calendarRef = useRef<HTMLDivElement>(null);
