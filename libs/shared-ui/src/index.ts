@@ -2,6 +2,7 @@ import { accordion } from './lib/Accordion';
 import { animations } from './lib/Animations';
 import { autoComplete } from './lib/AutoComplete';
 import { avatar } from './lib/Avatar';
+import { background } from './lib/Background';
 import { button } from './lib/Button';
 import { calendar } from './lib/Calendar';
 import { carousel } from './lib/Carousel';
@@ -28,6 +29,7 @@ export const frankSharedUI = {
         accordion,
         autoComplete,
         avatar,
+        background,
         button,
         calendar,
         carousel,
@@ -67,6 +69,9 @@ export * from './lib/AutoComplete/NoqPublicSearchBar';
 // Avatar
 export * from './lib/Avatar/FrankAvatar';
 export * from './lib/Avatar/UserListItem';
+
+// Background
+export * from './lib/Background/FrankTiledBackground';
 
 // Button
 export * from './lib/Button/FrankButtonBase';
