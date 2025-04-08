@@ -1,5 +1,3 @@
-import { utils } from './utils';
-
 // types
 export * from './types/globalTypes';
 
@@ -10,8 +8,4 @@ export * from './utils/eventUtils';
 export * from './utils/dateUtils';
 export * from './utils/colorUtils';
 export * from './utils/chatUtils';
-
-export const frankSharedUtils = {
-    utils,
-}
 
