@@ -4,10 +4,10 @@ import FrankSVGIcon from "../SVGIcon/FrankSVGIcon";
 import { DateValue, Spacer } from "@heroui/react";
 import FrankCalendar from "../Calendar/FrankCalendar";
 import { useControlledState } from "../useHooks/useControlledState";
-import { frankSharedUtils } from "@frankjia9052/shared-utils";
 import useClickOutside from "../useHooks/useClickOutside";
 import { parseDate } from "@internationalized/date";
 import clsx from "clsx";
+import { formatNumberString, isValidDate } from "@frankjia9052/shared-utils";
 
 type DateInputType = {
     year: string,
@@ -96,8 +96,6 @@ export function NoqDatePicker({
         month: false,
         day: false
     });
-    const { formatNumberString } = frankSharedUtils.utils.textUtils;
-    const { isValidDate } = frankSharedUtils.utils.dateUtils;
     // 日历开关
     const [isOpen, setIsOpen] = useState(false);
     // 日历的值
@@ -151,7 +149,6 @@ export function NoqDatePicker({
         inputValue,
         onValueChange,
         setValueState,
-        isValidDate
     ])
 
     // 超出范围给与错误状态
