@@ -1,10 +1,10 @@
 import { FC, ReactNode } from 'react';
 
-export interface IProps {
+export type HeroTileProps = {
   children: ReactNode;
 }
 
-export const HeroTitle: FC<IProps> = ({ children }) => {
+export const HeroTitle: FC<HeroTileProps> = ({ children }) => {
   return (
     <div className="flex flex-col items-center justify-end relative text-center mt-3">
       <h1 className="text-[3rem] md:text-[4.5em] font-extrabold mb-8 opacity-10 bg-gradient-to-t from-transparent to-[#0e2431] bg-clip-text text-transparent select-none">
