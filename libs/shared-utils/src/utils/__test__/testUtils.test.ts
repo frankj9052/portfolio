@@ -1,6 +1,7 @@
-import { truncateString } from '../textUtils';
+import { textUtils } from '../textUtils';
 
 describe('truncateString', () => {
+    const { truncateString } = textUtils;
     test('should return the full string if it is shorter than the limit', () => {
         expect(truncateString('Hello', 10)).toBe('Hello');
     });

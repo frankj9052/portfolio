@@ -10,6 +10,18 @@ function transformImageUrl(imageUrl?: string | null) {
     return `${imageUrl.slice(0, uploadIndex)}${transformation}${imageUrl.slice(uploadIndex)}`
 }
 
-export {
+/**
+ * 将 SVG 字符串编码并转为可直接用于 CSS background-image 的 URL 格式
+ * 
+ * @param svg - 原始 SVG 字符串
+ * @returns 返回格式化后的背景图片 URL，适用于 CSS background-image
+ */
+function createSVGBackground(svg: string): string {
+    const encodedSVG = encodeURIComponent(svg).replace(/'/g, '%27').replace(/"/g, '%22');
+    return `url("data:image/svg+xml,${encodedSVG}")`;
+}
+
+export const imageUtils = {
     transformImageUrl,
+    createSVGBackground,
 }

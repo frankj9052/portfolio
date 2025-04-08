@@ -118,9 +118,9 @@ function timeAgo(date: string) {
  * 输入：2025-04-04（周五）
  * 返回：[2025-03-30 (周日), 2025-03-31 (周一), ..., 2025-04-05 (周六)]
  */
-function getWeekDates(date: Date):Date[] {
-    const start = startOfWeek(date, {weekStartsOn: 0}); // 0 = 周日
-    const week = Array.from({length: 7}).map((_, index) => addDays(start, index));
+function getWeekDates(date: Date): Date[] {
+    const start = startOfWeek(date, { weekStartsOn: 0 }); // 0 = 周日
+    const week = Array.from({ length: 7 }).map((_, index) => addDays(start, index));
     return week;
 }
 
@@ -212,7 +212,7 @@ function generateTimeArray(startTime: Date, endTime: Date): Date[] {
     return timeArray
 }
 
-export {
+export const dateUtils = {
     isValidDate,
     dateToCalendarDate,
     dateToCalendarTime,

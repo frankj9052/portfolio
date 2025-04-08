@@ -1,5 +1,5 @@
 import { ShiftType } from "../FrankBigCalendar";
-import { convertHexToRGBA, getEventHeight, getTopOffset, shiftColor } from "@frankjia9052/shared-utils";
+import { frankSharedUtils } from "@frankjia9052/shared-utils";
 import clsx from "clsx";
 import { BiBlock } from "react-icons/bi";
 import FrankSVGIcon from "../../SVGIcon/FrankSVGIcon";
@@ -40,7 +40,10 @@ export function CalendarShiftComponent({
   rowHeight,
   intervalPerHour
 }: CalendarShiftComponentProps) {
+  const {convertHexToRGBA, shiftColor} = frankSharedUtils.utils.colorUtils;
+  const {getEventHeight, getTopOffset} = frankSharedUtils.utils.dateUtils;
   const backgroundColor = convertHexToRGBA(shift.backgroundColor, 0.2);
+  
   return (
     <div
       className="flex gap-0.5"
@@ -59,11 +62,6 @@ export function CalendarShiftComponent({
       {/* Booking Block */}
       <div
         className="flex-1 relative"
-        style={{
-          // backgroundColor: convertHexToRGBA(shift.backgroundColor, 0.2),
-          // color: shiftColor({ hex: shift.backgroundColor, shiftLevel: 3 }),
-          // filter: 'saturate(130%)'
-        }}
       >
         {/* With Booking Slots  */}
         {
@@ -140,12 +138,6 @@ export function CalendarShiftComponent({
             <BiBlock color="#CCCCCC" size={16} />
           </div>
         }
-        {/* <div>
-          <div className="font-semibold truncate">{shift.providerName}</div>
-        </div>
-        <div className="text-[10px]">
-          {format(shift.startTime, "HH:mm")} - {format(shift.endTime, "HH:mm")}
-        </div> */}
       </div>
     </div>
   )

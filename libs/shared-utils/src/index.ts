@@ -1,11 +1,10 @@
-// Types
-export * from './types/globalTypes';
+import { GlobalTypes } from './types/globalTypes';
+import { utils } from './utils';
 
-// Utils
-export * from './utils/chatUtils';
-export * from './utils/colorUtils';
-export * from './utils/dateUtils';
-export * from './utils/eventUtils';
-export * from './utils/imageUtils';
-export * from './utils/textUtils';
+export const frankSharedUtils = {
+    utils,
+}
 
+export type FrankSharedTypes = {
+    GlobalTypes: GlobalTypes
+}

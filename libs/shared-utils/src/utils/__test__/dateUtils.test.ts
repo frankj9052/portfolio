@@ -1,7 +1,8 @@
-import { dateToCalendarDate, dateToCalendarTime, isValidDate } from '../dateUtils';
+import { dateUtils } from '../dateUtils';
 import { CalendarDate, Time } from '@internationalized/date';
 
 describe('isValidDate', () => {
+  const { isValidDate } = dateUtils;
   // 测试有效的日期字符串
   test('returns true for valid date strings', () => {
     expect(isValidDate('2023-10-05')).toBe(true);
@@ -36,65 +37,67 @@ describe('isValidDate', () => {
 });
 
 describe('dateToCalendarDate', () => {
-    test('should convert a normal date correctly', () => {
-        const date = new Date(2025, 0, 15); // 2025-01-15 (Month is 0-based in JS)
-        const result = dateToCalendarDate(date);
-        expect(result).toEqual(new CalendarDate(2025, 1, 15));
-    });
+  const { dateToCalendarDate } = dateUtils;
+  test('should convert a normal date correctly', () => {
+    const date = new Date(2025, 0, 15); // 2025-01-15 (Month is 0-based in JS)
+    const result = dateToCalendarDate(date);
+    expect(result).toEqual(new CalendarDate(2025, 1, 15));
+  });
 
-    test('should convert first day of the year correctly', () => {
-        const date = new Date(2024, 0, 1); // 2024-01-01
-        const result = dateToCalendarDate(date);
-        expect(result).toEqual(new CalendarDate(2024, 1, 1));
-    });
+  test('should convert first day of the year correctly', () => {
+    const date = new Date(2024, 0, 1); // 2024-01-01
+    const result = dateToCalendarDate(date);
+    expect(result).toEqual(new CalendarDate(2024, 1, 1));
+  });
 
-    test('should convert last day of the year correctly', () => {
-        const date = new Date(2023, 11, 31); // 2023-12-31
-        const result = dateToCalendarDate(date);
-        expect(result).toEqual(new CalendarDate(2023, 12, 31));
-    });
+  test('should convert last day of the year correctly', () => {
+    const date = new Date(2023, 11, 31); // 2023-12-31
+    const result = dateToCalendarDate(date);
+    expect(result).toEqual(new CalendarDate(2023, 12, 31));
+  });
 
-    test('should handle leap year correctly', () => {
-        const date = new Date(2024, 1, 29); // 2024-02-29 (leap year)
-        const result = dateToCalendarDate(date);
-        expect(result).toEqual(new CalendarDate(2024, 2, 29));
-    });
+  test('should handle leap year correctly', () => {
+    const date = new Date(2024, 1, 29); // 2024-02-29 (leap year)
+    const result = dateToCalendarDate(date);
+    expect(result).toEqual(new CalendarDate(2024, 2, 29));
+  });
 
-    test('should convert December 31 correctly', () => {
-        const date = new Date(2025, 11, 31); // 2025-12-31
-        const result = dateToCalendarDate(date);
-        expect(result).toEqual(new CalendarDate(2025, 12, 31));
-    });
+  test('should convert December 31 correctly', () => {
+    const date = new Date(2025, 11, 31); // 2025-12-31
+    const result = dateToCalendarDate(date);
+    expect(result).toEqual(new CalendarDate(2025, 12, 31));
+  });
 });
 
 describe('dateToCalendarTime', () => {
+  const { dateToCalendarTime } = dateUtils;
   test('should convert a standard time correctly', () => {
-      const date = new Date(2025, 0, 15, 14, 30, 45, 500); // 14:30:45.500
-      const result = dateToCalendarTime(date);
-      expect(result).toEqual(new Time(14, 30, 45, 500));
+    const date = new Date(2025, 0, 15, 14, 30, 45, 500); // 14:30:45.500
+    const result = dateToCalendarTime(date);
+    expect(result).toEqual(new Time(14, 30, 45, 500));
   });
 
   test('should convert midnight (00:00:00.000) correctly', () => {
-      const date = new Date(2025, 0, 15, 0, 0, 0, 0);
-      const result = dateToCalendarTime(date);
-      expect(result).toEqual(new Time(0, 0, 0, 0));
+    const date = new Date(2025, 0, 15, 0, 0, 0, 0);
+    const result = dateToCalendarTime(date);
+    expect(result).toEqual(new Time(0, 0, 0, 0));
   });
 
   test('should convert end of day (23:59:59.999) correctly', () => {
-      const date = new Date(2025, 0, 15, 23, 59, 59, 999);
-      const result = dateToCalendarTime(date);
-      expect(result).toEqual(new Time(23, 59, 59, 999));
+    const date = new Date(2025, 0, 15, 23, 59, 59, 999);
+    const result = dateToCalendarTime(date);
+    expect(result).toEqual(new Time(23, 59, 59, 999));
   });
 
   test('should convert a random morning time correctly', () => {
-      const date = new Date(2025, 0, 15, 9, 15, 20, 250);
-      const result = dateToCalendarTime(date);
-      expect(result).toEqual(new Time(9, 15, 20, 250));
+    const date = new Date(2025, 0, 15, 9, 15, 20, 250);
+    const result = dateToCalendarTime(date);
+    expect(result).toEqual(new Time(9, 15, 20, 250));
   });
 
   test('should convert a random afternoon time correctly', () => {
-      const date = new Date(2025, 0, 15, 18, 45, 10, 700);
-      const result = dateToCalendarTime(date);
-      expect(result).toEqual(new Time(18, 45, 10, 700));
+    const date = new Date(2025, 0, 15, 18, 45, 10, 700);
+    const result = dateToCalendarTime(date);
+    expect(result).toEqual(new Time(18, 45, 10, 700));
   });
 });

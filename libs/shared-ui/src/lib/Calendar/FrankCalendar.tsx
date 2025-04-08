@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import { dateToCalendarDate, numberToMonthName } from "@frankjia9052/shared-utils";
+import { frankSharedUtils } from "@frankjia9052/shared-utils";
 import { CalendarDate, DateValue, endOfMonth, getDayOfWeek, getLocalTimeZone, startOfMonth, startOfWeek, today } from "@internationalized/date";
 import { useControlledState } from "../useHooks/useControlledState";
 import clsx from "clsx";
@@ -34,6 +34,7 @@ export const FrankCalendar = ({
   rangeStart,
   rangeEnd
 }: Props) => {
+  const { dateToCalendarDate, numberToMonthName } = frankSharedUtils.utils.dateUtils;
   const [focusedValueState, setFocusedValueState] = useControlledState(
     focusedValue,
     dateToCalendarDate(new Date())
@@ -239,10 +240,10 @@ export const FrankCalendar = ({
                     key={`${calendarDay.date.toString()}`}
                     className={clsx("text-center h-[24px] text-[13px] text-[#303030] flex justify-center items-center mb-1", {
                       'bg-[#E3E3E3]': calendarDay.isHightLight,
-                      'rounded-l-lg': (rangeStart &&calendarDay.date.compare(rangeStart) === 0)
-                      || index % 7 === 0,
+                      'rounded-l-lg': (rangeStart && calendarDay.date.compare(rangeStart) === 0)
+                        || index % 7 === 0,
                       'rounded-r-lg': (rangeEnd && calendarDay.date.compare(rangeEnd) === 0)
-                      || index % 7 === 6
+                        || index % 7 === 6
                     })}
                   >
                     <div

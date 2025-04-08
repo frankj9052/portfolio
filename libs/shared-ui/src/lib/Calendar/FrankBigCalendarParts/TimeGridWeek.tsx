@@ -2,7 +2,7 @@ import { format, isToday} from 'date-fns'
 import { useEffect, useRef, useState } from 'react'
 import clsx from 'clsx'
 import { ShiftType } from '../FrankBigCalendar'
-import { getEventHeight, getTopOffset, getWeekDates } from '@frankjia9052/shared-utils'
+import { frankSharedUtils } from '@frankjia9052/shared-utils'
 import TimeScale from './TimeScale'
 import CalendarGrid, { CalendarGridRef } from './CalendarGrid'
 import CalendarShiftComponent from './CalendarShiftComponent'
@@ -46,6 +46,7 @@ export function TimeGridWeek({
   rowHeight = 25,
   intervalPerHour = 2,
 }: TimeGridWeekProps) {
+  const {getEventHeight, getTopOffset, getWeekDates} = frankSharedUtils.utils.dateUtils;
   const calendarRef = useRef<HTMLDivElement>(null)
   const groupShiftsByDateAndDoctor = getGroupShiftsByDateAndDoctor(shiftsData);
   const daysOfWeek = getWeekDates(focusedDate);
@@ -85,7 +86,6 @@ export function TimeGridWeek({
     }
   }, [])
 
-  console.log("groupShiftsByDateAndDoctor", groupShiftsByDateAndDoctor)
   return (
     <div
       style={{

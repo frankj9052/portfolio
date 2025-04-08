@@ -39,12 +39,12 @@ function formatNumberString(input: string | number, length: number): string {
 
     // 3、截取长度，防止超出
     numericString = numericString.slice(0, length);
-    
+
     // 4、不够长度的部分用'0'补足
     return numericString.padStart(length, '0');
 }
 
-export {
+export const textUtils = {
     truncateString,
     capitalize,
     formatNumberString,
