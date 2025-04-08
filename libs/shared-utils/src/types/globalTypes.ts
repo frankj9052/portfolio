@@ -18,8 +18,8 @@ type NavLinkType = {
     href: string
 }
 
-export type GlobalTypes = {
-    ImageType: ImageType,
-    TextType: TextType,
-    NavLinkType: NavLinkType,
+export {
+    ImageType,
+    TextType,
+    NavLinkType,
 }

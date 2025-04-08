@@ -23,36 +23,6 @@ import { tabs } from './lib/Tabs';
 import { timeInput } from './lib/Time-Input';
 import { usehooks } from './lib/useHooks';
 
-// export project-tree
-export const frankSharedUI = {
-    components: {
-        accordion,
-        autoComplete,
-        avatar,
-        background,
-        button,
-        calendar,
-        carousel,
-        Checkbox,
-        checkboxGroup,
-        datePicker,
-        input,
-        link,
-        loading,
-        modal,
-        navbar,
-        popover,
-        radioGroup,
-        spinner,
-        svgIcon,
-        tabs,
-        timeInput,        
-    },
-    animations,
-    staticEffects,
-    usehooks
-}
-
 // Accordion
 export * from './lib/Accordion/FrankAccordion';
 
@@ -150,3 +120,33 @@ export * from './lib/useHooks/useDebouncedCallback';
 export * from './lib/useHooks/usePagination';
 export * from './lib/useHooks/useTimer';
 export * from './lib/useHooks/useWindowSize';
+
+// export project-tree
+export const frankSharedUI = {
+    components: {
+        accordion,
+        autoComplete,
+        avatar,
+        background,
+        button,
+        calendar,
+        carousel,
+        Checkbox,
+        checkboxGroup,
+        datePicker,
+        input,
+        link,
+        loading,
+        modal,
+        navbar,
+        popover,
+        radioGroup,
+        spinner,
+        svgIcon,
+        tabs,
+        timeInput,        
+    },
+    animations,
+    staticEffects,
+    usehooks
+}
