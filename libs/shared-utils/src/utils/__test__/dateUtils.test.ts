@@ -1,8 +1,7 @@
-import { dateUtils } from '../dateUtils';
 import { CalendarDate, Time } from '@internationalized/date';
+import { isValidDate, dateToCalendarDate, dateToCalendarTime } from '../dateUtils'
 
 describe('isValidDate', () => {
-  const { isValidDate } = dateUtils;
   // 测试有效的日期字符串
   test('returns true for valid date strings', () => {
     expect(isValidDate('2023-10-05')).toBe(true);
@@ -37,7 +36,6 @@ describe('isValidDate', () => {
 });
 
 describe('dateToCalendarDate', () => {
-  const { dateToCalendarDate } = dateUtils;
   test('should convert a normal date correctly', () => {
     const date = new Date(2025, 0, 15); // 2025-01-15 (Month is 0-based in JS)
     const result = dateToCalendarDate(date);
@@ -70,7 +68,6 @@ describe('dateToCalendarDate', () => {
 });
 
 describe('dateToCalendarTime', () => {
-  const { dateToCalendarTime } = dateUtils;
   test('should convert a standard time correctly', () => {
     const date = new Date(2025, 0, 15, 14, 30, 45, 500); // 14:30:45.500
     const result = dateToCalendarTime(date);

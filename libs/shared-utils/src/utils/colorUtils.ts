@@ -51,7 +51,7 @@ function shiftColor({
     return `#${toHex(newR)}${toHex(newG)}${toHex(newB)}`;
 }
 
-export const colorUtils = {
+export {
     convertHexToRGBA,
     shiftColor
 }

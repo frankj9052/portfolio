@@ -21,7 +21,7 @@ function createSVGBackground(svg: string): string {
     return `url("data:image/svg+xml,${encodedSVG}")`;
 }
 
-export const imageUtils = {
+export {
     transformImageUrl,
     createSVGBackground,
 }

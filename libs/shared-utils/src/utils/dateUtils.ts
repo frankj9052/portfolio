@@ -212,7 +212,7 @@ function generateTimeArray(startTime: Date, endTime: Date): Date[] {
     return timeArray
 }
 
-export const dateUtils = {
+export {
     isValidDate,
     dateToCalendarDate,
     dateToCalendarTime,

@@ -44,7 +44,7 @@ function formatNumberString(input: string | number, length: number): string {
     return numericString.padStart(length, '0');
 }
 
-export const textUtils = {
+export {
     truncateString,
     capitalize,
     formatNumberString,

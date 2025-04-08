@@ -8,6 +8,6 @@ function stopPropagationAndDefault(e: React.MouseEvent<HTMLDivElement, MouseEven
     e.stopPropagation();
 }
 
-export const eventUtils = {
+export {
     stopPropagationAndDefault,
 }

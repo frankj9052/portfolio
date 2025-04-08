@@ -18,7 +18,7 @@ type NavLinkType = {
     href: string
 }
 
-export {
+export type {
     ImageType,
     TextType,
     NavLinkType,
