@@ -14,6 +14,7 @@ export type FrankModalProps = {
     backdrop?: "transparent" | "opaque" | "blur",
     draggable?: boolean;
     hideCloseButton?: boolean;
+    hideHeaderAndFooter?: boolean;
     zIndex?: number;
 }
 
@@ -30,6 +31,7 @@ export function FrankModal({
     backdrop = 'transparent', 
     draggable = false, 
     hideCloseButton = false,
+    hideHeaderAndFooter = false,
     zIndex = 50,
  }: FrankModalProps) {
     // original close event has been covered by something else, we manually add one
@@ -48,8 +50,10 @@ export function FrankModal({
             classNames={{
                 wrapper: `${zIndex ? `z-${zIndex}` : ''}`,
                 base: `${imageModal ? 'border-2 border-white' : ''}`,
-                body: `${imageModal ? 'p-0' : ''}`
-            }}
+                body: `${imageModal || hideHeaderAndFooter ? 'p-0' : ''}`,
+                header: `${hideHeaderAndFooter ? '!hidden' : ''}`,
+                footer: `${hideHeaderAndFooter ? 'hidden' : ''}`
+            }}            
             // animation
             motionProps={{
                 variants: {
@@ -59,7 +63,7 @@ export function FrankModal({
             }}
             size={size}
             backdrop={backdrop}
-            hideCloseButton={hideCloseButton}
+            hideCloseButton={hideCloseButton || hideHeaderAndFooter}
         >
             <ModalContent>
                 {

@@ -72,6 +72,8 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
     args: {
         body: <div>This is modal body</div>,
+        hideCloseButton: false,
+        hideHeaderAndFooter: false,
         footerButtons: [
             {
                 customizeContent: 'Footer Button',
