@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react';
 
-interface IProps {
+export interface IProps {
   children: ReactNode;
 }
 
