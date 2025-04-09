@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { CalendarDate, DateValue, endOfMonth, getDayOfWeek, getLocalTimeZone, startOfMonth, startOfWeek, today } from "@internationalized/date";
+import { CalendarDate, DateValue, endOfMonth, getDayOfWeek, getLocalTimeZone, startOfMonth, today } from "@internationalized/date";
 import { useControlledState } from "../useHooks/useControlledState";
 import clsx from "clsx";
 import { Card, Spacer } from "@heroui/react";
@@ -176,7 +176,7 @@ export const FrankCalendar = ({
         >
           {/* Calendar Header */}
           <div
-            className="flex justify-between items-center"
+            className="flex justify-between items-center abg-red-200 pl-2"
           >
             <div className="font-[500] text-[#14151A]">{`${numberToMonthName(focusedValueState.month)} ${focusedValueState.year}`}</div>
             <div
@@ -245,7 +245,7 @@ export const FrankCalendar = ({
                     })}
                   >
                     <div
-                      className={clsx("w-[24px] h-[24px] flex justify-center items-center rounded-full", {
+                      className={clsx("w-[24px] h-[24px] flex justify-center items-center rounded-full hover:bg-[#0C534F] hover:text-[#E4FFE5] hover:border-1 hover:border-[#E3E3E3]", {
                         'bg-[#003F3C] text-[#E4FFE5]': calendarDay.isToday && !calendarDay.selected,
                         'bg-[#C1EDEA] text-[#003F3C]': calendarDay.selected,
                         'text-[#B5B5B5]': calendarDay.isDisabled,
