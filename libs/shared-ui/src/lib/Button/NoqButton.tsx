@@ -61,8 +61,9 @@ export const NoqButton = forwardRef<HTMLButtonElement, NoqButtonProps>(({
 
       )
         : (
-          <div className={clsx(`flex items-center gap-1 w-full`, {
-            'justify-center': !text
+          <div className={clsx(`flex items-center w-full`, {
+            'justify-center gap-0': !text,
+            'gap-1': !!text
           })}>
             {icon && (
               <span className={clsx({ "grayscale opacity-90 flex": isDisabled && theme === "Brand" })}>

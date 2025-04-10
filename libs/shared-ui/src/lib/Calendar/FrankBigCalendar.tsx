@@ -1,6 +1,6 @@
 import { Card } from "@heroui/react";
 import { useControlledState } from "../useHooks/useControlledState";
-import { addDays, format, isSameDay, isSameWeek, subDays } from "date-fns";
+import { addDays, compareAsc, format, isSameDay, isSameWeek, subDays } from "date-fns";
 import FrankButtonBase from "../Button/FrankButtonBase";
 import FrankArrowSwitcher from "../Tabs/FrankArrowSwitcher";
 import CalendarViewSwitcher from "../Tabs/CalendarViewSwitcher";
@@ -8,10 +8,25 @@ import TimeGridWeek from "./FrankBigCalendarParts/TimeGridWeek";
 import TimeGridDay from "./FrankBigCalendarParts/TimeGridDay";
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
+import ListDay from "./FrankBigCalendarParts/ListDay";
+import clsx from "clsx";
+import { BookingEventActionsType } from "./FrankBigCalendarParts/ListDayBookingEvent";
 
 export type ViewType = 'timeGridWeek' | 'timeGridDay' | 'listDay';
 export type BookingStatus = "AVAILABLE" | "BOOKED" | "UNAVAILABLE" | "PENDING" | "CANCELLED" | "ARRIVED" | "COMPLETE" | "MISS";
 export type BookingMethod = "PHONE" | "ONLINE"
+export type BookingServiceType = "General Visit"
+export type LocationType = {
+  id: string,
+  country: string,
+  province: string,
+  city: string,
+  address: string,
+  label: string,
+  unit?: string,
+  room?: string,
+  notes?: string,
+}
 export type BookingType = {
   startTime: Date,
   endTime: Date,
@@ -19,13 +34,15 @@ export type BookingType = {
   clientName?: string,
   location?: string,
   bookingMethod?: BookingMethod[],
-  clientGender?: string, // 可能不需要
+  clientGender?: string,
   clientAge?: number,
-  providerName?: string, // 可能不需要
-  id?: string, // 可能不需要
-  src?: string, // 可能不需要
-  status?: BookingStatus,
-  room?: string
+  providerName?: string,
+  providerUserId?: string,
+  id: string,
+  src?: string,
+  status: BookingStatus,
+  room?: string,
+  serviceType?: BookingServiceType,
 }
 export type ShiftType = {
   startTime: Date,
@@ -35,7 +52,7 @@ export type ShiftType = {
   providerName?: string,
   backgroundColor: string,
   bookings?: BookingType[],
-  location?: string,
+  location?: LocationType,
 }
 
 export type FrankBigCalendarProps = {
@@ -46,8 +63,8 @@ export type FrankBigCalendarProps = {
   focusedDate?: Date,
   onFocusedDateChange?: (newDate: Date) => void,
   shiftsData?: ShiftType[],
+  bookingEventActions?: BookingEventActionsType,
 }
-
 
 export function FrankBigCalendar({
   width,
@@ -57,6 +74,7 @@ export function FrankBigCalendar({
   focusedDate,
   onFocusedDateChange,
   shiftsData = [],
+  bookingEventActions,
 }: FrankBigCalendarProps) {
   const [currentViewState, setCurrentViewState] = useControlledState<ViewType>(
     currentView,
@@ -66,6 +84,20 @@ export function FrankBigCalendar({
     focusedDate,
     new Date()
   );
+
+  const focusedDayShifts = shiftsData.filter(shift => isSameDay(shift.startTime, focusedDateState));
+  const focusedDayBookings: BookingType[] = focusedDayShifts.reduce((acc: BookingType[], shift) => {
+    const bookings: BookingType[] = shift.bookings?.filter((booking) => ["BOOKED", "PENDING", "ARRIVED", "COMPLETE", "MISS"].includes(booking.status)
+    ).map((booking) => ({
+      ...booking,
+      providerName: shift.providerName,
+      providerUserId: shift.providerUserId,
+      room: shift.location?.room || "Without room assignment"
+    })) || [];
+    acc.push(...bookings);
+    return acc;
+  }, []).sort((a, b) => compareAsc(new Date(a.startTime), new Date(b.startTime)));
+
   const getDateBasedOnView = (date: Date): string => {
     switch (currentViewState) {
       case 'timeGridWeek':
@@ -81,19 +113,22 @@ export function FrankBigCalendar({
         return <TimeGridWeek
           shiftsData={shiftsData.filter(shift => isSameWeek(shift.startTime, focusedDateState))}
           startHour={0}
-          endHour={24}  
-          focusedDate={focusedDateState}        
+          endHour={24}
+          focusedDate={focusedDateState}
         />
       case 'timeGridDay':
         return <TimeGridDay
-          shiftsData={shiftsData.filter(shift => isSameDay(shift.startTime, focusedDateState))}
+          shiftsData={focusedDayShifts}
           startHour={0}
           endHour={24}
         />
       case 'listDay':
-        return <div>list day</div>
+        return <ListDay
+          bookingData={focusedDayBookings}
+          bookingEventActions={bookingEventActions}
+        />
       default:
-        return <div>view</div>
+        return <div>wrong view</div>
     }
   }
 
@@ -108,11 +143,10 @@ export function FrankBigCalendar({
           height: height ? `${height}px` : '100%',
         }}
         shadow="sm"
-        className="px-4 pt-4 pb-7"
       >
         {/* Calendar Controller */}
         <div
-          className='flex justify-between items-center pb-4'
+          className={`flex justify-between items-center ${currentViewState === 'listDay' ? 'pb-2' : 'pb-4'} px-4 pt-4`}
         >
           {/* Date */}
           <div
@@ -181,7 +215,9 @@ export function FrankBigCalendar({
         </div>
         {/* Calendar Body */}
         <div
-          className="min-h-[calc(100%-48px)]"
+          className={clsx("min-h-[calc(100%-48px)]", {
+            'px-4 pb-10': currentViewState !== 'listDay'
+          })}
         >
           {getCalendar(currentViewState)}
         </div>

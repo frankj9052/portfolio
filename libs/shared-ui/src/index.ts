@@ -31,6 +31,7 @@ export * from './lib/Calendar/FrankBigCalendarParts/CalendarShiftComponent';
 export * from './lib/Calendar/FrankBigCalendarParts/CalendarGrid';
 export * from './lib/Calendar/FrankBigCalendarParts/DraggableShift';
 export * from './lib/Calendar/FrankBigCalendarParts/DropContainer';
+export * from './lib/Calendar/FrankBigCalendarParts/ListDay';
 export * from './lib/Calendar/FrankBigCalendarParts/ResizableShift';
 export * from './lib/Calendar/FrankBigCalendarParts/TimeGridDay';
 export * from './lib/Calendar/FrankBigCalendarParts/TimeGridWeek';
