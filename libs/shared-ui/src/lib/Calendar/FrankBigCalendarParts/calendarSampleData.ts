@@ -23,6 +23,7 @@ const shiftData_provider01: ShiftType = {
     },
     bookings: [
         {
+            id: '01',
             startTime: set(today, { hours: 10, minutes: 0, seconds: 0, milliseconds: 0 }),
             endTime: set(today, { hours: 11, minutes: 0, seconds: 0, milliseconds: 0 }),
             clientUserId: '01',
@@ -35,6 +36,7 @@ const shiftData_provider01: ShiftType = {
             serviceType: 'General Visit'
         },
         {
+            id: '02',
             startTime: set(today, { hours: 11, minutes: 0, seconds: 0, milliseconds: 0 }),
             endTime: set(today, { hours: 12, minutes: 0, seconds: 0, milliseconds: 0 }),
             clientUserId: '02',
@@ -47,6 +49,7 @@ const shiftData_provider01: ShiftType = {
             serviceType: 'General Visit'            
         },
         {
+            id: '03',
             startTime: set(today, { hours: 12, minutes: 30, seconds: 0, milliseconds: 0 }),
             endTime: set(today, { hours: 13, minutes: 0, seconds: 0, milliseconds: 0 }),
             clientUserId: '02',
@@ -59,6 +62,7 @@ const shiftData_provider01: ShiftType = {
             serviceType: 'General Visit',
         },
         {
+            id: '04',
             startTime: set(today, { hours: 13, minutes: 30, seconds: 0, milliseconds: 0 }),
             endTime: set(today, { hours: 14, minutes: 0, seconds: 0, milliseconds: 0 }),
             clientUserId: '03',
@@ -71,6 +75,7 @@ const shiftData_provider01: ShiftType = {
             serviceType: 'General Visit'
         },
         {
+            id: '05',
             startTime: set(today, { hours: 15, minutes: 0, seconds: 0, milliseconds: 0 }),
             endTime: set(today, { hours: 16, minutes: 0, seconds: 0, milliseconds: 0 }),
             location: 'locationId01',
@@ -78,6 +83,7 @@ const shiftData_provider01: ShiftType = {
             status: 'AVAILABLE',
         },
         {
+            id: '06',
             startTime: set(today, { hours: 16, minutes: 0, seconds: 0, milliseconds: 0 }),
             endTime: set(today, { hours: 17, minutes: 0, seconds: 0, milliseconds: 0 }),
             bookingMethod: ['ONLINE', 'PHONE'],
@@ -96,6 +102,7 @@ const shiftData_provider02_01: ShiftType = {
     backgroundColor: '#0071E9',
     bookings: [
         {
+            id: '07',
             startTime: set(today, { hours: 10, minutes: 0, seconds: 0, milliseconds: 0 }),
             endTime: set(today, { hours: 10, minutes: 30, seconds: 0, milliseconds: 0 }),
             clientUserId: '04',
@@ -108,6 +115,7 @@ const shiftData_provider02_01: ShiftType = {
             serviceType: 'General Visit',
         },
         {
+            id: '08',
             startTime: set(today, { hours: 10, minutes: 30, seconds: 0, milliseconds: 0 }),
             endTime: set(today, { hours: 11, minutes: 0, seconds: 0, milliseconds: 0 }),
             clientUserId: '05',
@@ -120,6 +128,7 @@ const shiftData_provider02_01: ShiftType = {
             serviceType: 'General Visit',
         },
         {
+            id: '09',
             startTime: set(today, { hours: 11, minutes: 0, seconds: 0, milliseconds: 0 }),
             endTime: set(today, { hours: 12, minutes: 0, seconds: 0, milliseconds: 0 }),
             clientUserId: '06',
@@ -132,6 +141,7 @@ const shiftData_provider02_01: ShiftType = {
             serviceType: 'General Visit',
         },
         {
+            id: '10',
             startTime: set(today, { hours: 12, minutes: 0, seconds: 0, milliseconds: 0 }),
             endTime: set(today, { hours: 13, minutes: 0, seconds: 0, milliseconds: 0 }),
             clientUserId: '06',
@@ -155,6 +165,7 @@ const shiftData_provider02_02: ShiftType = {
     backgroundColor: '#0071E9',
     bookings: [
         {
+            id: '15',
             startTime: set(today, { hours: 15, minutes: 0, seconds: 0, milliseconds: 0 }),
             endTime: set(today, { hours: 15, minutes: 30, seconds: 0, milliseconds: 0 }),
             clientUserId: '07',
@@ -167,6 +178,7 @@ const shiftData_provider02_02: ShiftType = {
             serviceType: 'General Visit',
         },
         {
+            id: '16',
             startTime: set(today, { hours: 15, minutes: 30, seconds: 0, milliseconds: 0 }),
             endTime: set(today, { hours: 16, minutes: 0, seconds: 0, milliseconds: 0 }),
             clientUserId: '08',
@@ -179,6 +191,7 @@ const shiftData_provider02_02: ShiftType = {
             serviceType: 'General Visit',
         },
         {
+            id: '17',
             startTime: set(today, { hours: 16, minutes: 0, seconds: 0, milliseconds: 0 }),
             endTime: set(today, { hours: 16, minutes: 30, seconds: 0, milliseconds: 0 }),
             clientUserId: '09',
@@ -191,6 +204,7 @@ const shiftData_provider02_02: ShiftType = {
             serviceType: 'General Visit',
         },
         {
+            id: '18',
             startTime: set(today, { hours: 16, minutes: 30, seconds: 0, milliseconds: 0 }),
             endTime: set(today, { hours: 17, minutes: 0, seconds: 0, milliseconds: 0 }),
             clientUserId: '10',
@@ -203,6 +217,7 @@ const shiftData_provider02_02: ShiftType = {
             serviceType: 'General Visit',
         },
         {
+            id: '19',
             startTime: set(today, { hours: 17, minutes: 0, seconds: 0, milliseconds: 0 }),
             endTime: set(today, { hours: 17, minutes: 30, seconds: 0, milliseconds: 0 }),
             clientUserId: '11',
@@ -215,6 +230,7 @@ const shiftData_provider02_02: ShiftType = {
             serviceType: 'General Visit',
         },
         {
+            id: '20',
             startTime: set(today, { hours: 17, minutes: 30, seconds: 0, milliseconds: 0 }),
             endTime: set(today, { hours: 18, minutes: 0, seconds: 0, milliseconds: 0 }),
             clientUserId: '12',
@@ -227,6 +243,7 @@ const shiftData_provider02_02: ShiftType = {
             serviceType: 'General Visit',
         },
         {
+            id: '21',
             startTime: set(today, { hours: 18, minutes: 0, seconds: 0, milliseconds: 0 }),
             endTime: set(today, { hours: 18, minutes: 30, seconds: 0, milliseconds: 0 }),
             clientUserId: '12',
@@ -239,6 +256,7 @@ const shiftData_provider02_02: ShiftType = {
             serviceType: 'General Visit',
         },
         {
+            id: '22',
             startTime: set(today, { hours: 18, minutes: 30, seconds: 0, milliseconds: 0 }),
             endTime: set(today, { hours: 19, minutes: 0, seconds: 0, milliseconds: 0 }),
             clientUserId: '13',
@@ -251,6 +269,7 @@ const shiftData_provider02_02: ShiftType = {
             serviceType: 'General Visit',
           },
           {
+            id: '23',
             startTime: set(today, { hours: 19, minutes: 0, seconds: 0, milliseconds: 0 }),
             endTime: set(today, { hours: 19, minutes: 30, seconds: 0, milliseconds: 0 }),
             clientUserId: '14',
@@ -263,6 +282,7 @@ const shiftData_provider02_02: ShiftType = {
             serviceType: 'General Visit',
           },
           {
+            id: '24',
             startTime: set(today, { hours: 19, minutes: 30, seconds: 0, milliseconds: 0 }),
             endTime: set(today, { hours: 20, minutes: 0, seconds: 0, milliseconds: 0 }),
             clientUserId: '15',
@@ -286,6 +306,7 @@ const shiftData_provider03_01: ShiftType = {
     backgroundColor: '#E5A500',
     bookings: [
         {
+            id: '11',
             startTime: set(today, { hours: 7, minutes: 0, seconds: 0, milliseconds: 0 }),
             endTime: set(today, { hours: 7, minutes: 30, seconds: 0, milliseconds: 0 }),
             clientUserId: '20',
@@ -298,6 +319,7 @@ const shiftData_provider03_01: ShiftType = {
             serviceType: 'General Visit',
           },
           {
+            id: '12',
             startTime: set(today, { hours: 7, minutes: 30, seconds: 0, milliseconds: 0 }),
             endTime: set(today, { hours: 8, minutes: 0, seconds: 0, milliseconds: 0 }),
             clientUserId: '21',
@@ -310,6 +332,7 @@ const shiftData_provider03_01: ShiftType = {
             serviceType: 'General Visit',
           },
           {
+            id: '13',
             startTime: set(today, { hours: 8, minutes: 0, seconds: 0, milliseconds: 0 }),
             endTime: set(today, { hours: 8, minutes: 30, seconds: 0, milliseconds: 0 }),
             clientUserId: '22',
@@ -322,6 +345,7 @@ const shiftData_provider03_01: ShiftType = {
             serviceType: 'General Visit',
           },
           {
+            id: '14',
             startTime: set(today, { hours: 8, minutes: 30, seconds: 0, milliseconds: 0 }),
             endTime: set(today, { hours: 9, minutes: 0, seconds: 0, milliseconds: 0 }),
             clientUserId: '23',
