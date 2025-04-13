@@ -1,19 +1,12 @@
-import { AboutSectionLayout } from "../../components/home/AboutSectionLayout"
+import { AboutSectionLayout } from '../../components/home/AboutSectionLayout';
+import { PageLayout } from '../../components/PageLayout';
 
 const AboutPage = () => {
-    return (
-            <div className="flex items-center justify-center">
-              <div className="container mx-auto">
-                <div className="w-[90%] md:w-[80%] mx-auto ">
-                  <div
-                    className='h-vertical-center'
-                  >
-                    <AboutSectionLayout/>
-                  </div>
-                </div>
-              </div>
-            </div>
-    )
-}
+  return (
+    <PageLayout>
+      <AboutSectionLayout />
+    </PageLayout>
+  );
+};
 
 export default AboutPage;

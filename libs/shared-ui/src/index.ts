@@ -37,6 +37,9 @@ export * from './lib/Calendar/FrankBigCalendarParts/TimeGridDay';
 export * from './lib/Calendar/FrankBigCalendarParts/TimeGridWeek';
 export * from './lib/Calendar/FrankBigCalendarParts/TimeScale';
 
+// Card
+export * from './lib/Card/FrankCard';
+
 // Carousel
 export * from './lib/Carousel/FrankCarousel';
 
