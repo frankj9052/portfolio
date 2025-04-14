@@ -2,7 +2,7 @@ import clsx from "clsx";
 import { BookingType } from "../FrankBigCalendar";
 import { IoSearchOutline } from "react-icons/io5";
 import { BookingEventActionsType, ListDayBookingEvent } from "./ListDayBookingEvent";
-import usePagination from "../../useHooks/usePagination";
+import usePagination from "../../../useHooks/usePagination";
 import { useMemo } from "react";
 import NoqButton from "../../Button/NoqButton";
 import { IoIosArrowBack } from "react-icons/io";

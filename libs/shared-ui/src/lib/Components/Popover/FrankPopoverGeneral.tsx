@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { useControlledState } from "../useHooks/useControlledState";
+import { useControlledState } from "../../useHooks/useControlledState";
 import clsx from "clsx";
 
 export type FrankPopoverGeneralType = {

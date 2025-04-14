@@ -4,8 +4,8 @@ import 'swiper/css/navigation'
 import { Swiper, SwiperClass, SwiperSlide } from "swiper/react";
 import { Children, forwardRef, ReactNode, useCallback, useEffect, useImperativeHandle, useRef } from "react";
 import { Pagination, Navigation } from 'swiper/modules';
-import useTimer from '../useHooks/useTimer';
-import { useControlledState } from '../useHooks/useControlledState';
+import { useControlledState } from '../../useHooks/useControlledState';
+import useTimer from '../../useHooks/useTimer';
 
 export type FrankCarouselRefType = {
     swiper: SwiperClass | null,

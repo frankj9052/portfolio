@@ -1,6 +1,6 @@
 import { Tab, Tabs } from '@heroui/react';
 import { ReactNode } from 'react';
-import { useControlledState } from '../useHooks/useControlledState';
+import { useControlledState } from '../../useHooks/useControlledState';
 
 export type TabsDataType = {
   key: string;
