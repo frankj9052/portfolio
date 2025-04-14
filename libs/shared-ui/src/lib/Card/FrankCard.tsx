@@ -22,6 +22,30 @@ export type FrankCardProps = {
   allowTextSelectionOnPress?: boolean;
 };
 
+/**
+ * FrankCard Component - A customizable card component based on HeroUI Card.
+ *
+ * @param {ReactNode} cardCover - The cover content of the card, typically an image or overlay.
+ * @param {ReactNode} cardBody - The main body content of the card.
+ * @param {ReactNode} cardHeader - The header content displayed at the top of the card.
+ * @param {ReactNode} cardFooter - The footer content displayed at the bottom of the card.
+ * @param {boolean} isBlurred - Whether to apply a blur effect to the card background.
+ * @param {boolean} isFooterBlurred - Whether to apply a blur effect only to the card footer.
+ * @param {number|string} key - Optional React key for list rendering.
+ * @param {boolean} isPressable - Whether the card is pressable (clickable).
+ * @param {boolean} isHoverable - Whether the card has hover interaction effects.
+ * @param {'sm' | 'md' | 'lg' | 'none'} shadow - Size of the card's shadow.
+ * @param {() => void} onPress - Callback function triggered when the card is pressed.
+ * @param {number} cardWidth - Width of the card in pixels.
+ * @param {number} cardHeight - Height of the card in pixels.
+ * @param {string} className - Additional custom CSS classes for the card.
+ * @param {boolean} isDisabled - Whether the card interactions are disabled.
+ * @param {boolean} disableAnimation - Whether to disable card interaction animations.
+ * @param {boolean} disableRipple - Whether to disable the ripple effect on click.
+ * @param {boolean} allowTextSelectionOnPress - Whether to allow text selection while pressing the card.
+ *
+ * @returns {JSX.Element} A customizable card component with optional cover, header, body, and footer sections.
+ */
 export const FrankCard = ({
   cardCover,
   cardBody,

@@ -21,6 +21,21 @@ type Props = {
   rangeEnd?: DateValue | null
 }
 
+/**
+ * A customizable calendar component that supports date selection,
+ * optional range highlighting, and quick shortcut buttons for faster selection.
+ * 
+ * @param {'Small' | 'Default' | 'WithShortcut'} [variant='Default'] - Optional. Visual variant of the calendar.
+ * @param {boolean} [isStartDateSelection] - Optional. Whether the calendar is for selecting a start date (affects shortcut options).
+ * @param {DateValue | null} [value] - Optional. Currently selected date value.
+ * @param {(value: DateValue | null | undefined) => void} [onValueChange] - Optional. Callback triggered when a date is selected.
+ * @param {CalendarDate} [focusedValue] - Optional. Date currently focused (centered) in the calendar view.
+ * @param {(date: CalendarDate | null | undefined) => void} [onFocusedValueChange] - Optional. Callback triggered when the focused date changes.
+ * @param {DateValue | null} [minValue] - Optional. Minimum selectable date.
+ * @param {DateValue | null} [maxValue] - Optional. Maximum selectable date.
+ * @param {DateValue | null} [rangeStart] - Optional. Start of the selected date range (for range highlighting).
+ * @param {DateValue | null} [rangeEnd] - Optional. End of the selected date range (for range highlighting).
+ */
 export const FrankCalendar = ({
   variant = 'Default',
   isStartDateSelection,

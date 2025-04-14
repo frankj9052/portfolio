@@ -18,6 +18,24 @@ export type FrankModalProps = {
     zIndex?: number;
 }
 
+/**
+ * A highly customizable modal component based on @heroui/react Modal,
+ * supporting draggable behavior, optional header/footer visibility, and custom buttons.
+ * 
+ * @param {boolean} isOpen - Whether the modal is currently open.
+ * @param {() => void} onClose - Callback triggered when the modal is requested to close.
+ * @param {ReactNode} [header] - Optional. Content to display in the modal header.
+ * @param {ReactNode} body - Content to display in the modal body.
+ * @param {FrankButtonBaseProps[]} [footerButtons] - Optional. Array of button configurations for the modal footer.
+ * @param {boolean} [imageModal] - Optional. If true, renders a minimal modal for displaying images.
+ * @param {"xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl" | "full"} [size] - Optional. Size of the modal.
+ * @param {"center" | "top-center" | "auto" | "top" | "bottom" | "bottom-center"} [placement="top-center"] - Optional. Placement of the modal on screen.
+ * @param {"transparent" | "opaque" | "blur"} [backdrop="transparent"] - Optional. Type of backdrop behind the modal.
+ * @param {boolean} [draggable=false] - Optional. Whether the modal can be dragged.
+ * @param {boolean} [hideCloseButton=false] - Optional. Whether to hide the close button.
+ * @param {boolean} [hideHeaderAndFooter=false] - Optional. Whether to hide both the header and footer sections.
+ * @param {number} [zIndex=50] - Optional. z-index value for the modal to control layering.
+ */
 // image modal is just show the original photo
 export function FrankModal({ 
     isOpen, 

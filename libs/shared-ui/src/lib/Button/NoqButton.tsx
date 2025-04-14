@@ -15,6 +15,21 @@ export type NoqButtonProps = {
   width?: number,
 }
 
+/**
+ * A customizable button component with theming, loading state, and optional icons,
+ * designed for consistent styling across different usage scenarios.
+ * 
+ * @param {'Default' | 'Brand' | 'Ghost'} theme - Visual theme of the button.
+ * @param {'sm' | 'md' | 'lg'} [size] - Optional. Predefined size of the button (small, medium, large).
+ * @param {boolean} [isDisabled] - Optional. Whether the button is disabled.
+ * @param {boolean} [loading] - Optional. Whether the button shows a loading spinner.
+ * @param {React.ReactNode} [icon] - Optional. Icon to display inside the button.
+ * @param {string} [text] - Optional. Text label inside the button.
+ * @param {string} [textStyle] - Optional. Additional className(s) for styling the text.
+ * @param {() => void} [handleClick] - Optional. Callback triggered when the button is clicked.
+ * @param {number} [height] - Optional. Custom height of the button in pixels (if size is not set).
+ * @param {number} [width] - Optional. Custom width of the button in pixels (if size is not set).
+ */
 export const NoqButton = forwardRef<HTMLButtonElement, NoqButtonProps>(({
   theme,
   size,

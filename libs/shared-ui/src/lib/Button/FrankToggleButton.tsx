@@ -8,6 +8,16 @@ export type FrankToggleButtonProps = {
     active?: boolean,
 }
 
+/**
+ * A toggleable button component that can be either controlled or uncontrolled,
+ * changing its active state and styles based on user interaction.
+ * 
+ * @param {ReactNode} [content] - Optional. Content to display inside the button.
+ * @param {number} [width] - Optional. Width of the button in pixels.
+ * @param {number} [height] - Optional. Height of the button in pixels.
+ * @param {() => void} [onClick] - Optional. Callback triggered when the button is clicked.
+ * @param {boolean} [active] - Optional. Controlled active state; if not provided, the component manages its own active state internally.
+ */
 export const FrankToggleButton = forwardRef<HTMLDivElement, FrankToggleButtonProps>(({
     content,
     width,

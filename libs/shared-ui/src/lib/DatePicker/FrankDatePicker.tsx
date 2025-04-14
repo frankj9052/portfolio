@@ -16,6 +16,23 @@ export type OverlayPlacement =
     | 'top'
     | 'top-end'
     | 'top-start';
+
+/**
+* A customized DatePicker component based on @heroui/react,
+* supporting styling overrides, min/max value constraints, and popover placement options.
+* 
+* @param {number} [width] - Optional. Width of the date picker in pixels.
+* @param {number} [height] - Optional. Height of the date picker in pixels.
+* @param {"flat" | "faded" | "bordered" | "underlined"} [variant] - Optional. Visual style variant of the input field.
+* @param {DateValue | null} [defaultValue] - Optional. Default selected date.
+* @param {DateValue | null} [value] - Optional. Controlled selected date value.
+* @param {(value: CalendarDate | CalendarDateTime | ZonedDateTime | null) => void} [onChange] - Optional. Callback triggered when the selected date changes.
+* @param {"sm" | "md" | "lg" | "none" | "full"} [radius] - Optional. Border radius for the input field.
+* @param {ReactNode} [endContent] - Optional. Custom content to display at the end of the input field.
+* @param {DateValue | null} [minValue] - Optional. Minimum selectable date.
+* @param {DateValue | null} [maxValue] - Optional. Maximum selectable date.
+* @param {OverlayPlacement} [popoverPlacement] - Optional. Placement of the popover calendar relative to the input.
+*/
 export type FrankDatePickerProps = {
     width?: number,
     height?: number,

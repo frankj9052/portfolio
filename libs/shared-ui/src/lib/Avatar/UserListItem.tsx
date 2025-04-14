@@ -8,6 +8,14 @@ export type UserListItemProps = {
     }
 }
 
+/**
+ * A simple user list item component displaying a user's avatar, name, and email.
+ * 
+ * @param {object} [user] - Optional. User information to display.
+ * @param {string} [user.name] - Optional. User's display name.
+ * @param {string} [user.image] - Optional. URL of the user's avatar image.
+ * @param {string} [user.email] - Optional. User's email address.
+ */
 export function UserListItem(
     {
         user

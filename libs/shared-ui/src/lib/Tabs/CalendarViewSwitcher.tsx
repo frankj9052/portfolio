@@ -8,6 +8,14 @@ export type CalendarViewSwitcherProps = {
     handleClickRightButton?: () => void;
 }
 
+/**
+ * A three-option button group component used to switch between different calendar views,
+ * providing visual feedback on the currently selected view.
+ * 
+ * @param {() => void} [handleClickLeftButton] - Optional. Callback triggered when the left button is clicked.
+ * @param {() => void} [handleClickMiddleButton] - Optional. Callback triggered when the middle button is clicked.
+ * @param {() => void} [handleClickRightButton] - Optional. Callback triggered when the right button is clicked.
+ */
 export function CalendarViewSwitcher({
     handleClickLeftButton,
     handleClickMiddleButton,

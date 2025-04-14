@@ -8,6 +8,22 @@ export type TabsDataType = {
   content: ReactNode;
 };
 
+/**
+ * A customizable tabs component built on top of @heroui/react Tabs,
+ * supporting controlled or uncontrolled selection, layout, colors, and variant styles.
+ * 
+ * @param {string} ariaLable - ARIA label for accessibility.
+ * @param {TabsDataType[]} tabsData - Array of tabs, each containing a key, title, and content.
+ * @param {'sm' | 'md' | 'lg' | 'none' | 'full'} [radius] - Optional. Border radius of the tabs.
+ * @param {'primary' | 'default' | 'secondary' | 'success' | 'warning' | 'danger'} [color] - Optional. Color theme of the tabs.
+ * @param {boolean} [isDisabled] - Optional. Whether all tabs are disabled.
+ * @param {string[]} [disabledKeys] - Optional. Keys of specific tabs to disable.
+ * @param {'sm' | 'md' | 'lg'} [size] - Optional. Size of the tabs.
+ * @param {'solid' | 'light' | 'underlined' | 'bordered'} [variant] - Optional. Visual style variant of the tabs.
+ * @param {string | number} [selected] - Optional. Controlled selected tab key.
+ * @param {(key: string | number) => void} [onSelectionChange] - Optional. Callback triggered when the selected tab changes.
+ * @param {'top' | 'bottom' | 'start' | 'end'} [placement] - Optional. Placement of the tabs relative to the content.
+ */
 export type FrankTabsProps = {
   ariaLable: string;
   tabsData: TabsDataType[];

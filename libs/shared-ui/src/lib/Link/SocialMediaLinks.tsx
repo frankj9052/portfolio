@@ -10,6 +10,13 @@ export type SocialMediaLinksProps = {
     }[];
 }
 
+/**
+ * A flexible component for displaying social media icons as links,
+ * arranged either horizontally or vertically.
+ * 
+ * @param {'horizontal' | 'vertical'} [orientation='horizontal'] - Optional. Layout orientation of the icons.
+ * @param {{ reactIcon: ReactNode, href: string }[]} reactIcons - Array of social media icons and their corresponding link URLs.
+ */
 export const SocialMediaLinks = ({
     orientation='horizontal',
     reactIcons,

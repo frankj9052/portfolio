@@ -4,10 +4,9 @@ import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import listPlugin from '@fullcalendar/list';
 import styles from './FrankFullCalendar.module.css'
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { useControlledState } from '../useHooks/useControlledState';
-import { addDays, format, isEqual, isSameDay, subDays } from 'date-fns';
-import NoqButton from '../Button/NoqButton';
+import { addDays, format, isSameDay, subDays } from 'date-fns';
 import FrankButtonBase from '../Button/FrankButtonBase';
 import FrankArrowSwitcher from '../Tabs/FrankArrowSwitcher';
 import CalendarViewSwitcher from '../Tabs/CalendarViewSwitcher';
@@ -24,6 +23,17 @@ export type FrankFullCalendarProps = {
 
 type CurrentViewType = 'timeGridWeek' | 'timeGridDay' | 'listDay'
 
+/**
+ * A customized FullCalendar component wrapper with added header controls for
+ * date navigation, view switching, and styling integration using FullCalendar plugins.
+ * 
+ * @param {number} [width] - Optional. Width of the calendar container in pixels.
+ * @param {number} [height] - Optional. Height of the calendar container in pixels.
+ * @param {CurrentViewType} [curerntView] - Optional. Current active view type ('timeGridWeek', 'timeGridDay', or 'listDay').
+ * @param {(viewType: CurrentViewType) => void} [onCurrentViewChange] - Optional. Callback triggered when the calendar view changes.
+ * @param {Date} [focusedDate] - Optional. Current focused date displayed in the calendar.
+ * @param {(newDate: Date) => void} [onFocusedDateChange] - Optional. Callback triggered when the focused date changes.
+ */
 export function FrankFullCalendar({
     width,
     height,

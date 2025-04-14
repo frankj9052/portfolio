@@ -15,6 +15,22 @@ type DateInputType = {
     day: string,
 }
 
+/**
+ * A customized date picker component that combines manual text input (year, month, day)
+ * with a popover calendar for flexible date selection, validation, and range checking.
+ * 
+ * @param {number} [width] - Optional. Width of the date picker in pixels.
+ * @param {number} [height] - Optional. Height of the date picker in pixels.
+ * @param {ReactNode} [endContent] - Optional. Custom content to display at the end (e.g., icon).
+ * @param {DateValue | null} [value] - Optional. Controlled selected date value.
+ * @param {(value: DateValue | null | undefined) => void} [onValueChange] - Optional. Callback triggered when the selected date changes.
+ * @param {boolean} [isStartDateSelection] - Optional. Whether the date picker is used for selecting a start date (affects shortcut options).
+ * @param {number} [zIndex] - Optional. z-index of the popover calendar for layering control.
+ * @param {DateValue | null} [minValue] - Optional. Minimum selectable date.
+ * @param {DateValue | null} [maxValue] - Optional. Maximum selectable date.
+ * @param {DateValue | null} [rangeStart] - Optional. Start of a date range for highlighting.
+ * @param {DateValue | null} [rangeEnd] - Optional. End of a date range for highlighting.
+ */
 export type NoqDatePickerProps = {
     width?: number,
     height?: number,
@@ -28,51 +44,7 @@ export type NoqDatePickerProps = {
     rangeStart?: DateValue | null,
     rangeEnd?: DateValue | null,
 }
-/**
- * NoqDatePicker Component
- * 
- * Purpose:
- * This component is a date picker that allows users to either manually enter a date or select one from a calendar.
- * 
- * Features:
- * - Users can input the year, month, and day manually.
- * - Automatically moves to the next input field after completion.
- * - Ensures date format validity and auto-formats input values.
- * - Provides a calendar selection option, allowing users to pick a date by clicking the calendar icon.
- * - Supports minimum and maximum date constraints.
- * - Allows selecting a date range with start and end values.
- * - Detects outside clicks and automatically closes the calendar popover.
- * - Customizable `zIndex` for overlay handling.
- * 
- * Usage:
- * ```tsx
- * <NoqDatePicker
- *   width={300} // Optional: Set component width
- *   height={40} // Optional: Set component height
- *   value={selectedDate} // Bind to the currently selected date value
- *   onValueChange={(newDate) => setSelectedDate(newDate)} // Callback when the date changes
- *   isStartDateSelection={true} // Optional: Whether it is the start date selection
- *   zIndex={1000} // Optional: Set the z-index of the calendar popover
- *   minValue={minDate} // Optional: Set the minimum selectable date
- *   maxValue={maxDate} // Optional: Set the maximum selectable date
- *   rangeStart={rangeStartDate} // Optional: Set the start date for range selection
- *   rangeEnd={rangeEndDate} // Optional: Set the end date for range selection
- * />
- * ```
- * 
- * Props:
- * - width?: number - Component width (px)
- * - height?: number - Component height (px)
- * - endContent?: ReactNode - Optional custom end content (e.g., an icon)
- * - value?: DateValue | null - Currently selected date value
- * - onValueChange?: (value: DateValue | null | undefined) => void - Callback for date value changes
- * - isStartDateSelection?: boolean - Whether it is the start date selection
- * - zIndex?: number - Controls the `z-index` of the calendar popover
- * - minValue?: DateValue | null - The minimum selectable date
- * - maxValue?: DateValue | null - The maximum selectable date
- * - rangeStart?: DateValue | null - The start date for a range selection
- * - rangeEnd?: DateValue | null - The end date for a range selection
- */
+
 export function NoqDatePicker({
     width,
     height,

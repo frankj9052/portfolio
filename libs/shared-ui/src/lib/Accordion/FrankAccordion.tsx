@@ -30,22 +30,23 @@ export type FrankAccordionProps = {
 /**
  * FrankAccordion Component
  * 
- * This component renders an accordion UI element using the `@heroui/react` library, allowing for customizable
- * display and interaction. It supports multiple selection modes, compact design, and various visual variants.
+ * Renders a flexible and customizable accordion using the `@heroui/react` library.
+ * Supports controlled and uncontrolled states, multiple visual variants, and various interaction options.
  * 
- * Props:
- * - items: An array of accordion items, each defined by a title, content, optional subtitle, and ARIA label.
- * - selectionMode?: Defines how items can be selected: 'multiple' allows multiple items, 'single' for one, 'none' for no selection.
- * - variant?: Specifies the accordion's visual style, with options like "splitted", "light", "shadow", and "bordered".
- * - defaultExpandedKeys?: Identifies the keys of items that should be expanded by default.
- * - disabledKeys?: Keys of items that should be disabled.
- * - selectedKeys?: Controlled prop for specifying selected items.
- * - setSelectedKeys?: Callback function to update selected keys.
- * - hideShadow?: If true, removes shadows from accordion items.
- * - width?: Width of the accordion container.
- * - disableIndicatorAnimation?: If true, disables the indicator animation.
+ * @param {Object} props - The properties for the FrankAccordion component.
+ * @param {AccordionItemType[]} props.items - List of accordion items to render, each containing a title, content, ARIA label, and optional subtitle and indicators.
+ * @param {'multiple' | 'single' | 'none'} [props.selectionMode] - Selection behavior: allows multiple, single, or no item to be expanded at a time.
+ * @param {'splitted' | 'light' | 'shadow' | 'bordered'} [props.variant] - Visual style variant of the accordion.
+ * @param {Iterable<string | number>} [props.defaultExpandedKeys] - Set of item keys that should be expanded by default on initial render.
+ * @param {Iterable<string | number>} [props.disabledKeys] - Set of item keys that should be disabled from interaction.
+ * @param {Iterable<string | number>} [props.selectedKeys] - Controlled selected keys; overrides internal state if provided.
+ * @param {(keys: Iterable<string | number>) => void} [props.setSelectedKeys] - Callback to update the controlled selected keys externally.
+ * @param {boolean} [props.hideShadow] - Whether to remove shadow styling from accordion items.
+ * @param {number} [props.width] - Width of the accordion container in pixels; defaults to 100% if not specified.
+ * @param {boolean} [props.disableIndicatorAnimation] - Disables the indicator animation if set to true.
+ * 
+ * @returns {JSX.Element} A responsive accordion component displaying the provided items.
  */
-
 export function FrankAccordion({
     items,
     selectionMode,

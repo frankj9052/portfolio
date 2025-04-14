@@ -1,6 +1,17 @@
 import { useMemo, useEffect, useRef } from 'react';
 import debounce from 'lodash.debounce';
 
+/**
+ * A custom React hook that returns a debounced version of a callback,
+ * delaying its execution until after a specified delay time has passed since the last call.
+ * 
+ * @template T - The type of the callback function.
+ * 
+ * @param {T} callback - The callback function to debounce.
+ * @param {number} [delay=500] - Optional. Delay time in milliseconds (default is 500ms).
+ * 
+ * @returns {T} A debounced version of the original callback function.
+ */
 export const useDebouncedCallback = <T extends (...args: any[]) => void>(
     callback: T,
     delay = 500

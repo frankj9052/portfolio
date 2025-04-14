@@ -21,6 +21,22 @@ export type NoqPublicSearchBarProps = {
     handleSearchSubmit?: () => void,
 }
 
+/**
+ * A public search bar component combining two autocomplete inputs
+ * for specialty search and location search, with a submit button.
+ * 
+ * @param {number} [height] - Optional. Height of the search bar in pixels.
+ * @param {object} [searchMainInput] - Optional. Configuration for the main specialty search input.
+ * @param {DefaultAutocompleteItemsType[]} [searchMainInput.defaultItems] - Optional. Default specialty search suggestions.
+ * @param {(value: string) => void} [searchMainInput.onInputChange] - Optional. Callback triggered when specialty input value changes.
+ * @param {(key: Key | null) => void} [searchMainInput.onSelectionChange] - Optional. Callback triggered when specialty selection changes.
+ * @param {object} [searchAddressInput] - Optional. Configuration for the address search input.
+ * @param {DefaultAutocompleteItemsType[]} [searchAddressInput.defaultItems] - Optional. Default address search suggestions.
+ * @param {(value: string) => void} [searchAddressInput.onInputChange] - Optional. Callback triggered when address input value changes.
+ * @param {(key: Key | null) => void} [searchAddressInput.onSelectionChange] - Optional. Callback triggered when address selection changes.
+ * @param {string} [searchAddressInput.addressPlaceholder] - Optional. Custom placeholder text for the address input.
+ * @param {() => void} [handleSearchSubmit] - Optional. Callback triggered when the search button is pressed.
+ */
 export function NoqPublicSearchBar({
     height,
     searchMainInput,

@@ -3,6 +3,13 @@ import { NavbarItem } from "@heroui/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+/**
+ * A navigation link component for use inside a navbar,
+ * highlighting the link as active based on the current route.
+ * 
+ * @param {string} text - The display text for the navigation link.
+ * @param {string} href - The target URL path for the link.
+ */
 export const NavLink = ({
     text,
     href

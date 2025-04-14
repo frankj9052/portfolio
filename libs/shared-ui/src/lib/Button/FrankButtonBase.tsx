@@ -9,6 +9,16 @@ export type FrankButtonBaseProps = {
     backgroundColor?: string,
 } & ButtonProps
 
+/**
+ * A customizable button component based on @heroui/react Button,
+ * with support for custom content, size, and background color.
+ * 
+ * @param {ReactNode} [customizeContent] - Optional. Custom content to render inside the button.
+ * @param {number} [width] - Optional. Width of the button container in pixels.
+ * @param {number} [height] - Optional. Height of the button container in pixels.
+ * @param {string} [backgroundColor] - Optional. Background color of the button.
+ * @param {ButtonProps} props - All other props inherited from the original Button component.
+ */
 export const FrankButtonBase = forwardRef<HTMLButtonElement, FrankButtonBaseProps>(({
     customizeContent,
     variant,

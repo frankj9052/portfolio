@@ -4,6 +4,12 @@ export type HeroTileProps = {
   children: ReactNode;
 }
 
+/**
+ * A styled hero title component displaying a large background-styled heading (h1)
+ * and a bold foreground heading (h2) with an underline effect.
+ * 
+ * @param {ReactNode} children - Text or elements to render as the hero title content.
+ */
 export const HeroTitle = ({ children }: HeroTileProps) => {
   return (
     <div className="flex flex-col items-center justify-end relative text-center mt-3">

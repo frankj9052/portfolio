@@ -12,6 +12,21 @@ type Props = {
   errorMessage?: string,
   isInvalid?: boolean,
 }
+
+/**
+ * A time input component based on @heroui/react TimeInput,
+ * supporting 24-hour format, custom width/height, and validation.
+ * 
+ * @param {number} [width] - Optional. Width of the time input container in pixels.
+ * @param {number} [height] - Optional. Height of the time input container in pixels.
+ * @param {string | null} [value] - Optional. Controlled selected time in "HH:mm" format.
+ * @param {string} [minValue] - Optional. Minimum selectable time in "HH:mm" format.
+ * @param {(value: TimeInputValue | null) => void} [setValue] - Optional. Callback triggered when the selected time changes.
+ * @param {string} ariaLabel - ARIA label for accessibility purposes.
+ * @param {number} [fontSize=13] - Optional. Font size for the time text.
+ * @param {string} [errorMessage] - Optional. Error message to display if the input is invalid.
+ * @param {boolean} [isInvalid] - Optional. Whether the time input is in an invalid state.
+ */
 export function FrankTimeInput({ width, height, value, setValue, ariaLabel, fontSize = 13, minValue, errorMessage, isInvalid }: Props) {
   return (
     <div

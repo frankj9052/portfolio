@@ -6,6 +6,13 @@ export type FrankTileBackgroundProps = {
     children?: ReactNode
 }
 
+/**
+ * A background container component that tiles a given image across the entire area.
+ * 
+ * @param {string} imageUrl - URL of the image to be used as a tiled background.
+ * @param {string} [className] - Optional. Custom class name for additional styling.
+ * @param {ReactNode} [children] - Optional. Child elements to render on top of the background.
+ */
 export function FrankTiledBackground({
     imageUrl,
     className,

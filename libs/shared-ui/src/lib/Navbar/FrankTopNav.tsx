@@ -9,6 +9,14 @@ export type FrankTopNavProps = {
     navContentEnd?: ReactNode;
 }
 
+/**
+ * A responsive top navigation bar component using @heroui/react,
+ * featuring a brand section, navigation links, and optional end content.
+ * 
+ * @param {ReactNode} [navbarBrand] - Optional. Content for the brand/logo area on the left.
+ * @param {NavLinkType[]} [navLinks] - Optional. Array of navigation links with text and href.
+ * @param {ReactNode} [navContentEnd] - Optional. Content to display on the right side of the navbar (e.g., buttons, icons).
+ */
 export const FrankTopNav = ({
     navbarBrand,
     navLinks,

@@ -66,6 +66,19 @@ export type FrankBigCalendarProps = {
   bookingEventActions?: BookingEventActionsType,
 }
 
+/**
+ * A fully-featured calendar component that supports multiple views (week grid, day grid, list day),
+ * with built-in navigation, date control, and drag-and-drop capabilities.
+ * 
+ * @param {number} [width] - Optional. Width of the calendar in pixels.
+ * @param {number} [height] - Optional. Height of the calendar in pixels.
+ * @param {ViewType} [currentView] - Optional. Current active view type ('timeGridWeek', 'timeGridDay', or 'listDay').
+ * @param {(viewType: ViewType) => void} [onCurrentViewChange] - Optional. Callback triggered when the view type changes.
+ * @param {Date} [focusedDate] - Optional. Current focused date displayed in the calendar.
+ * @param {(newDate: Date) => void} [onFocusedDateChange] - Optional. Callback triggered when the focused date changes.
+ * @param {ShiftType[]} [shiftsData] - Optional. Shift and booking data to populate the calendar.
+ * @param {BookingEventActionsType} [bookingEventActions] - Optional. Actions available for bookings in the list view (edit, cancel, etc.).
+ */
 export function FrankBigCalendar({
   width,
   height,

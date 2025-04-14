@@ -13,30 +13,17 @@ export type FrankCheckboxProps = {
 }
 
 /**
- * FrankCheckbox Component
+ * A customizable checkbox component with optional inside and outside content,
+ * supporting adjustable colors, sizes, and spacing.
  * 
- * This component is a customizable checkbox with optional inside and outside content.
- * It uses the `@heroui/react` Checkbox and Spacer components.
- *
- * Props:
- * - insideContent?: ReactNode - Content displayed inside the checkbox label.
- * - outsideContent?: ReactNode - Content displayed next to the checkbox.
- * - value: string - Value associated with the checkbox.
- * - isDisabled?: boolean - Disables the checkbox when true.
- * - defaultSelected?: boolean - Sets the checkbox as selected by default when true.
- * - color?: string - Background color of the checkbox when selected (default: "#003f3c").
- * - checkboxHeight?: number - Sets the height of the checkbox container.
- * - gap?: 0 | 1 | "px" | ... 96 - Controls the spacing between the checkbox and outside content.
- *
- * Usage Example:
- * <FrankCheckbox
- *   value="agree"
- *   insideContent="I agree to the terms"
- *   outsideContent={<span>Additional info</span>}
- *   color="#ff0000"
- *   checkboxHeight={20}
- *   gap={4}
- * />
+ * @param {ReactNode} [insideContent] - Optional. Content displayed inside the checkbox label.
+ * @param {ReactNode} [outsideContent] - Optional. Content displayed outside (next to) the checkbox.
+ * @param {string} value - Value associated with the checkbox input.
+ * @param {boolean} [isDisabled] - Optional. Whether the checkbox is disabled.
+ * @param {boolean} [defaultSelected] - Optional. Whether the checkbox is initially selected.
+ * @param {string} [color="#003f3c"] - Optional. Custom color for the selected state background.
+ * @param {number} [checkboxHeight] - Optional. Height of the checkbox container in pixels.
+ * @param {0 | 1 | "px" | 0.5 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 14 | 16 | 20 | 24 | 28 | 32 | 36 | 40 | 44 | 48 | 52 | 56 | 60 | 64 | 72 | 80 | 96} [gap] - Optional. Spacer size between the checkbox and the outside content.
  */
 export function FrankCheckbox({ insideContent, outsideContent, value, isDisabled, defaultSelected, color = "#003f3c", checkboxHeight, gap }: FrankCheckboxProps) {
     return (

@@ -1,19 +1,17 @@
 import { useCallback, useEffect, useRef } from "react"
 
 /**
- * @function useTimer
- * @description A custom hook for managing a timer with a configurable interval.
- * Provides functionality to set and reset a timer. The timer calls
- * a specified callback function at regular intervals.
- * @returns {Object} - An object containing two functions:
- *   - `setTimeInterval`: Sets a timer to call the given callback
- *     function every specified number of seconds.
- *     @param {number} seconds - The interval duration in seconds.
- *     @param {Function} callback - The callback function to execute
- *     at each interval.
- *   - `resetTimer`: Resets the timer using the last set interval
- *     duration and callback function.
- */
+ * A custom React hook for managing a timer (setInterval) with the ability
+ * to start, reset, and automatically clear the interval when the component unmounts.
+ * 
+ * @returns {{
+*   setTimeInterval: (seconds: number, callback: () => void) => void,
+*   resetTimer: () => void
+* }}
+* 
+* @property {function} setTimeInterval - Starts a timer that calls the given callback every specified number of seconds.
+* @property {function} resetTimer - Resets the timer, using the previously stored interval duration and callback.
+*/
 export const useTimer = () => {
     // 存储intervalId
     const intervalRef = useRef<NodeJS.Timeout | null>(null);

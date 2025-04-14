@@ -1,3 +1,9 @@
+/**
+ * A text component styled with a horizontal linear gradient,
+ * making the text colorful and visually striking.
+ * 
+ * @returns A styled paragraph displaying "AI Powered" with a gradient color effect.
+ */
 export function LinearGradientTextColor() {
     return (
         <p
