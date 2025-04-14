@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import FrankModal from './FrankModal';
 import { useDisclosure } from '@heroui/react';
-import FrankButtonBase from '../Button/FrankButtonBase';
+import { FrankButtonBase } from '../../general';
 
 const meta = {
     title: 'Components/Feedback/Modal/FrankModal',

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import FrankToggleButton from './FrankToggleButton';
-import FrankSVGIcon from '../SVGIcon/FrankSVGIcon';
+import { FrankSVGIcon } from '../../icons';
 const meta = {
     title: 'Components/General/Button/FrankToggleButton',
     component: FrankToggleButton,

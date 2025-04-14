@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import NoqButton from './NoqButton';
-import FrankSVGIcon from '../SVGIcon/FrankSVGIcon';
+import { FrankSVGIcon } from '../../icons';
 
 const meta = {
   title: 'Components/General/Button/NoqButton',
