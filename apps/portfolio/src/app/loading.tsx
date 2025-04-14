@@ -1,5 +1,5 @@
 'use client';
-import { FrankLoadingSignature } from "@frankjia9052/shared-ui";
+import { FrankSpinner } from "@frankjia9052/shared-ui";
 
 const Loading = () => {
     return (
@@ -9,7 +9,7 @@ const Loading = () => {
             <div
                 className="flex items-center justify-center h-full"
             >
-                <FrankLoadingSignature />
+                <FrankSpinner color="primary"/>
             </div>
         </div>
     )

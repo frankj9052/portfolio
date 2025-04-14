@@ -1,6 +1,7 @@
 import { AnimatePresence } from 'framer-motion';
 import { TopNav } from '../components/navbar/TopNav';
 import './global.css';
+import { LandingAnimationPage } from '../components/LandingAnimationPage';
 
 export const metadata = {
   title: 'Welcome to portfolio',
@@ -19,6 +20,7 @@ export default function RootLayout({
     >
       <body className='font-popins portfolio-theme text-color-text-black'>
           <TopNav />
+          <LandingAnimationPage/>
           {children}
       </body>
     </html>
