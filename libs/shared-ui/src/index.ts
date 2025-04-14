@@ -1,96 +1,95 @@
 // Accordion
-export * from './lib/Accordion/FrankAccordion';
+export * from './lib/Components/Accordion/FrankAccordion';
+
+// AutoComplete
+export * from './lib/Components/AutoComplete/FrankAutocomplete';
+export * from './lib/Components/AutoComplete/NoqPublicSearchBar';
+
+// Avatar
+export * from './lib/Components/Avatar/FrankAvatar';
+export * from './lib/Components/Avatar/UserListItem';
+
+// Background
+export * from './lib/Components/Background/FrankTiledBackground';
+
+// Button
+export * from './lib/Components/Button/FrankButtonBase';
+export * from './lib/Components/Button/FrankToggleButton';
+export * from './lib/Components/Button/NoqButton';
+
+// Calendar
+export * from './lib/Components/Calendar/FrankCalendar';
+export * from './lib/Components/Calendar/FrankFullCalendar';
+export * from './lib/Components/Calendar/FrankBigCalendar';
+export * from './lib/Components/Calendar/FrankBigCalendarParts/CalendarShiftComponent';
+export * from './lib/Components/Calendar/FrankBigCalendarParts/CalendarGrid';
+export * from './lib/Components/Calendar/FrankBigCalendarParts/DraggableShift';
+export * from './lib/Components/Calendar/FrankBigCalendarParts/DropContainer';
+export * from './lib/Components/Calendar/FrankBigCalendarParts/ListDay';
+export * from './lib/Components/Calendar/FrankBigCalendarParts/ResizableShift';
+export * from './lib/Components/Calendar/FrankBigCalendarParts/TimeGridDay';
+export * from './lib/Components/Calendar/FrankBigCalendarParts/TimeGridWeek';
+export * from './lib/Components/Calendar/FrankBigCalendarParts/TimeScale';
+
+// Card
+export * from './lib/Components/Card/FrankCard';
+
+// Carousel/Components
+export * from './lib/Components/Carousel/FrankCarousel';
+
+// Checkbox
+export * from './lib/Components/Checkbox/FrankCheckbox';
+
+// Checkbox Group
+export * from './lib/Components/Checkbox-Group/FrankCheckboxGroup';
+
+// Date Picker
+export * from './lib/Components/DatePicker/FrankDatePicker';
+export * from './lib/Components/DatePicker/NoqDatePicker';
+
+// Input
+export * from './lib/Components/Input/FrankInputBase';
+
+// Link
+export * from './lib/Components/Link/SocialMediaLinks';
+
+// Loading
+export * from './lib/Components/Loading/FrankLoadingSignature';
+
+// Modal
+export * from './lib/Components/Modal/FrankModal';
+
+// Navbar
+export * from './lib/Components/Navbar/FrankTopNav';
+
+// Popover
+export * from './lib/Components/Popover/FrankPopover';
+
+// Ratio Group
+export * from './lib/Components/Radio-Group/FrankRadioGroupBasic';
+
+// Spinner
+export * from './lib/Components/Spinner/FrankSpinner';
+
+// SVG Icon
+export * from './lib/Components/SVGIcon/FrankSVGIcon';
+
+// Tabs
+export * from './lib/Components/Tabs/CalendarViewSwitcher';
+export * from './lib/Components/Tabs/FrankTabs';
+export * from './lib/Components/Tabs/FrankArrowSwitcher';
+
+//  Time Input
+export * from './lib/Components/Time-Input/FrankTimeInput';
 
 // Animations
 export * from './lib/Animations/BreathingGlow';
 export * from './lib/Animations/CardParallax';
 export * from './lib/Animations/NumberRiser';
-// Assets
-
-// AutoComplete
-export * from './lib/AutoComplete/FrankAutocomplete';
-export * from './lib/AutoComplete/NoqPublicSearchBar';
-
-// Avatar
-export * from './lib/Avatar/FrankAvatar';
-export * from './lib/Avatar/UserListItem';
-
-// Background
-export * from './lib/Background/FrankTiledBackground';
-
-// Button
-export * from './lib/Button/FrankButtonBase';
-export * from './lib/Button/FrankToggleButton';
-export * from './lib/Button/NoqButton';
-
-// Calendar
-export * from './lib/Calendar/FrankCalendar';
-export * from './lib/Calendar/FrankFullCalendar';
-export * from './lib/Calendar/FrankBigCalendar';
-export * from './lib/Calendar/FrankBigCalendarParts/CalendarShiftComponent';
-export * from './lib/Calendar/FrankBigCalendarParts/CalendarGrid';
-export * from './lib/Calendar/FrankBigCalendarParts/DraggableShift';
-export * from './lib/Calendar/FrankBigCalendarParts/DropContainer';
-export * from './lib/Calendar/FrankBigCalendarParts/ListDay';
-export * from './lib/Calendar/FrankBigCalendarParts/ResizableShift';
-export * from './lib/Calendar/FrankBigCalendarParts/TimeGridDay';
-export * from './lib/Calendar/FrankBigCalendarParts/TimeGridWeek';
-export * from './lib/Calendar/FrankBigCalendarParts/TimeScale';
-
-// Card
-export * from './lib/Card/FrankCard';
-
-// Carousel
-export * from './lib/Carousel/FrankCarousel';
-
-// Checkbox
-export * from './lib/Checkbox/FrankCheckbox';
-
-// Checkbox Group
-export * from './lib/Checkbox-Group/FrankCheckboxGroup';
-
-// Date Picker
-export * from './lib/DatePicker/FrankDatePicker';
-export * from './lib/DatePicker/NoqDatePicker';
-
-// Input
-export * from './lib/Input/FrankInputBase';
-
-// Link
-export * from './lib/Link/SocialMediaLinks';
-
-// Loading
-export * from './lib/Loading/FrankLoadingSignature';
-
-// Modal
-export * from './lib/Modal/FrankModal';
-
-// Navbar
-export * from './lib/Navbar/FrankTopNav';
-
-// Popover
-export * from './lib/Popover/FrankPopover';
-
-// Ratio Group
-export * from './lib/Radio-Group/FrankRadioGroupBasic';
-
-// Spinner
-export * from './lib/Spinner/FrankSpinner';
 
 // StaticEffects
 export * from './lib/StaticEffects/HeroTitle';
 export * from './lib/StaticEffects/LinearGradientTextColor';
-
-// SVG Icon
-export * from './lib/SVGIcon/FrankSVGIcon';
-
-// Tabs
-export * from './lib/Tabs/CalendarViewSwitcher';
-export * from './lib/Tabs/FrankTabs';
-export * from './lib/Tabs/FrankArrowSwitcher';
-
-//  Time Input
-export * from './lib/Time-Input/FrankTimeInput';
 
 // useHooks
 export * from './lib/useHooks/useClickOutside';

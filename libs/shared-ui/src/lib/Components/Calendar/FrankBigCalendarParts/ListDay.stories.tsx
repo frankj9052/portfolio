@@ -1,8 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { SharedUi } from './SharedUi';
+import { ListDay } from './ListDay';
 
 const meta = {
-    component: SharedUi,
+    title: 'Components/Calendar/FrankBigCalendarParts/ListDay',
+    component: ListDay,
     tags: ['autodocs'],
     parameters: {
         layout: "centered"
@@ -10,7 +11,7 @@ const meta = {
 
     args: {
     },
-} satisfies Meta<typeof SharedUi>
+} satisfies Meta<typeof ListDay>
 
 export default meta;
 type Story = StoryObj<typeof meta>;

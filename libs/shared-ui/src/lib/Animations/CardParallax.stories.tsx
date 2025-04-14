@@ -3,10 +3,43 @@ import { CardParallax } from './CardParallax';
 import { MotionValue } from 'framer-motion';
 
 const meta = {
+    title: 'Aminations/CardParallax',
     component: CardParallax,
     tags: ['autodocs'],
     parameters: {
-        layout: "centered"
+        layout: "centered",
+        docs: {
+            description: {
+                component: "A component that creates a parallax effect by scaling and positioning its children based on the scroll position. Requires `framer-motion` and `lenis` libraries.",
+            },
+        },
+        actions: {},
+    },
+    argTypes: {
+        children: {
+            control: false,
+            description: "The children to render inside the parallax. Include `imageScale: MotionValue<number>` in props if scaling is required for images.",
+        },
+        cardHeader: {
+            control: { type: 'text' },
+            description: "The header of the parallax.",
+        },
+        isScaled: {
+            control: { type: 'boolean' },
+            description: "Whether the children should be scaled.",
+        },
+        gap: {
+            control: { type: 'number' },
+            description: "The gap between each child.",
+        },
+        startPoint: {
+            control: { type: 'number' },
+            description: "The starting point of the parallax effect in screen view.",
+        },
+        backgroundImage: {
+            control: { type: 'text' },
+            description: "The background image of the parallax effect.",
+        },
     },
 
     args: {

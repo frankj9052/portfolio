@@ -2,12 +2,24 @@ import type { Meta, StoryObj } from '@storybook/react';
 import SharedUi from './HeroTitle';
 
 const meta = {
+    title: 'StaticEffects/HeroTitle',
     component: SharedUi,
     tags: ['autodocs'],
     parameters: {
-        layout: "centered"
+        layout: "centered",
+        docs: {
+            description: {
+                component: "A styled hero title component that displays a large background-styled heading (h1) and a bold foreground heading (h2) with an underline effect, used to create impactful section headers.",
+            },
+        },
+        actions: {},
     },
-
+    argTypes: {
+        children: {
+            control: false,
+            description: "Text or elements to render as the hero title content.",
+        },
+    },
     args: {
     },
 } satisfies Meta<typeof SharedUi>

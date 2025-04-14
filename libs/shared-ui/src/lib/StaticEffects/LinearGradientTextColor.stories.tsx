@@ -2,10 +2,17 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { LinearGradientTextColor } from './LinearGradientTextColor';
 
 const meta = {
+    title: 'StaticEffects/LinearGradientTextColor',
     component: LinearGradientTextColor,
     tags: ['autodocs'],
     parameters: {
-        layout: "centered"
+        layout: "centered",
+        docs: {
+            description: {
+                component: "A text component that displays 'AI Powered' with a horizontal linear gradient, creating a colorful and visually striking effect.",
+            },
+        },
+        actions: {},
     },
 
     args: {
