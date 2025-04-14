@@ -65,6 +65,9 @@ export * from './lib/Components/Navbar/FrankTopNav';
 // Popover
 export * from './lib/Components/Popover/FrankPopover';
 
+// Propgress
+export * from './lib/Components/Progress/FrankProgress';
+
 // Ratio Group
 export * from './lib/Components/Radio-Group/FrankRadioGroupBasic';
 
