@@ -2,6 +2,35 @@
 
 A personal UI component library built with Tailwind CSS and Hero UI. This package provides reusable React components for faster development.  
 
+~~~markdown
+src/
+├── components/          # 基础通用UI组件库
+│   ├── form/            # 输入类
+│   ├── datadisplay/     # 展示类
+│   ├── navigation/      # 导航类
+│   ├── feedback/        # 反馈类
+│   ├── general/         # 通用组件
+│   ├── icons/           # 图标
+│   ├── typography/      # 文字相关
+│   ├── index.ts         # 统一导出
+
+├── animations/          # 动态特效组件
+│   ├── index.ts         # 统一导出
+
+├── staticeffects/       # 静态文字/颜色特效组件
+│   ├── index.ts         # 统一导出
+
+├── hooks/               # 自定义Hooks
+│   ├── index.ts         # 统一导出
+
+├── index.ts             # 总出口
+
+~~~
+
+
+
+
+
 
 
 # 2 - Installation
