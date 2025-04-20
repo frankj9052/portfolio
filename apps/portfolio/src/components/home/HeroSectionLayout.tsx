@@ -12,9 +12,8 @@ export const HeroSectionLayout = () => {
     const router = useRouter();
     return (
         <div
-            className="flex flex-col gap-8"
+            className="flex flex-col gap-8 h-full justify-center"
         >
-            <Spacer y={8} className="md:hidden" />
             <div
                 className="flex justify-between items-center lg:gap-[120px] md:gap-[60px] gap-[60px]"
             >

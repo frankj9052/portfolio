@@ -6,9 +6,10 @@ import { useEffect, useState } from 'react';
 export const LandingAnimationPage = () => {
   const [firstTimeLanding, setFirstTimeLanding] = useState<boolean>(true);
   useEffect(() => {
-    setTimeout(() => {
+    const firstTimeLandingTimer = setTimeout(() => {
       setFirstTimeLanding(false);
     }, 1000);
+    return () => clearTimeout(firstTimeLandingTimer);
   }, []);
   switch (firstTimeLanding) {
     case true:

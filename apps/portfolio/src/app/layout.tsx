@@ -1,4 +1,3 @@
-import { AnimatePresence } from 'framer-motion';
 import { TopNav } from '../components/navbar/TopNav';
 import './global.css';
 import { LandingAnimationPage } from '../components/LandingAnimationPage';

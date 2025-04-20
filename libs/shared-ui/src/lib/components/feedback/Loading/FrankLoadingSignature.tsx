@@ -25,11 +25,9 @@ export const FrankLoadingSignature = () => {
       className='text-[#6A59D1] flex gap-3'
     >
       <svg
-        width="561.98"
-        height="90.54"
         viewBox="0 0 280.99 45.27"
         fill="none"
-        className={styles.customizeSvg}
+        className={`${styles.customizeSvg} w-[280.99px] h-[45.27px] md:w-[561.98px] md:h-[90.54px]`}
       >
         <path
           className={styles.svgPath_01}
@@ -100,8 +98,8 @@ export const FrankLoadingSignature = () => {
       <Spinner
         color='current'
         variant='wave'
-        className={styles.spinner}
-        size='lg'
+        className={`${styles.spinner}`}
+        size='md'
       />
     </div>
 

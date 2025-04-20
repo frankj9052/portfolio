@@ -1,12 +1,15 @@
 'use client';
-import { FrankTabs, HeroTitle } from '@frankjia9052/shared-ui';
+import { FrankAccordion, FrankTabs, HeroTitle } from '@frankjia9052/shared-ui';
 import { EducationCard } from '../../components/home/SkillSectionLayout/EducationCard';
 import { WorkCard } from './SkillSectionLayout/WorkCard';
 import { Spacer } from '@heroui/react';
+import { AccordionTitleCard } from './SkillSectionLayout/AccordionTitleCard';
+import { GoBrowser } from "react-icons/go";
+import { MdKeyboardArrowLeft } from "react-icons/md";
 
 export const SkillSectionLayout = () => {
   return (
-    <div className="bg-red-200 w-full h-full md:pt-8">
+    <div className="aaaabg-red-200 w-full h-full md:pt-8">
       {/* Title */}
       <div>
         <HeroTitle>Skills</HeroTitle>
@@ -68,7 +71,28 @@ export const SkillSectionLayout = () => {
           />
         </div>
         {/* skills */}
-        <div className="col-span-2 bg-yellow-200">skills</div>
+        <div className="col-span-2 abg-yellow-200">
+          <FrankAccordion  
+            variant='splitted' 
+            hideShadow                     
+            items={[
+              {
+                ariaLabel: "frontend developer",
+                title: <AccordionTitleCard
+                  icon={<GoBrowser className='text-primary'/>}
+                  title='Frontend'
+                  subTitle='Over 4 years'                  
+                />,
+                key: 'frontend-accordion',
+                content: <div>html, css</div>,
+                indicator: {
+                  isClose: <MdKeyboardArrowLeft className='text-primary text-4xl'/>
+                }                
+                
+              }
+            ]}
+          />
+        </div>
       </div>
     </div>
   );

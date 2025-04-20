@@ -3,13 +3,13 @@ import { ReactNode } from "react";
 import { useControlledState } from "../../../useHooks";
 
 export type AccordionItemType = {
-    key?: string | number,
+    key: string | number,
     ariaLabel: string,
     title: ReactNode,
     content: ReactNode,
     subtitle?: string,
     indicator?: {
-        isOpen: ReactNode,
+        isOpen?: ReactNode,
         isClose: ReactNode,
     }
 }
@@ -84,16 +84,18 @@ export function FrankAccordion({
                 disableIndicatorAnimation={disableIndicatorAnimation}
             >
                 {
-                    items && items.map((item, index) => {
+                    items && items.map((item) => {
                         return (
                             <AccordionItem
                                 key={item.key}
                                 aria-label={item.ariaLabel}
                                 title={item.title}
-                                subtitle={item.subtitle}
+                                subtitle={item.subtitle}                                
                                 indicator={(isOpen) => {
                                     if (item.indicator && item.indicator.isOpen && item.indicator.isClose) {
                                         return isOpen.isOpen ? item.indicator.isOpen : item.indicator.isClose;
+                                    } else if (item.indicator && item.indicator.isClose) {
+                                        return item.indicator.isClose
                                     }
                                 }}
                                 classNames={{
