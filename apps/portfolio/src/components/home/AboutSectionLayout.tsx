@@ -26,7 +26,7 @@ const data = {
 export const AboutSectionLayout = () => {
   return (
     <div
-        className='text-color-text-black md:pt-8 h-full'
+        className='text-color-text-black h-full'
         id="about"
     >
       {/* title */}
